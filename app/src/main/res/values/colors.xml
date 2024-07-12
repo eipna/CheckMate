@@ -2,4 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Application Color Theme -->
+    <color name="light_blue">#93B7BE</color>
+    <color name="timber_wolf">#D5C7BC</color>
+    <color name="mint_cream">#F1FFFA</color>
+    <color name="rose_taupe">#785964</color>
+    <color name="onyx">#454545</color>
+
+    <!-- Application icon color -->
+    <color name="application">#ffe5cc</color>
+
+    <!-- Misc -->
+    <color name="grey">#B5DCDCDC</color>
 </resources>
