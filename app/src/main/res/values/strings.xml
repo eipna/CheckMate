@@ -1,3 +1,7 @@
 <resources>
+    <!-- Application Name -->
     <string name="app_name">CheckMate</string>
+
+    <!-- Application Version -->
+    <string name="app_version">1.0.0</string>
 </resources>
