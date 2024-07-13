@@ -1,7 +1,22 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.CheckMate" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <!-- Custom Theme For Icons -->
+        <item name="colorPrimary">@color/light_blue</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="ToolbarText">
+        <item name="fontFamily">sans-serif-black</item>
+        <item name="android:textSize">29sp</item>
+        <item name="android:textColor">@color/mint_cream</item>
+    </style>
+
+    <!-- Floating Action Button -->
+    <style name="FloatingActionButton">
+        <item name="android:src">@drawable/baseline_add_24</item>
+        <item name="backgroundTint">@color/light_blue</item>
+        <item name="tint">@color/mint_cream</item>
     </style>
 </resources>
