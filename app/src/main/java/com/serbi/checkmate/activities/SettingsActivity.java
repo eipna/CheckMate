@@ -1,6 +1,7 @@
 package com.serbi.checkmate.activities;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.fragments.SettingsFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -26,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
             return insets;
         });
 
+        initializeSettings();
         initializeComponents();
         initializeToolbar();
     }
@@ -40,5 +43,12 @@ public class SettingsActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+    }
+
+    private void initializeSettings() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_settings, new SettingsFragment())
+                .commit();
     }
 }

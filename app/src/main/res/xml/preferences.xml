@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:title="About"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="link_github"
+            android:title="Github"
+            android:icon="@drawable/baseline_link_24">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/eipna"/>
+        </Preference>
+
+        <Preference
+            android:key="static_developer"
+            android:title="Developer"
+            android:summary="eipna"
+            android:icon="@drawable/baseline_account_circle_24"/>
+
+        <Preference
+            android:key="static_app_version"
+            android:title="Version"
+            android:summary="@string/app_version"
+            android:icon="@drawable/baseline_info_24"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
