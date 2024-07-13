@@ -7,7 +7,7 @@
     <style name="Theme.CheckMate" parent="Base.Theme.CheckMate" />
 
     <!-- Toolbar -->
-    <style name="Toolbar">
+    <style name="ToolbarText">
         <item name="fontFamily">sans-serif-black</item>
         <item name="android:textSize">29sp</item>
         <item name="android:textColor">@color/black</item>
