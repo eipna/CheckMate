@@ -4,13 +4,19 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
     <style name="Theme.CheckMate" parent="Base.Theme.CheckMate" />
 
     <!-- Toolbar -->
-    <style name="ToolbarAppearance">
+    <style name="Toolbar">
         <item name="fontFamily">sans-serif-black</item>
         <item name="android:textSize">29sp</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Floating Action Button -->
+    <style name="FloatingActionButton">
+        <item name="android:src">@drawable/baseline_add_24</item>
+        <item name="backgroundTint">@color/rose_taupe</item>
+        <item name="tint">@color/mint_cream</item>
     </style>
 </resources>

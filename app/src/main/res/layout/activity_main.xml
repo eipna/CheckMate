@@ -10,11 +10,21 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_main"
         app:title="CheckMate"
-        app:titleTextAppearance="@style/ToolbarAppearance"
+        app:titleTextAppearance="@style/Toolbar"
         app:titleMarginStart="30dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fba_add_task"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="24dp"
+        style="@style/FloatingActionButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
