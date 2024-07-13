@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- New Task -->
+    <shortcut
+        android:shortcutId="compose"
+        android:enabled="true"
+        android:icon="@drawable/baseline_add_24"
+        android:shortcutShortLabel="@string/shortcut_new_task"
+        android:shortcutLongLabel="@string/shortcut_new_task"
+        android:shortcutDisabledMessage="@string/shortcut_new_task">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.serbi.checkmate"
+            android:targetClass="com.serbi.checkmate.activities.CreateTaskActivity"/>
+
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE"/>
+        <categories android:name="android.shortcut.conversation"/>
+    </shortcut>
+</shortcuts>

@@ -4,4 +4,7 @@
 
     <!-- Application Version -->
     <string name="app_version">1.0.0</string>
+
+    <!-- Application Shortcuts -->
+    <string name="shortcut_new_task">New Task</string>
 </resources>
