@@ -29,12 +29,6 @@
         </Preference>
 
         <Preference
-            android:key="static_developer"
-            android:title="Developer"
-            android:summary="eipna"
-            android:icon="@drawable/baseline_account_circle_24"/>
-
-        <Preference
             android:key="static_app_version"
             android:title="Version"
             android:summary="@string/app_version"
