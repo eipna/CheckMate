@@ -22,8 +22,6 @@ import com.serbi.checkmate.R;
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor sharedPreferencesEditor;
-
     private String prefsTheme;
 
     private FloatingActionButton btn_add_task;
