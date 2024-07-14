@@ -9,10 +9,10 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_create_task"
+        app:title=" "
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:title="New Task"
         app:titleTextAppearance="@style/ToolbarText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
