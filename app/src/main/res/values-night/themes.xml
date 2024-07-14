@@ -8,7 +8,7 @@
 
     <!-- Toolbar -->
     <style name="ToolbarText">
-        <item name="fontFamily">sans-serif-black</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">29sp</item>
         <item name="android:textColor">@color/mint_cream</item>
     </style>
