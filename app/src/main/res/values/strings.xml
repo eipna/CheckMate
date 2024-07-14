@@ -10,4 +10,16 @@
 
     <!-- Application Quick Tiles -->
     <string name="tile_new_task">New Task</string>
+
+    <!-- List Theme Settings -->
+    <string-array name="list_theme">
+        <item>System</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="list_theme_values">
+        <item>System</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
 </resources>

@@ -3,6 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
+        android:title="Appearance"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            android:key="list_theme"
+            android:title="Theme"
+            android:icon="@drawable/baseline_sunny_24"
+            android:entries="@array/list_theme"
+            android:entryValues="@array/list_theme_values"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="About"
         app:iconSpaceReserved="false">
 
