@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_main"
-        app:title="CheckMate"
+        app:title="All Tasks"
         android:paddingEnd="10dp"
         app:titleTextAppearance="@style/ToolbarText"
         app:titleMarginStart="30dp"
