@@ -1,4 +1,4 @@
-package com.serbi.checkmate.data.model;
+package com.serbi.checkmate.data.local;
 
 import android.content.ContentValues;
 import android.content.Context;

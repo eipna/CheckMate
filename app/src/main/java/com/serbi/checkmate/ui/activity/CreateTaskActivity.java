@@ -12,7 +12,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.data.model.Database;
+import com.serbi.checkmate.data.local.Database;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
