@@ -25,7 +25,7 @@
     <!-- Buttons -->
     <style name="Buttons">
         <item name="backgroundTint">@color/onyx</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:padding">15dp</item>
         <item name="cornerRadius">10dp</item>
         <item name="android:textColor">@color/mint_cream</item>
