@@ -62,6 +62,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         String taskNotes = tiet_task_notes.getText().toString();
 
         database.createTask(taskName, taskNotes);
+        database.close();
 
         Intent backToMainIntent = new Intent(CreateTaskActivity.this, MainActivity.class);
         startActivity(backToMainIntent);
