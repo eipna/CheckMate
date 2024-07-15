@@ -40,8 +40,7 @@
             app:layout_constraintStart_toStartOf="@id/item_task_name"
             android:layout_marginTop="13dp"
             android:layout_marginStart="50dp"
-            android:layout_marginEnd="15dp"
-            app:dividerThickness="3dp"/>
+            android:layout_marginEnd="15dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/item_task_notes"
