@@ -17,7 +17,7 @@
 
     <!-- Floating Action Button -->
     <style name="FloatingActionButton">
-        <item name="android:src">@drawable/baseline_add_24</item>
+        <item name="android:src">@drawable/baseline_add_task_24</item>
         <item name="backgroundTint">@color/rose_taupe</item>
         <item name="tint">@color/mint_cream</item>
     </style>
