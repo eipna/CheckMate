@@ -1,7 +1,6 @@
-package com.serbi.checkmate.activities;
+package com.serbi.checkmate.ui.activity;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.fragments.SettingsFragment;
+import com.serbi.checkmate.ui.fragment.SettingsFragment;
 
 public class SettingsActivity extends AppCompatActivity {
 

@@ -1,7 +1,6 @@
-package com.serbi.checkmate.activities;
+package com.serbi.checkmate.ui.activity;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +12,11 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.helpers.DatabaseHelper;
+import com.serbi.checkmate.data.model.Database;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
-    private DatabaseHelper databaseHelper;
+    private Database database;
 
     private MaterialToolbar toolbar;
     private MaterialButton btn_create_task;
@@ -42,7 +41,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     private void initializeComponents() {
         toolbar = findViewById(R.id.tb_create_task);
-        databaseHelper = new DatabaseHelper(this);
+        database = new Database(this);
 
         btn_create_task = findViewById(R.id.btn_create_task);
         tiet_task_name = findViewById(R.id.tiet_task_name);
@@ -61,7 +60,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         String taskName = tiet_task_name.getText().toString();
         String taskNotes = tiet_task_notes.getText().toString();
 
-        databaseHelper.createTask(taskName, taskNotes);
+        database.createTask(taskName, taskNotes);
         finish();
     }
 }

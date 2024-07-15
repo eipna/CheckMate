@@ -1,4 +1,4 @@
-package com.serbi.checkmate.fragments;
+package com.serbi.checkmate.ui.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;

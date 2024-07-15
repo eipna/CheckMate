@@ -13,7 +13,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.serbi.checkmate"
-            android:targetClass="com.serbi.checkmate.activities.CreateTaskActivity"/>
+            android:targetClass="com.serbi.checkmate.ui.activity.CreateTaskActivity"/>
 
         <capability-binding android:key="actions.intent.CREATE_MESSAGE"/>
         <categories android:name="android.shortcut.conversation"/>

@@ -1,4 +1,4 @@
-package com.serbi.checkmate.helpers;
+package com.serbi.checkmate.data.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
 
     // Database Credentials
     private Context context;
@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_TASK_NOTES = "notes";
     private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
 
-    public DatabaseHelper(@Nullable Context context) {
+    public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
