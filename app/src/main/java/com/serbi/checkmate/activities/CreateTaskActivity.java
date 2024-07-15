@@ -1,6 +1,7 @@
 package com.serbi.checkmate.activities;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +10,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.textfield.MaterialAutoCompleteTextView;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.helpers.DatabaseHelper;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
+    private DatabaseHelper databaseHelper;
+
     private MaterialToolbar toolbar;
+    private MaterialButton btn_create_task;
+    private TextInputEditText tiet_task_name, tiet_task_notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +36,17 @@ public class CreateTaskActivity extends AppCompatActivity {
 
         initializeComponents();
         initializeToolbar();
+
+        btn_create_task.setOnClickListener(v -> createNewTask());
     }
 
     private void initializeComponents() {
         toolbar = findViewById(R.id.tb_create_task);
+        databaseHelper = new DatabaseHelper(this);
+
+        btn_create_task = findViewById(R.id.btn_create_task);
+        tiet_task_name = findViewById(R.id.tiet_task_name);
+        tiet_task_notes = findViewById(R.id.tiet_task_notes);
     }
 
     private void initializeToolbar() {
@@ -41,5 +55,13 @@ public class CreateTaskActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void createNewTask() {
+        String taskName = tiet_task_name.getText().toString();
+        String taskNotes = tiet_task_notes.getText().toString();
+
+        databaseHelper.createTask(taskName, taskNotes);
+        finish();
     }
 }
