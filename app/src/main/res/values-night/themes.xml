@@ -35,4 +35,18 @@
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:layout_marginBottom">5dp</item>
     </style>
+
+    <!-- Task item -->
+    <style name="TaskItemCard">
+        <item name="android:backgroundTint">@color/onyx</item>
+    </style>
+    <style name="TaskItemName">
+        <item name="android:textColor">@color/mint_cream</item>
+    </style>
+    <style name="TaskItemDivider">
+        <item name="dividerColor">@color/mint_cream</item>
+    </style>
+    <style name="TaskItemNotes">
+        <item name="android:textColor">@color/mint_cream</item>
+    </style>
 </resources>
