@@ -19,4 +19,13 @@
         <item name="backgroundTint">@color/light_blue</item>
         <item name="tint">@color/mint_cream</item>
     </style>
+
+    <!-- Buttons -->
+    <style name="Buttons">
+        <item name="backgroundTint">@color/light_blue</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">13dp</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:textColor">@color/mint_cream</item>
+    </style>
 </resources>
