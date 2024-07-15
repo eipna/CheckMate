@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String TABLE_TASK = "tasks";
 
     // Task Table Columns
+    private static final String TABLE_TASK_ID = "task_id";
     private static final String TABLE_TASK_NAME = "name";
     private static final String TABLE_TASK_NOTES = "notes";
     private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
@@ -32,6 +33,7 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Create Table Query for Tasks
         String createTaskTable = "CREATE TABLE IF NOT EXISTS " + TABLE_TASK + "(" +
+                TABLE_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
                 TABLE_TASK_IS_COMPLETED + " INTEGER DEFAULT 0)";
