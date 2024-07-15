@@ -1,5 +1,6 @@
 package com.serbi.checkmate.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -61,6 +62,9 @@ public class CreateTaskActivity extends AppCompatActivity {
         String taskNotes = tiet_task_notes.getText().toString();
 
         database.createTask(taskName, taskNotes);
+
+        Intent backToMainIntent = new Intent(CreateTaskActivity.this, MainActivity.class);
+        startActivity(backToMainIntent);
         finish();
     }
 }
