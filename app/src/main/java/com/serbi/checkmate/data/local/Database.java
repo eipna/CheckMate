@@ -2,6 +2,7 @@ package com.serbi.checkmate.data.local;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -54,5 +55,12 @@ public class Database extends SQLiteOpenHelper {
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
         database.insert(TABLE_TASK, null, values);
+    }
+
+    // Retrieves all task items
+    public Cursor getTaskItems() {
+        SQLiteDatabase database = this.getReadableDatabase();
+        String read = "SELECT * FROM " + TABLE_TASK;
+        return database.rawQuery(read, null);
     }
 }

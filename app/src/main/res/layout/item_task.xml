@@ -3,10 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_task"
-    android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     android:checkable="true"
+    app:checkedIcon="@drawable/baseline_check_circle_outline_24"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/timber_wolf">
@@ -42,6 +40,7 @@
             app:layout_constraintTop_toBottomOf="@id/item_task_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/item_task_name"
             android:layout_marginTop="13dp"
             android:layout_marginStart="50dp"
             app:dividerColor="@color/onyx"
@@ -51,6 +50,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/item_task_notes"
             app:layout_constraintTop_toBottomOf="@id/item_task_divider"
+            app:layout_constraintStart_toStartOf="@id/item_task_divider"
             android:text="@string/item_task_notes"
             android:justificationMode="inter_word"
             android:maxLines="3"
