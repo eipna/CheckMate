@@ -20,6 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Task Table Columns
     private static final String TABLE_TASK_NAME = "name";
     private static final String TABLE_TASK_NOTES = "notes";
+    private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,7 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create Table Query for Tasks
         String createTaskTable = "CREATE TABLE IF NOT EXISTS " + TABLE_TASK + "(" +
                 TABLE_TASK_NAME + " TEXT," +
-                TABLE_TASK_NOTES + " TEXT)";
+                TABLE_TASK_NOTES + " TEXT," +
+                TABLE_TASK_IS_COMPLETED + " INTEGER)";
 
         // Executes the queries for creating tables
         db.execSQL(createTaskTable);
