@@ -51,18 +51,15 @@ public class Database extends SQLiteOpenHelper {
 
     // Creates a new task
     public void createTask(String name, String notes) {
-        SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
-        database.insert(TABLE_TASK, null, values);
+        getWritableDatabase().insert(TABLE_TASK, null, values);
     }
 
     // Retrieves all task items
     public Cursor getTaskItems() {
-        SQLiteDatabase database = this.getReadableDatabase();
         String read = "SELECT * FROM " + TABLE_TASK;
-        return database.rawQuery(read, null);
+        return getReadableDatabase().rawQuery(read, null);
     }
 }
