@@ -1,5 +1,6 @@
 package com.serbi.checkmate.helpers;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -16,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Database Tables
     private static final String TABLE_TASK = "tables";
 
-    // Task Table Data
+    // Task Table Columns
     private static final String TABLE_TASK_NAME = "name";
     private static final String TABLE_TASK_NOTES = "notes";
 
@@ -41,5 +42,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Drops all tables then recreates the whole database
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TASK);
         onCreate(db);
+    }
+
+    // Creates a new task
+    public void createTask(String name, String notes) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(TABLE_TASK_NAME, name);
+        values.put(TABLE_TASK_NOTES, notes);
+        database.insert(TABLE_TASK, null, values);
     }
 }
