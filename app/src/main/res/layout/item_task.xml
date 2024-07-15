@@ -27,9 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Lorem Ipsum"
-            android:fontFamily="sans-serif-black"
-            android:textSize="28sp"
-            android:layout_marginStart="50dp"
+            style="@style/TaskItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -51,13 +49,7 @@
             app:layout_constraintStart_toStartOf="@id/item_task_divider"
             android:text="@string/item_task_notes"
             android:justificationMode="inter_word"
-            android:maxLines="3"
-            android:textSize="16dp"
-            android:fontFamily="sans-serif-medium"
             style="@style/TaskItemNotes"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

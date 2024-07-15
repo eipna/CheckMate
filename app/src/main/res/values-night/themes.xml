@@ -9,7 +9,7 @@
     <!-- Toolbar -->
     <style name="ToolbarText">
         <item name="fontFamily">sans-serif</item>
-        <item name="android:textSize">29sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:textColor">@color/mint_cream</item>
     </style>
 
@@ -42,11 +42,23 @@
     </style>
     <style name="TaskItemName">
         <item name="android:textColor">@color/mint_cream</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:layout_marginStart">50dp</item>
     </style>
     <style name="TaskItemDivider">
         <item name="dividerColor">@color/mint_cream</item>
+        <item name="android:layout_marginTop">13dp</item>
+        <item name="android:layout_marginStart">50dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
     </style>
     <style name="TaskItemNotes">
         <item name="android:textColor">@color/mint_cream</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginStart">50dp</item>
     </style>
 </resources>
