@@ -33,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTaskTable = "CREATE TABLE IF NOT EXISTS " + TABLE_TASK + "(" +
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
-                TABLE_TASK_IS_COMPLETED + " INTEGER)";
+                TABLE_TASK_IS_COMPLETED + " INTEGER DEFAULT 0)";
 
         // Executes the queries for creating tables
         db.execSQL(createTaskTable);
