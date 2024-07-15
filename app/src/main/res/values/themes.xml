@@ -58,7 +58,7 @@
     <style name="TaskItemNotes">
         <item name="android:textColor">@color/onyx</item>
         <item name="android:maxLines">3</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginEnd">15dp</item>
