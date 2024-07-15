@@ -84,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
             // Indicate to user that task items are empty
         } else {
             while (cursor.moveToNext()) {
-                String name = cursor.getString(0);
-                String notes = cursor.getString(1);
-                int isCompleted = cursor.getInt(2);
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String notes = cursor.getString(2);
+                int isCompleted = cursor.getInt(3);
 
                 taskModels.add(new TaskModel(
+                        id,
                         name,
                         notes,
                         isCompleted
