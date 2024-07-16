@@ -6,11 +6,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Database database;
     private TaskAdapter adapter;
 
+    private ConstraintLayout empty_task_container;
     private RecyclerView rv_main;
     private FloatingActionButton btn_add_task;
     private MaterialToolbar toolbar;
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         prefsTheme = sharedPreferences.getString("THEME", "System");
 
         database = new Database(this);
+
+        empty_task_container = findViewById(R.id.cl_empty_container);
         taskModels = new ArrayList<>();
         rv_main = findViewById(R.id.rv_main);
         toolbar = findViewById(R.id.tb_main);
@@ -81,8 +86,13 @@ public class MainActivity extends AppCompatActivity {
     private void initializeDatasets() {
         Cursor cursor = database.getTaskItems();
         if (cursor.getCount() == 0) {
-            // Indicate to user that task items are empty
+            // Enables the illustration and text for empty tasks illustration
+            empty_task_container.setVisibility(View.VISIBLE);
         } else {
+            // Disables the illustration and text for empty tasks illustration
+            empty_task_container.setVisibility(View.GONE);
+
+            // Stores task items from database
             while (cursor.moveToNext()) {
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
