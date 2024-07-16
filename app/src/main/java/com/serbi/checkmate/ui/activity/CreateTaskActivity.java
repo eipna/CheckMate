@@ -58,6 +58,12 @@ public class CreateTaskActivity extends AppCompatActivity {
     }
 
     private void createNewTask() {
+        // Checks if the task name field is empty
+        if (tiet_task_name.getText().toString().isEmpty()) {
+            tiet_task_name.setError("Name field is required");
+            return;
+        }
+
         String taskName = tiet_task_name.getText().toString();
         String taskNotes = tiet_task_notes.getText().toString();
 
