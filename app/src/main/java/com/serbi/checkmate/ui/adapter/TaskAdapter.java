@@ -20,6 +20,7 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;
@@ -28,10 +29,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<TaskModel> taskModels;
+    private Database database;
 
     public TaskAdapter(Context context, ArrayList<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.context = context;
+        this.database = new Database(context);
     }
 
     @NonNull
@@ -43,19 +46,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TaskModel task = taskModels.get(position);
-        boolean isTaskCompleted;
-        if (task.getIsCompleted() == 1) {
-            isTaskCompleted = true;
-        } else {
-            isTaskCompleted = false;
-        }
-
-        holder.item_task_name.setText(task.getName());
-        holder.item_task_notes.setText(task.getNotes());
-        holder.item_task_check_box.setChecked(isTaskCompleted);
+        // Sets the data and state of each component of the task item card on load
+        holder.item_task_name.setText(taskModels.get(position).getName());
+        holder.item_task_notes.setText(taskModels.get(position).getNotes());
+        holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
         holder.item_task.setOnClickListener(v -> holder.item_task.setSelected(true));
-        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, task, isChecked));
+
+        // Handles the state of the check box of the task item card
+        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, taskModels.get(position), isChecked));
+
+        // Sets the task item card appearance based on its is_completed value on load
+        if (taskModels.get(position).getIsCompleted() == 1) {
+            setTaskAppearance(holder, taskModels.get(position), true);
+        }
     }
 
     @Override
@@ -63,7 +66,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return taskModels.size();
     }
 
-    private void toggleTask(ViewHolder holder, TaskModel task, boolean isChecked) {
+    // Handles the appearance of the task item card
+    private void setTaskAppearance(ViewHolder holder, TaskModel task, boolean isChecked) {
         if (isChecked) {
             // Transforms both the task item name and notes text to strikethrough
             holder.item_task_name.setText(task.getName(), TextView.BufferType.SPANNABLE);
@@ -99,6 +103,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             holder.item_task_divider.setAlpha(1.0f);
             holder.item_task.setAlpha(1.0f);
         }
+    }
+
+    // Handles the task item card is_completed value in the database
+    private void toggleTask(ViewHolder holder, TaskModel task, boolean isChecked) {
+        // Change task item card appearance to not completed
+        setTaskAppearance(holder, task, isChecked);
+
+        // Toggle's the task's is_completed value to false (0)
+        database.toggleTask(task.getId(), isChecked);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

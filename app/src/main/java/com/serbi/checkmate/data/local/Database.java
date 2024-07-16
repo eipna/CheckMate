@@ -62,4 +62,15 @@ public class Database extends SQLiteOpenHelper {
         String read = "SELECT * FROM " + TABLE_TASK;
         return getReadableDatabase().rawQuery(read, null);
     }
+
+    // Toggle's a task's is_completed value to be completed(1) or not(0)
+    public void toggleTask(int id, boolean status) {
+        ContentValues values = new ContentValues();
+        if (status) {
+            values.put(TABLE_TASK_IS_COMPLETED, 1);
+        } else {
+            values.put(TABLE_TASK_IS_COMPLETED, 0);
+        }
+        getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
+    }
 }
