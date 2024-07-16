@@ -5,7 +5,7 @@
     <shortcut
         android:shortcutId="compose"
         android:enabled="true"
-        android:icon="@drawable/baseline_add_24"
+        android:icon="@drawable/add_plus"
         android:shortcutShortLabel="@string/shortcut_new_task"
         android:shortcutLongLabel="@string/shortcut_new_task"
         android:shortcutDisabledMessage="@string/shortcut_new_task">

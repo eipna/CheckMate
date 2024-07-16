@@ -9,7 +9,7 @@
         <ListPreference
             android:key="list_theme"
             android:title="Theme"
-            android:icon="@drawable/baseline_sunny_24"
+            android:icon="@drawable/sun"
             android:entries="@array/list_theme"
             android:entryValues="@array/list_theme_values"/>
     </PreferenceCategory>
@@ -21,7 +21,7 @@
         <Preference
             android:key="link_github"
             android:title="Github"
-            android:icon="@drawable/baseline_link_24">
+            android:icon="@drawable/link">
 
             <intent
                 android:action="android.intent.action.VIEW"
@@ -32,7 +32,7 @@
             android:key="static_app_version"
             android:title="Version"
             android:summary="@string/app_version"
-            android:icon="@drawable/baseline_info_24"/>
+            android:icon="@drawable/info_filled"/>
     </PreferenceCategory>
 
 </PreferenceScreen>
