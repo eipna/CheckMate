@@ -15,4 +15,6 @@
 
     <!-- Misc -->
     <color name="grey">#B5DCDCDC</color>
+    <color name="red">#EC5B5B</color>
+    <color name="red_dark">#B84A4A</color>
 </resources>

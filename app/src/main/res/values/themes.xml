@@ -30,6 +30,13 @@
         <item name="cornerRadius">10dp</item>
         <item name="android:textColor">@color/mint_cream</item>
     </style>
+    <style name="DeleteButton">
+        <item name="backgroundTint">@color/red</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">15dp</item>
+        <item name="cornerRadius">10dp</item>
+        <item name="android:textColor">@color/mint_cream</item>
+    </style>
 
     <!-- Text Input Layout -->
     <style name="TextInputLayout">

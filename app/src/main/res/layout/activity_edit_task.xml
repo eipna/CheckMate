@@ -79,7 +79,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="10dp"
         android:text="Delete"
-        style="@style/Buttons"
+        style="@style/DeleteButton"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="20dp"
         android:layout_height="wrap_content"/>
