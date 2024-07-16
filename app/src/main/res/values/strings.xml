@@ -27,4 +27,7 @@
         <item>Light</item>
         <item>Dark</item>
     </string-array>
+
+    <!-- Illustration Empty Texts -->
+    <string name="empty_task">You currently have no task.</string>
 </resources>
