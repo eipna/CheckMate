@@ -11,9 +11,8 @@ import androidx.annotation.Nullable;
 public class Database extends SQLiteOpenHelper {
 
     // Database Credentials
-    private Context context;
     private static final String DATABASE_NAME = "mindcheck.db";
-    private static int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 1;
 
     // Database Tables
     private static final String TABLE_TASK = "tasks";
@@ -26,7 +25,6 @@ public class Database extends SQLiteOpenHelper {
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
     }
 
     @Override
