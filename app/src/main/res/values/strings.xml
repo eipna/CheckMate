@@ -30,4 +30,7 @@
 
     <!-- Illustration Empty Texts -->
     <string name="empty_task">You currently have no task.</string>
+
+    <!-- External Links-->
+    <string name="website_github">https://github.com/eipna/CheckMate</string>
 </resources>
