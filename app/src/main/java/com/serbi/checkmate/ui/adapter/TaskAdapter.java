@@ -1,18 +1,16 @@
 package com.serbi.checkmate.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Spannable;
 import android.text.Spanned;
 import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -22,6 +20,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.ui.activity.EditTaskActivity;
 
 import java.util.ArrayList;
 
@@ -54,6 +53,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
         // Handles the state of the check box of the task item card
         holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, taskModels.get(position), isChecked));
+
+        // Transitions to edit task activity to edit the specific task clicked
+        holder.item_task.setOnClickListener(v -> {
+            // Passes through the name and notes of the task to the edit task activity
+            Intent editTaskIntent = new Intent(context, EditTaskActivity.class);
+            editTaskIntent.putExtra("task_name", taskModels.get(position).getName());
+            editTaskIntent.putExtra("task_notes", taskModels.get(position).getNotes());
+            context.startActivity(editTaskIntent);
+        });
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
