@@ -57,6 +57,7 @@ public class Database extends SQLiteOpenHelper {
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
         getWritableDatabase().insert(TABLE_TASK, null, values);
+        this.close();
     }
 
     // Retrieves all task items
@@ -73,6 +74,7 @@ public class Database extends SQLiteOpenHelper {
                     cursor.getInt(3)
             ));
         }
+        cursor.close();
         return taskItems;
     }
 
@@ -85,5 +87,6 @@ public class Database extends SQLiteOpenHelper {
             values.put(TABLE_TASK_IS_COMPLETED, 0);
         }
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
+        this.close();
     }
 }
