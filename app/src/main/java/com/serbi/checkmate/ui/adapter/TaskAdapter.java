@@ -58,6 +58,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task.setOnClickListener(v -> {
             // Passes through the name and notes of the task to the edit task activity
             Intent editTaskIntent = new Intent(context, EditTaskActivity.class);
+            editTaskIntent.putExtra("task_id", taskModels.get(position).getId());
             editTaskIntent.putExtra("task_name", taskModels.get(position).getName());
             editTaskIntent.putExtra("task_notes", taskModels.get(position).getNotes());
             context.startActivity(editTaskIntent);
