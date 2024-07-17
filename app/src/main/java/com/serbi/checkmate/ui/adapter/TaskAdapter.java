@@ -49,13 +49,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_name.setText(taskModels.get(position).getName());
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
-        holder.item_task.setOnClickListener(v -> holder.item_task.setSelected(true));
 
         // Handles the state of the check box of the task item card
         holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, taskModels.get(position), isChecked));
 
         // Transitions to edit task activity to edit the specific task clicked
         holder.item_task.setOnClickListener(v -> {
+            // Indicates the selected task item is being selected
+            holder.item_task.setSelected(true);
+
             // Passes through the name and notes of the task to the edit task activity
             Intent editTaskIntent = new Intent(context, EditTaskActivity.class);
             editTaskIntent.putExtra("task_id", taskModels.get(position).getId());
