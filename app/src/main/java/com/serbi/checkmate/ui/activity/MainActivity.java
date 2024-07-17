@@ -2,7 +2,6 @@ package com.serbi.checkmate.ui.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
         database = new Database(this);
 
         empty_task_container = findViewById(R.id.cl_empty_container);
-        taskModels = new ArrayList<>();
         rv_main = findViewById(R.id.rv_main);
         toolbar = findViewById(R.id.tb_main);
         btn_add_task = findViewById(R.id.fba_add_task);
@@ -84,28 +82,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeDatasets() {
-        Cursor cursor = database.getTaskItems();
-        if (cursor.getCount() == 0) {
-            // Enables the illustration and text for empty tasks illustration
+        // Gets all task items from database
+        taskModels = database.getTaskItems();
+
+        if (taskModels.isEmpty()) {
+            // Enables empty task list indicator if there are no task items
             empty_task_container.setVisibility(View.VISIBLE);
         } else {
-            // Disables the illustration and text for empty tasks illustration
+            // Disables empty task list indicator if task items is not empty
             empty_task_container.setVisibility(View.GONE);
-
-            // Stores task items from database
-            while (cursor.moveToNext()) {
-                int id = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String notes = cursor.getString(2);
-                int isCompleted = cursor.getInt(3);
-
-                taskModels.add(new TaskModel(
-                        id,
-                        name,
-                        notes,
-                        isCompleted
-                ));
-            }
         }
     }
 

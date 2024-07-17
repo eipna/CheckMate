@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.serbi.checkmate.data.model.TaskModel;
+
+import java.util.ArrayList;
+
 public class Database extends SQLiteOpenHelper {
 
     // Database Credentials
@@ -56,9 +60,20 @@ public class Database extends SQLiteOpenHelper {
     }
 
     // Retrieves all task items
-    public Cursor getTaskItems() {
+    public ArrayList<TaskModel> getTaskItems() {
         String read = "SELECT * FROM " + TABLE_TASK;
-        return getReadableDatabase().rawQuery(read, null);
+        Cursor cursor =  getReadableDatabase().rawQuery(read, null);
+
+        ArrayList<TaskModel> taskItems = new ArrayList<>();
+        while (cursor.moveToNext()) {
+            taskItems.add(new TaskModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3)
+            ));
+        }
+        return taskItems;
     }
 
     // Toggle's a task's is_completed value to be completed(1) or not(0)
