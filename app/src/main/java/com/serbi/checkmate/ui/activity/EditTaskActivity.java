@@ -41,6 +41,7 @@ public class EditTaskActivity extends AppCompatActivity {
         initializeComponents();
         initializeToolbar();
 
+        // Sets data from extras in main activity
         tiet_edit_task_name.setText(taskNameExtra);
         tiet_edit_task_notes.setText(taskNotesExtra);
 
@@ -58,6 +59,7 @@ public class EditTaskActivity extends AppCompatActivity {
         btn_save_task = findViewById(R.id.btn_save_task);
     }
 
+    // Retrieves extras from main activity
     private void initializeExtras() {
         taskIdExtra = getIntent().getIntExtra("task_id", -1);
         taskNameExtra = getIntent().getStringExtra("task_name");
@@ -73,9 +75,12 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void saveTask() {
+        // Extracts the text from the name and notes field
         String newTaskName = tiet_edit_task_name.getText().toString();
         String newTaskNotes = tiet_edit_task_notes.getText().toString();
 
+        /* If the data from the extras and the current activity are the same,
+        there will be no updates in the database and will just proceed to exiting the activity */
         if (sameData(newTaskName, newTaskNotes)) {
             finish();
         } else {
@@ -93,6 +98,7 @@ public class EditTaskActivity extends AppCompatActivity {
         finish();
     }
 
+    // Checks if the data from the extras and current activity are the same
     private boolean sameData(String name, String notes) {
         return name.equals(taskNameExtra) && notes.equals(taskNotesExtra);
     }
