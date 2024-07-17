@@ -2,7 +2,6 @@ package com.serbi.checkmate.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +19,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private MaterialToolbar tb_edit_task;
     private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes;
-    private MaterialButton btn_delete_task;
+    private MaterialButton btn_delete_task, btn_save_task;
 
     private Database database;
 
@@ -46,6 +45,7 @@ public class EditTaskActivity extends AppCompatActivity {
         tiet_edit_task_notes.setText(taskNotesExtra);
 
         btn_delete_task.setOnClickListener(v -> deleteTask());
+        btn_save_task.setOnClickListener(v -> saveTask());
     }
 
     private void initializeComponents() {
@@ -55,6 +55,7 @@ public class EditTaskActivity extends AppCompatActivity {
         tiet_edit_task_name = findViewById(R.id.tiet_edit_task_name);
         tiet_edit_task_notes = findViewById(R.id.tiet_edit_task_notes);
         btn_delete_task = findViewById(R.id.btn_delete_task);
+        btn_save_task = findViewById(R.id.btn_save_task);
     }
 
     private void initializeExtras() {
@@ -71,10 +72,28 @@ public class EditTaskActivity extends AppCompatActivity {
         }
     }
 
+    private void saveTask() {
+        String newTaskName = tiet_edit_task_name.getText().toString();
+        String newTaskNotes = tiet_edit_task_notes.getText().toString();
+
+        if (sameData(newTaskName, newTaskNotes)) {
+            finish();
+        } else {
+            database.editTask(taskIdExtra, newTaskName, newTaskNotes);
+            Intent backToMainIntent = new Intent(EditTaskActivity.this, MainActivity.class);
+            startActivity(backToMainIntent);
+            finish();
+        }
+    }
+
     private void deleteTask() {
         database.deleteTask(taskIdExtra);
         Intent backToMainIntent = new Intent(EditTaskActivity.this, MainActivity.class);
         startActivity(backToMainIntent);
         finish();
+    }
+
+    private boolean sameData(String name, String notes) {
+        return name.equals(taskNameExtra) && notes.equals(taskNotesExtra);
     }
 }
