@@ -8,11 +8,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 
 public class EditTaskActivity extends AppCompatActivity {
 
+    private MaterialToolbar tb_edit_task;
     private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes;
 
     private int taskIdExtra;
@@ -31,12 +33,14 @@ public class EditTaskActivity extends AppCompatActivity {
 
         initializeExtras();
         initializeComponents();
+        initializeToolbar();
 
         tiet_edit_task_name.setText(taskNameExtra);
         tiet_edit_task_notes.setText(taskNotesExtra);
     }
 
     private void initializeComponents() {
+        tb_edit_task = findViewById(R.id.tb_edit_task);
         tiet_edit_task_name = findViewById(R.id.tiet_edit_task_name);
         tiet_edit_task_notes = findViewById(R.id.tiet_edit_task_notes);
     }
@@ -45,5 +49,13 @@ public class EditTaskActivity extends AppCompatActivity {
         taskIdExtra = getIntent().getIntExtra("task_id", -1);
         taskNameExtra = getIntent().getStringExtra("task_name");
         taskNotesExtra = getIntent().getStringExtra("task_notes");
+    }
+
+    private void initializeToolbar() {
+        setSupportActionBar(tb_edit_task);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 }
