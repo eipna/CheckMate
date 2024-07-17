@@ -89,4 +89,13 @@ public class Database extends SQLiteOpenHelper {
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
         this.close();
     }
+
+    // Updates a task
+    public void editTask(int id, String name, String notes) {
+        ContentValues values = new ContentValues();
+        values.put(TABLE_TASK_NAME, name);
+        values.put(TABLE_TASK_NOTES, notes);
+        getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
+        this.close();
+    }
 }
