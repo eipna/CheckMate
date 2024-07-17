@@ -14,11 +14,11 @@ CheckMate is my second take on making a simple android application.
   
 <div align="center">
 <div>
-<img src="assets/images/screenshots/ss01.png" width="30%" />
-<img src="assets/images/screenshots/ss02.png" width="30%" />
-<img src="assets/images/screenshots/ss03.png" width="30%" />
-<img src="assets/images/screenshots/ss04.png" width="30%" />
-<img src="assets/images/screenshots/ss05.png" width="30%" />
-<img src="assets/images/screenshots/ss06.png" width="30%" />
+<img src="assets/images/screenshots/ss01.jpg" width="30%" />
+<img src="assets/images/screenshots/ss02.jpg" width="30%" />
+<img src="assets/images/screenshots/ss03.jpg" width="30%" />
+<img src="assets/images/screenshots/ss04.jpg" width="30%" />
+<img src="assets/images/screenshots/ss05.jpg" width="30%" />
+<img src="assets/images/screenshots/ss06.jpg" width="30%" />
 </div>
 </div>
