@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     private AppDatabase appDatabase;
     private TaskAdapter adapter;
 
-    private ConstraintLayout empty_task_container;
+    private ConstraintLayout emptyTaskContainer;
     private RecyclerView rv_main;
     private FloatingActionButton btn_add_task;
     private MaterialToolbar toolbar;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
         appDatabase = new AppDatabase(this);
 
-        empty_task_container = findViewById(R.id.cl_empty_container);
+        emptyTaskContainer = findViewById(R.id.cl_empty_container);
         rv_main = findViewById(R.id.rv_main);
         toolbar = findViewById(R.id.tb_main);
         btn_add_task = findViewById(R.id.fba_add_task);
@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
-            empty_task_container.setVisibility(View.VISIBLE);
+            emptyTaskContainer.setVisibility(View.VISIBLE);
         } else {
             // Disables empty task list indicator if task items is not empty
-            empty_task_container.setVisibility(View.GONE);
+            emptyTaskContainer.setVisibility(View.GONE);
         }
     }
 
