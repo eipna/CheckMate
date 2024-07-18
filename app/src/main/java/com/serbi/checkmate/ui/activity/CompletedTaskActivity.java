@@ -2,6 +2,7 @@ package com.serbi.checkmate.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
@@ -107,5 +108,11 @@ public class CompletedTaskActivity extends AppCompatActivity {
             // Disables empty task list indicator if completed task items is not empty
             emptyCompletedTaskContainer.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.completed_task_options, menu);
+        return true;
     }
 }
