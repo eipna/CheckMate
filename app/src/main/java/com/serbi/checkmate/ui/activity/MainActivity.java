@@ -1,12 +1,12 @@
 package com.serbi.checkmate.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -28,8 +28,6 @@ import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -185,12 +183,14 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         return true;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void sortNameAZ() {
         taskModels.sort(Comparator.comparing(TaskModel::getName));
         adapter.notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void sortNameZA() {
         taskModels.sort((task01, task02) -> task02.getName().compareTo(task01.getName()));
