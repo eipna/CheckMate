@@ -119,7 +119,13 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(this, taskModels);
-        rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
+
+        // Makes the newly created task to generate at the top of the list instead at the bottom
+        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setReverseLayout(true);
+
+        rv_main.setLayoutManager(linearLayoutManager);
         rv_main.setAdapter(adapter);
     }
 
