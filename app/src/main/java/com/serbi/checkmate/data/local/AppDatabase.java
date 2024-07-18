@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;
@@ -102,6 +103,12 @@ public class AppDatabase extends SQLiteOpenHelper {
     // Deletes a task
     public void deleteTask(int id) {
         getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
+        this.close();
+    }
+
+    // Clears all completed tasks
+    public void clearCompletedTasks() {
+        getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_IS_COMPLETED + " = ?", new String[]{String.valueOf(Constants.TASK_COMPLETED)});
         this.close();
     }
 }

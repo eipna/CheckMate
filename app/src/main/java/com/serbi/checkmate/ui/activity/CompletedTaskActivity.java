@@ -1,12 +1,16 @@
 package com.serbi.checkmate.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
@@ -114,5 +118,47 @@ public class CompletedTaskActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.completed_task_options, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // Goes back to parent activity
+        if (item.getItemId() == android.R.id.home) {
+            return super.onOptionsItemSelected(item);
+        }
+
+        // Initiates clear all completed tasks dialog
+        if (item.getItemId() == R.id.item_clear_completed_task) {
+            clearCompletedTasksDialog();
+        }
+        return true;
+    }
+
+    // Clear all completed tasks dialog
+    private void clearCompletedTasksDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        /* If completed tasks list is empty, indicated that is it and if not,
+        proceed to main clear all completed tasks dialog */
+        if (taskModels.isEmpty()) {
+            builder.setTitle("Empty items")
+                    .setMessage("No completed tasks present.")
+                    .setPositiveButton("OK", null)
+                    .create();
+        } else {
+            builder.setTitle("Clear all completed tasks")
+                    .setMessage("This operation will delete all completed tasks.")
+                    .setNegativeButton("Cancel", null)
+                    .setPositiveButton("Clear", (dialog, which) -> clearCompletedTask());
+        }
+        builder.show();
+    }
+
+    private void clearCompletedTask() {
+        appDatabase.clearCompletedTasks(); // Clears all completed tasks in database
+        taskModels.clear(); // Clears all items in completed tasks list
+        adapter.notifyDataSetChanged(); // Updates adapter
+
+        emptyCompletedTaskContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
     }
 }
