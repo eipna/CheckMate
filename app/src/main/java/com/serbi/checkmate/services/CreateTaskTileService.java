@@ -1,14 +1,14 @@
 package com.serbi.checkmate.services;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Build;
 import android.service.quicksettings.TileService;
 
-public class CreateTaskTileService extends TileService {
+import com.serbi.checkmate.ui.activity.CreateTaskActivity;
 
-    private final String APPLICATION_PACKAGE = "com.serbi.checkmate";
-    private final String CREATE_TASK_ACTIVITY_CLASS = "com.serbi.checkmate.activities.CreateTaskActivity";
+public class CreateTaskTileService extends TileService {
 
     @Override
     public void onTileAdded() {
@@ -25,23 +25,22 @@ public class CreateTaskTileService extends TileService {
         super.onStopListening();
     }
 
+    @SuppressLint("StartActivityAndCollapseDeprecated")
     @Override
     public void onClick() {
-        Intent createTaskIntent = new Intent();
-        createTaskIntent.setClassName(APPLICATION_PACKAGE, CREATE_TASK_ACTIVITY_CLASS);
-        createTaskIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        super.onClick();
 
-        PendingIntent pendingCreateTaskIntent = PendingIntent.getActivity(
-                this,
-                0,
-                createTaskIntent,
-                PendingIntent.FLAG_IMMUTABLE
-        );
+        Intent intent = new Intent(this, CreateTaskActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.setAction(Intent.ACTION_MAIN);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            startActivityAndCollapse(pendingCreateTaskIntent);
+            int flags = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, flags);
+            startActivityAndCollapse(pendingIntent);
+        } else {
+            startActivityAndCollapse(intent);
         }
-        super.onClick();
     }
 
     @Override
