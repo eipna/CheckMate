@@ -1,7 +1,6 @@
 package com.serbi.checkmate.ui.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.text.Spannable;
 import android.text.Spanned;
@@ -19,23 +18,22 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.data.local.Database;
+import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.activity.EditTaskActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private Activity activity;
     private List<TaskModel> taskModels;
-    private Database database;
+    private AppDatabase database;
 
     public TaskAdapter(Activity activity, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.activity = activity;
-        this.database = new Database(activity);
+        this.database = new AppDatabase(activity);
     }
 
     @NonNull

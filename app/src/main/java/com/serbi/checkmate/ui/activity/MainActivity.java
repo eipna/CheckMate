@@ -24,7 +24,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
-import com.serbi.checkmate.data.local.Database;
+import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
     private List<TaskModel> taskModels;
 
-    private Database database;
+    private AppDatabase appDatabase;
     private TaskAdapter adapter;
 
     private ConstraintLayout empty_task_container;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         sharedPreferences = getSharedPreferences("MINDCHECK", MODE_PRIVATE);
         prefsTheme = sharedPreferences.getString("THEME", "System");
 
-        database = new Database(this);
+        appDatabase = new AppDatabase(this);
 
         empty_task_container = findViewById(R.id.cl_empty_container);
         rv_main = findViewById(R.id.rv_main);
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
     private void initializeDatasets() {
         // Gets all task items from database
-        taskModels = database.getTaskItems();
+        taskModels = appDatabase.getTaskItems();
 
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items

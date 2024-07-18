@@ -12,7 +12,7 @@ import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;
 
-public class Database extends SQLiteOpenHelper {
+public class AppDatabase extends SQLiteOpenHelper {
 
     // Database Credentials
     private static final String DATABASE_NAME = "mindcheck.db";
@@ -27,7 +27,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String TABLE_TASK_NOTES = "notes";
     private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
 
-    public Database(@Nullable Context context) {
+    public AppDatabase(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

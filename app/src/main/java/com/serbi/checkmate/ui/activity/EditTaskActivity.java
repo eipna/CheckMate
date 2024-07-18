@@ -13,7 +13,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.data.local.Database;
+import com.serbi.checkmate.data.local.AppDatabase;
 
 public class EditTaskActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes;
     private MaterialButton btn_delete_task, btn_save_task;
 
-    private Database database;
+    private AppDatabase appDatabase;
 
     private int taskIdExtra;
     private String taskNameExtra, taskNotesExtra;
@@ -50,7 +50,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void initializeComponents() {
-        database = new Database(EditTaskActivity.this);
+        appDatabase = new AppDatabase(EditTaskActivity.this);
 
         tb_edit_task = findViewById(R.id.tb_edit_task);
         tiet_edit_task_name = findViewById(R.id.tiet_edit_task_name);
@@ -84,13 +84,13 @@ public class EditTaskActivity extends AppCompatActivity {
         if (sameData(newTaskName, newTaskNotes)) {
             finish();
         } else {
-            database.editTask(taskIdExtra, newTaskName, newTaskNotes);
+            appDatabase.editTask(taskIdExtra, newTaskName, newTaskNotes);
             closeCurrentActivity();
         }
     }
 
     private void deleteTask() {
-        database.deleteTask(taskIdExtra);
+        appDatabase.deleteTask(taskIdExtra);
         closeCurrentActivity();
     }
 
