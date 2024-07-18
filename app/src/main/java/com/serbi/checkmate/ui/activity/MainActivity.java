@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         rv_main.setAdapter(adapter);
     }
 
-    // Updates task list on new task creation
+    // Updates task list on new task creation or task update
     private void updateTaskItems() {
         initializeDatasets();
         displayTaskItems();
