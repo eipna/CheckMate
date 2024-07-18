@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.local.AppDatabase;
@@ -46,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     private FloatingActionButton btn_add_task;
     private MaterialToolbar toolbar;
 
-    private static final int CREATE_TASK_REQUEST_CODE = 420;
-    private static final int EDIT_TASK_REQUEST_CODE = 421;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
         btn_add_task.setOnClickListener(v -> {
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
-            startActivityForResult(createTaskIntent, CREATE_TASK_REQUEST_CODE);
+            startActivityForResult(createTaskIntent, Constants.CREATE_TASK_REQUEST_CODE);
         });
     }
 
@@ -93,19 +91,19 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         super.onActivityResult(requestCode, resultCode, data);
 
         // New task creation operation which updates the task list by adding the new task
-        if (requestCode == CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == Constants.CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
             updateTaskItems();
         }
 
         // Edit task operation which updates the task list by updating the edited task
-        if (requestCode == EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == Constants.EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
             updateTaskItems();
         }
     }
 
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
-        taskModels = appDatabase.getTaskItems(0);
+        taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
 
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items

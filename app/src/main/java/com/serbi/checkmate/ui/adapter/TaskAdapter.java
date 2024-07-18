@@ -17,6 +17,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
+import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
@@ -65,7 +66,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             editTaskIntent.putExtra("task_notes", taskModels.get(position).getNotes());
 
             // Starts and listens for a result code from a parent activity
-            activity.startActivityForResult(editTaskIntent, 421);
+            activity.startActivityForResult(editTaskIntent, Constants.EDIT_TASK_REQUEST_CODE);
         });
 
         // Sets the task item card appearance based on its is_completed value on load

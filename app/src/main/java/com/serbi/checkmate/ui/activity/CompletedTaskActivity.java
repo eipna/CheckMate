@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
@@ -75,6 +76,6 @@ public class CompletedTaskActivity extends AppCompatActivity {
 
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
-        taskModels = appDatabase.getTaskItems(1);
+        taskModels = appDatabase.getTaskItems(Constants.TASK_NOT_COMPLETED);
     }
 }
