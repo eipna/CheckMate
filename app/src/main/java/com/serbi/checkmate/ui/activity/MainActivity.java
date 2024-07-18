@@ -149,9 +149,13 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         getMenuInflater().inflate(R.menu.main_options, menu);
 
         // Sorts the items by default on application load
-        sortNameAZ();
         MenuItem defaultSortingOption = menu.findItem(R.id.item_sort_AZ); // Sort by Ascending (Name A to Z)
         defaultSortingOption.setChecked(true);
+
+        // Do not do sort operation if there are no items in tasks list
+        if (!taskModels.isEmpty()) {
+            sortNameAZ();
+        }
 
         return true;
     }
@@ -173,11 +177,15 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
         // Handles sorting of task items
         if (item.getItemId() == R.id.item_sort_AZ) {
-            sortNameAZ();
+            if (!taskModels.isEmpty()) {
+                sortNameAZ();
+            }
             sortAZItem.setChecked(true);
         }
         if (item.getItemId() == R.id.item_sort_ZA) {
-            sortNameZA();
+            if (!taskModels.isEmpty()) {
+                sortNameZA();
+            }
             sortZAItem.setChecked(true);
         }
         return true;
