@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -22,6 +23,7 @@ import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.activity.EditTaskActivity;
+import com.serbi.checkmate.ui.activity.MainActivity;
 
 import java.util.List;
 
@@ -31,10 +33,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private List<TaskModel> taskModels;
     private AppDatabase database;
 
+    private ConstraintLayout emptyTaskContainer;
+
     public TaskAdapter(Activity activity, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.activity = activity;
         this.database = new AppDatabase(activity);
+        this.emptyTaskContainer = activity.findViewById(R.id.cl_empty_container);
     }
 
     @NonNull
@@ -124,6 +129,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         // Removing the specified task item
         taskModels.remove(position);
         notifyItemRemoved(position);
+
+        // Make empty task list visible if there are no more tasks on update
+        if (taskModels.isEmpty() && activity instanceof MainActivity) {
+            emptyTaskContainer.setVisibility(View.VISIBLE);
+        }
 
         // Toggle's the task's is_completed value
         database.toggleTask(task.getId(), isChecked);
