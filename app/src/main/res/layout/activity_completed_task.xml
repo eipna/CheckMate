@@ -7,4 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.CompletedTaskActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_completed_task"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:title="Completed tasks"
+        app:titleTextAppearance="@style/ToolbarText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_completed_task"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
