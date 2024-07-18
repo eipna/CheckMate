@@ -65,6 +65,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             editTaskIntent.putExtra("task_id", taskModels.get(position).getId());
             editTaskIntent.putExtra("task_name", taskModels.get(position).getName());
             editTaskIntent.putExtra("task_notes", taskModels.get(position).getNotes());
+
+            // Starts and listens for a result code from a parent activity
             activity.startActivityForResult(editTaskIntent, 421);
         });
 

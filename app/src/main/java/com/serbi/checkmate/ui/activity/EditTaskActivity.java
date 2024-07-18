@@ -94,6 +94,7 @@ public class EditTaskActivity extends AppCompatActivity {
         closeCurrentActivity();
     }
 
+    // Closes the current activity and sends a RESULT_OK result code to initiate task update
     private void closeCurrentActivity() {
         Intent closeCurrentActivityIntent = new Intent();
         setResult(RESULT_OK, closeCurrentActivityIntent);

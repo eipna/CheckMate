@@ -94,11 +94,12 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // New task creation operation which updates the task list
+        // New task creation operation which updates the task list by adding the new task
         if (requestCode == CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
             updateTaskItems();
         }
-        
+
+        // Edit task operation which updates the task list by updating the edited task
         if (requestCode == EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
             updateTaskItems();
         }
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         }
     }
 
+    // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(this, taskModels);
         rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
