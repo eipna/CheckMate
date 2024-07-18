@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     private FloatingActionButton btn_add_task;
     private MaterialToolbar toolbar;
 
+    private static final int CREATE_TASK_REQUEST_CODE = 420;
+    private static final int EDIT_TASK_REQUEST_CODE = 421;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
         btn_add_task.setOnClickListener(v -> {
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
-            startActivity(createTaskIntent);
+            startActivityForResult(createTaskIntent, CREATE_TASK_REQUEST_CODE);
         });
     }
 
@@ -85,6 +90,21 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // New task creation operation which updates the task list by adding the new task
+        if (requestCode == CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
+            updateTaskItems();
+        }
+
+        // Edit task operation which updates the task list by updating the edited task
+        if (requestCode == EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
+            updateTaskItems();
+        }
+    }
+
     private void initializeDatasets() {
         // Gets all task items from database
         taskModels = database.getTaskItems();
@@ -98,10 +118,17 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         }
     }
 
+    // Displays the task items in the recyclerview
     private void displayTaskItems() {
-        adapter = new TaskAdapter(MainActivity.this, taskModels);
+        adapter = new TaskAdapter(this, taskModels);
         rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rv_main.setAdapter(adapter);
+    }
+
+    // Updates task list on new task creation
+    private void updateTaskItems() {
+        initializeDatasets();
+        displayTaskItems();
     }
 
     private void initializeSharedPreferences() {
