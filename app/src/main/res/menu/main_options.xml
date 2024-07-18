@@ -11,13 +11,16 @@
         app:showAsAction="ifRoom|collapseActionView">
 
         <menu>
-            <item
-                android:id="@+id/item_sort_AZ"
-                android:title="Name (A to Z)"/>
+            <group
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_sort_AZ"
+                    android:title="Name (A to Z)"/>
 
-            <item
-                android:id="@+id/item_sort_ZA"
-                android:title="Name (Z to A)"/>
+                <item
+                    android:id="@+id/item_sort_ZA"
+                    android:title="Name (Z to A)"/>
+            </group>
         </menu>
     </item>
 

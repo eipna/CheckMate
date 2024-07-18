@@ -154,6 +154,13 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // Gets the toolbar's current menu
+        Menu mainOptionsMenu = toolbar.getMenu();
+
+        // Refers to the sorting items menu items
+        MenuItem sortAZItem = mainOptionsMenu.findItem(R.id.item_sort_AZ);
+        MenuItem sortZAItem = mainOptionsMenu.findItem(R.id.item_sort_ZA);
+
         // Go to settings activity
         if (item.getItemId() == R.id.options_settings) {
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -163,9 +170,11 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         // Handles sorting of task items
         if (item.getItemId() == R.id.item_sort_AZ) {
             sortNameAZ();
+            sortAZItem.setChecked(true);
         }
         if (item.getItemId() == R.id.item_sort_ZA) {
             sortNameZA();
+            sortZAItem.setChecked(true);
         }
         return true;
     }
