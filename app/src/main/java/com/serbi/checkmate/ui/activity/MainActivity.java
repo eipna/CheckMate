@@ -26,13 +26,14 @@ import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
     private String prefsTheme;
 
-    private ArrayList<TaskModel> taskModels;
+    private List<TaskModel> taskModels;
 
     private Database database;
     private TaskAdapter adapter;

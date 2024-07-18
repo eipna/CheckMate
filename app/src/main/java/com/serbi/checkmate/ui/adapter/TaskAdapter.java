@@ -23,14 +23,15 @@ import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.activity.EditTaskActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<TaskModel> taskModels;
+    private List<TaskModel> taskModels;
     private Database database;
 
-    public TaskAdapter(Context context, ArrayList<TaskModel> taskModels) {
+    public TaskAdapter(Context context, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.context = context;
         this.database = new Database(context);
