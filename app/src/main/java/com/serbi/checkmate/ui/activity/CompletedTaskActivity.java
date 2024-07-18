@@ -1,9 +1,11 @@
 package com.serbi.checkmate.ui.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,6 +30,7 @@ public class CompletedTaskActivity extends AppCompatActivity {
 
     private MaterialToolbar toolbar;
     private RecyclerView rv_completed_task;
+    private ConstraintLayout emptyCompletedTaskContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class CompletedTaskActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.tb_completed_task);
         rv_completed_task = findViewById(R.id.rv_completed_task);
+        emptyCompletedTaskContainer = findViewById(R.id.cl_empty_completed_tasks_container);
     }
 
     private void initializeToolbar() {
@@ -77,5 +81,13 @@ public class CompletedTaskActivity extends AppCompatActivity {
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
         taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
+
+        if (taskModels.isEmpty()) {
+            // Enables empty task list indicator if there are no completed task items
+            emptyCompletedTaskContainer.setVisibility(View.VISIBLE);
+        } else {
+            // Disables empty task list indicator if completed task items is not empty
+            emptyCompletedTaskContainer.setVisibility(View.GONE);
+        }
     }
 }
