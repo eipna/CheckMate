@@ -149,6 +149,12 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_options, menu);
+
+        // Sorts the items by default on application load
+        sortNameAZ();
+        MenuItem defaultSortingOption = menu.findItem(R.id.item_sort_AZ); // Sort by Ascending (Name A to Z)
+        defaultSortingOption.setChecked(true);
+
         return true;
     }
 
