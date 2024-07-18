@@ -8,7 +8,7 @@
         android:id="@+id/item_sort"
         android:title="Sort by"
         android:icon="@drawable/sort"
-        app:showAsAction="ifRoom|collapseActionView">
+        app:showAsAction="ifRoom">
 
         <menu>
             <group
