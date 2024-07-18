@@ -25,6 +25,12 @@
     </item>
 
     <item
+        android:id="@+id/item_completed_tasks"
+        android:title="Completed Tasks"
+        android:icon="@drawable/completed_tasks"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/options_settings"
         android:title="Settings" />
 </menu>
