@@ -51,7 +51,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
 
         // Handles the state of the check box of the task item card
-        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, taskModels.get(position), isChecked));
+        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(holder, position, taskModels.get(position), isChecked));
 
         // Transitions to edit task activity to edit the specific task clicked
         holder.item_task.setOnClickListener(v -> {
@@ -119,11 +119,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     }
 
     // Handles the task item card is_completed value in the database
-    private void toggleTask(ViewHolder holder, TaskModel task, boolean isChecked) {
-        // Change task item card appearance to not completed
-        setTaskAppearance(holder, task, isChecked);
+    private void toggleTask(ViewHolder holder, int position, TaskModel task, boolean isChecked) {
+        // Removing the specified task item
+        taskModels.remove(position);
+        notifyItemRemoved(position);
 
-        // Toggle's the task's is_completed value to false (0)
+        // Toggle's the task's is_completed value
         database.toggleTask(task.getId(), isChecked);
     }
 
