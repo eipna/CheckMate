@@ -21,14 +21,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Sortable {
 
     private SharedPreferences sharedPreferences;
     private String prefsTheme;
@@ -124,10 +127,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // Go to settings activity
         if (item.getItemId() == R.id.options_settings) {
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(settingsIntent);
         }
+
+        // Handles sorting of task items
+        if (item.getItemId() == R.id.item_sort_AZ) {
+            sortNameAZ();
+        }
+        if (item.getItemId() == R.id.item_sort_ZA) {
+            sortNameZA();
+        }
         return true;
+    }
+
+    @Override
+    public void sortNameAZ() {
+        Collections.sort(taskModels, Comparator.comparing(TaskModel::getName));
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void sortNameZA() {
+        Collections.sort(taskModels, (task01, task02) -> task02.getName().compareTo(task01.getName()));
+        adapter.notifyDataSetChanged();
     }
 }
