@@ -17,6 +17,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_empty_completed_tasks_container"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_empty_completed_tasks_photo"
+            android:src="@drawable/illustration_empty_completed_tasks"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/IllustrationEmptyPhoto"/>
+
+        <TextView
+            android:id="@+id/tv_empty_completed_tasks_text"
+            android:text="@string/empty_completed_tasks"
+            style="@style/IllustrationEmptyText"
+            app:layout_constraintTop_toBottomOf="@id/iv_empty_completed_tasks_photo"
+            app:layout_constraintEnd_toEndOf="@id/iv_empty_completed_tasks_photo"
+            app:layout_constraintStart_toStartOf="@id/iv_empty_completed_tasks_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_completed_task"
         android:layout_marginTop="?attr/actionBarSize"
