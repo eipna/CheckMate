@@ -1,5 +1,6 @@
 package com.serbi.checkmate.ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Spannable;
@@ -27,20 +28,20 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
-    private Context context;
+    private Activity activity;
     private List<TaskModel> taskModels;
     private Database database;
 
-    public TaskAdapter(Context context, List<TaskModel> taskModels) {
+    public TaskAdapter(Activity activity, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
-        this.context = context;
-        this.database = new Database(context);
+        this.activity = activity;
+        this.database = new Database(activity);
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_task, null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.item_task, null);
         return new ViewHolder(view);
     }
 
@@ -60,11 +61,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             holder.item_task.setSelected(true);
 
             // Passes through the name and notes of the task to the edit task activity
-            Intent editTaskIntent = new Intent(context, EditTaskActivity.class);
+            Intent editTaskIntent = new Intent(activity, EditTaskActivity.class);
             editTaskIntent.putExtra("task_id", taskModels.get(position).getId());
             editTaskIntent.putExtra("task_name", taskModels.get(position).getName());
             editTaskIntent.putExtra("task_notes", taskModels.get(position).getNotes());
-            context.startActivity(editTaskIntent);
+            activity.startActivityForResult(editTaskIntent, 421);
         });
 
         // Sets the task item card appearance based on its is_completed value on load

@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     private MaterialToolbar toolbar;
 
     private static final int CREATE_TASK_REQUEST_CODE = 420;
+    private static final int EDIT_TASK_REQUEST_CODE = 421;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements Sortable {
         if (requestCode == CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
             updateTaskItems();
         }
+        
+        if (requestCode == EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
+            updateTaskItems();
+        }
     }
 
     private void initializeDatasets() {
@@ -113,14 +118,14 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     }
 
     private void displayTaskItems() {
-        adapter = new TaskAdapter(MainActivity.this, taskModels);
+        adapter = new TaskAdapter(this, taskModels);
         rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rv_main.setAdapter(adapter);
     }
 
     // Updates task list on new task creation
     private void updateTaskItems() {
-        taskModels = database.getTaskItems();
+        initializeDatasets();
         displayTaskItems();
     }
 

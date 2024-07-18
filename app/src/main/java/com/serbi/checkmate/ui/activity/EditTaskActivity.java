@@ -85,16 +85,18 @@ public class EditTaskActivity extends AppCompatActivity {
             finish();
         } else {
             database.editTask(taskIdExtra, newTaskName, newTaskNotes);
-            Intent backToMainIntent = new Intent(EditTaskActivity.this, MainActivity.class);
-            startActivity(backToMainIntent);
-            finish();
+            closeCurrentActivity();
         }
     }
 
     private void deleteTask() {
         database.deleteTask(taskIdExtra);
-        Intent backToMainIntent = new Intent(EditTaskActivity.this, MainActivity.class);
-        startActivity(backToMainIntent);
+        closeCurrentActivity();
+    }
+
+    private void closeCurrentActivity() {
+        Intent closeCurrentActivityIntent = new Intent();
+        setResult(RESULT_OK, closeCurrentActivityIntent);
         finish();
     }
 
