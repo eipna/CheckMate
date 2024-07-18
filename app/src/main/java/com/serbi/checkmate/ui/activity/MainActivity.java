@@ -145,13 +145,13 @@ public class MainActivity extends AppCompatActivity implements Sortable {
 
     @Override
     public void sortNameAZ() {
-        Collections.sort(taskModels, Comparator.comparing(TaskModel::getName));
+        taskModels.sort(Comparator.comparing(TaskModel::getName));
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void sortNameZA() {
-        Collections.sort(taskModels, (task01, task02) -> task02.getName().compareTo(task01.getName()));
+        taskModels.sort((task01, task02) -> task02.getName().compareTo(task01.getName()));
         adapter.notifyDataSetChanged();
     }
 }
