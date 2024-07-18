@@ -14,6 +14,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.Database;
+import com.serbi.checkmate.data.model.TaskModel;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
@@ -70,8 +71,8 @@ public class CreateTaskActivity extends AppCompatActivity {
         database.createTask(taskName, taskNotes);
         database.close();
 
-        Intent backToMainIntent = new Intent(CreateTaskActivity.this, MainActivity.class);
-        startActivity(backToMainIntent);
+        Intent createNewTaskIntent = new Intent();
+        setResult(RESULT_OK, createNewTaskIntent);
         finish();
     }
 }
