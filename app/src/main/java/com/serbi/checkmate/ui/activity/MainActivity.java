@@ -181,6 +181,12 @@ public class MainActivity extends AppCompatActivity implements Sortable {
             startActivity(settingsIntent);
         }
 
+        // Go to completed task activity
+        if (item.getItemId() == R.id.item_completed_tasks) {
+            Intent completedTaskIntent = new Intent(MainActivity.this, CompletedTaskActivity.class);
+            startActivity(completedTaskIntent);
+        }
+
         // Handles sorting of task items
         if (item.getItemId() == R.id.item_sort_AZ) {
             if (!taskModels.isEmpty()) {
