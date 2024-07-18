@@ -60,12 +60,12 @@ public class AppDatabase extends SQLiteOpenHelper {
         this.close();
     }
 
-    // Retrieves all task items
-    public ArrayList<TaskModel> getTaskItems() {
-        String read = "SELECT * FROM " + TABLE_TASK;
-        Cursor cursor =  getReadableDatabase().rawQuery(read, null);
-
+    // Retrieves all task items based if completed or not
+    public ArrayList<TaskModel> getTaskItems(int completed) {
         ArrayList<TaskModel> taskItems = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_TASK + " WHERE " + TABLE_TASK_IS_COMPLETED + " = " + completed;
+        Cursor cursor = getReadableDatabase().rawQuery(query, null);
+
         while (cursor.moveToNext()) {
             taskItems.add(new TaskModel(
                     cursor.getInt(0),

@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     }
 
     private void initializeDatasets() {
-        // Gets all task items from database
-        taskModels = appDatabase.getTaskItems();
+        // Gets all task items from database ( 0 means false)
+        taskModels = appDatabase.getTaskItems(0);
 
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
