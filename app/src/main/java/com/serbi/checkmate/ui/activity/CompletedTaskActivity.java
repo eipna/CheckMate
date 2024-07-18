@@ -76,6 +76,6 @@ public class CompletedTaskActivity extends AppCompatActivity {
 
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
-        taskModels = appDatabase.getTaskItems(Constants.TASK_NOT_COMPLETED);
+        taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
     }
 }
