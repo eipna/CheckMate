@@ -2,8 +2,10 @@ package com.serbi.checkmate.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -104,5 +106,15 @@ public class EditTaskActivity extends AppCompatActivity {
     // Checks if the data from the extras and current activity are the same
     private boolean sameData(String name, String notes) {
         return name.equals(taskNameExtra) && notes.equals(taskNotesExtra);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        // Close current activity rather than going back to parent activity
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return true;
     }
 }
