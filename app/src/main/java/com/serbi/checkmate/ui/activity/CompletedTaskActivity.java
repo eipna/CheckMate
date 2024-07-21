@@ -22,13 +22,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.List;
 
-public class CompletedTaskActivity extends AppCompatActivity {
+public class CompletedTaskActivity extends AppCompatActivity implements TaskListener {
 
     private List<TaskModel> taskModels;
 
@@ -160,5 +161,15 @@ public class CompletedTaskActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged(); // Updates adapter
 
         emptyCompletedTaskContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
+    }
+
+    @Override
+    public void onTaskClick(int position) {
+
+    }
+
+    @Override
+    public void onTaskCheck(int position, boolean status) {
+
     }
 }

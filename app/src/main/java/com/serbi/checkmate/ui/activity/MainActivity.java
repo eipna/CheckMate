@@ -25,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
+import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
@@ -32,7 +33,7 @@ import com.serbi.checkmate.ui.adapter.TaskAdapter;
 import java.util.Comparator;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Sortable {
+public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
 
     private SharedPreferences sharedPreferences;
     private String prefsTheme;
@@ -213,5 +214,22 @@ public class MainActivity extends AppCompatActivity implements Sortable {
     public void sortNameZA() {
         taskModels.sort((task01, task02) -> task02.getName().compareTo(task01.getName()));
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onTaskClick(int position) {
+        // Passes through the name and notes of the task to the edit task activity
+        Intent editTaskIntent = new Intent(MainActivity.this, EditTaskActivity.class);
+        editTaskIntent.putExtra("TASK_ID", taskModels.get(position).getId());
+        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getNotes());
+        editTaskIntent.putExtra("TASK_NOTES", taskModels.get(position).getNotes());
+
+        // Starts and listens for a result code from a parent activity
+        startActivityForResult(editTaskIntent, Constants.EDIT_TASK_REQUEST_CODE);
+    }
+
+    @Override
+    public void onTaskCheck(int position, boolean status) {
+
     }
 }
