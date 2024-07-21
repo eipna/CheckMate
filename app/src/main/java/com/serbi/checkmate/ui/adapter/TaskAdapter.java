@@ -20,6 +20,7 @@ import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.Constants;
 import com.serbi.checkmate.R;
+import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.activity.CompletedTaskActivity;
@@ -30,19 +31,22 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
+    private TaskListener taskListener;
+
     private Activity activity;
     private List<TaskModel> taskModels;
 
-    public TaskAdapter(Activity activity, List<TaskModel> taskModels) {
+    public TaskAdapter(Activity activity, TaskListener taskListener, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.activity = activity;
+        this.taskListener = taskListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(activity).inflate(R.layout.item_task, null);
-        return new ViewHolder(view);
+        return new ViewHolder(view, taskListener);
     }
 
     @Override
@@ -88,7 +92,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         MaterialCardView item_task;
         MaterialDivider item_task_divider;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, TaskListener taskListener) {
             super(itemView);
             item_task = itemView.findViewById(R.id.item_task);
             item_task_name = itemView.findViewById(R.id.item_task_name);
