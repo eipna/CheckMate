@@ -165,7 +165,14 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskClick(int position) {
+        // Passes through the name and notes of the task to the edit task activity
+        Intent editTaskIntent = new Intent(CompletedTaskActivity.this, EditTaskActivity.class);
+        editTaskIntent.putExtra("TASK_ID", taskModels.get(position).getId());
+        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getNotes());
+        editTaskIntent.putExtra("TASK_NOTES", taskModels.get(position).getNotes());
 
+        // Starts and listens for a result code from a parent activity
+        startActivityForResult(editTaskIntent, Constants.EDIT_TASK_REQUEST_CODE);
     }
 
     @Override
