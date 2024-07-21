@@ -1,6 +1,7 @@
 package com.serbi.checkmate.ui.adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.text.Spannable;
 import android.text.Spanned;
@@ -33,19 +34,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private final TaskListener taskListener;
 
-    private final Activity activity;
+    private final Context context;
     private final List<TaskModel> taskModels;
 
-    public TaskAdapter(Activity activity, TaskListener taskListener, List<TaskModel> taskModels) {
+    public TaskAdapter(Context context, TaskListener taskListener, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
-        this.activity = activity;
+        this.context = context;
         this.taskListener = taskListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.item_task, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_task, null);
         return new ViewHolder(view, taskListener);
     }
 
