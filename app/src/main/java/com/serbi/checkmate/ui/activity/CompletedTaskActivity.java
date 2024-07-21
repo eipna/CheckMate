@@ -104,6 +104,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
         taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
+        invalidateOptionsMenu(); // Updates toolbar menu options
 
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no completed task items
@@ -118,6 +119,15 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.completed_task_options, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Toggles visibility of clear task menu item
+        MenuItem clearCompletedTaskItem = menu.findItem(R.id.item_clear_completed_task);
+        clearCompletedTaskItem.setVisible(!taskModels.isEmpty());
+
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
