@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
-        adapter = new TaskAdapter(this, taskModels);
+        adapter = new TaskAdapter(MainActivity.this, MainActivity.this, taskModels);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
 
         // Makes the newly created task to generate at the top of the list instead at the bottom

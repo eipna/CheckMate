@@ -75,7 +75,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
-        adapter = new TaskAdapter(this, taskModels);
+        adapter = new TaskAdapter(CompletedTaskActivity.this, CompletedTaskActivity.this, taskModels);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
         // Makes the task items to generate at the top of the list instead at the bottom
