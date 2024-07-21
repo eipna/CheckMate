@@ -177,6 +177,8 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-
+        appDatabase.toggleTask(taskModels.get(position).getId(), status);
+        taskModels.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }

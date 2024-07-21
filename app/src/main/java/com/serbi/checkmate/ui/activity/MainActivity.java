@@ -230,6 +230,8 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-
+        appDatabase.toggleTask(taskModels.get(position).getId(), status);
+        taskModels.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }
