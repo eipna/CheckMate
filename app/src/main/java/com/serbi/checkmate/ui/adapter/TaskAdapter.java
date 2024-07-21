@@ -92,6 +92,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             item_task_notes = itemView.findViewById(R.id.item_task_notes);
             item_task_check_box = itemView.findViewById(R.id.item_task_check_box);
             item_task_divider = itemView.findViewById(R.id.item_task_divider);
+
+            itemView.setOnClickListener(v -> {
+                if (taskListener != null) {
+                    int taskItemPosition = getAdapterPosition();
+                    if (taskItemPosition != RecyclerView.NO_POSITION) {
+                        taskListener.onTaskClick(taskItemPosition);
+                    }
+                }
+            });
         }
     }
 }
