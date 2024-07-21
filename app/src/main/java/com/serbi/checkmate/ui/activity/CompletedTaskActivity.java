@@ -148,19 +148,12 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private void clearCompletedTasksDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        /* If completed tasks list is empty, indicated that is it and if not,
-        proceed to main clear all completed tasks dialog */
-        if (taskModels.isEmpty()) {
-            builder.setTitle("Empty items")
-                    .setMessage("No completed tasks present.")
-                    .setPositiveButton("OK", null)
-                    .create();
-        } else {
-            builder.setTitle("Clear all completed tasks")
-                    .setMessage("This operation will delete all completed tasks.")
-                    .setNegativeButton("Cancel", null)
-                    .setPositiveButton("Clear", (dialog, which) -> clearCompletedTask());
-        }
+        // Dialog configuration for clearing all completed tasks
+        builder.setTitle("Clear all completed tasks")
+                .setMessage("This operation will delete all completed tasks.")
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Clear", (dialog, which) -> clearCompletedTask())
+                .create();
         builder.show();
     }
 
