@@ -1,6 +1,5 @@
 package com.serbi.checkmate.ui.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,7 +27,6 @@ import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CompletedTaskActivity extends AppCompatActivity implements TaskListener {
 
