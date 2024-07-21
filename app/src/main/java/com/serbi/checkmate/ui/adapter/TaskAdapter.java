@@ -7,6 +7,7 @@ import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_name.setText(taskModels.get(position).getName());
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
+
+        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (taskListener != null) {
+                int taskItemPosition = holder.getAdapterPosition();
+                if (taskItemPosition != RecyclerView.NO_POSITION) {
+                    taskListener.onTaskCheck(taskItemPosition, isChecked);
+                }
+            }
+        });
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
