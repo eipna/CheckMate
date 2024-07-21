@@ -30,6 +30,7 @@ import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     private SharedPreferences sharedPreferences;
     private String prefsTheme;
 
-    private List<TaskModel> taskModels;
+    private ArrayList<TaskModel> taskModels;
 
     private AppDatabase appDatabase;
     private TaskAdapter adapter;

@@ -28,6 +28,7 @@ import com.serbi.checkmate.ui.activity.CompletedTaskActivity;
 import com.serbi.checkmate.ui.activity.EditTaskActivity;
 import com.serbi.checkmate.ui.activity.MainActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
@@ -35,9 +36,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     private final TaskListener taskListener;
 
     private final Context context;
-    private final List<TaskModel> taskModels;
+    private final ArrayList<TaskModel> taskModels;
 
-    public TaskAdapter(Context context, TaskListener taskListener, List<TaskModel> taskModels) {
+    public TaskAdapter(Context context, TaskListener taskListener, ArrayList<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.context = context;
         this.taskListener = taskListener;

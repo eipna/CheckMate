@@ -27,11 +27,12 @@ import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CompletedTaskActivity extends AppCompatActivity implements TaskListener {
 
-    private List<TaskModel> taskModels;
+    private ArrayList<TaskModel> taskModels;
 
     private TaskAdapter adapter;
     private AppDatabase appDatabase;
