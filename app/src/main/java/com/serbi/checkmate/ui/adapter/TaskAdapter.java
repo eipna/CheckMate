@@ -32,16 +32,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private Activity activity;
     private List<TaskModel> taskModels;
-    private AppDatabase database;
-
-    private ConstraintLayout emptyTaskContainer, emptyCompletedTaskContainer;
 
     public TaskAdapter(Activity activity, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
         this.activity = activity;
-        this.database = new AppDatabase(activity);
-        this.emptyTaskContainer = activity.findViewById(R.id.cl_empty_container);
-        this.emptyCompletedTaskContainer = activity.findViewById(R.id.cl_empty_completed_tasks_container);
     }
 
     @NonNull
@@ -57,9 +51,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_name.setText(taskModels.get(position).getName());
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
-
-        // Handles the state of the check box of the task item card
-        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> toggleTask(position, taskModels.get(position), isChecked));
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
@@ -109,26 +100,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             holder.item_task_divider.setAlpha(1.0f);
             holder.item_task.setAlpha(1.0f);
         }
-    }
-
-    // Handles the task item card is_completed value in the database
-    private void toggleTask(int position, TaskModel task, boolean isChecked) {
-        // Removing the specified task item
-        taskModels.remove(position);
-        notifyItemRemoved(position);
-
-        // Make empty task list visible if there are no more tasks on update
-        if (taskModels.isEmpty() && activity instanceof MainActivity) {
-            emptyTaskContainer.setVisibility(View.VISIBLE);
-        }
-
-        // Make empty completed task list visible if there are no more completed tasks on update
-        if (taskModels.isEmpty() && activity instanceof CompletedTaskActivity) {
-            emptyCompletedTaskContainer.setVisibility(View.VISIBLE);
-        }
-
-        // Toggle's the task's is_completed value
-        database.toggleTask(task.getId(), isChecked);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
