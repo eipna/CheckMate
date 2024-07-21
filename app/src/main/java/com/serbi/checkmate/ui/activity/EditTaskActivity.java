@@ -17,6 +17,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 
+import java.util.Objects;
+
 public class EditTaskActivity extends AppCompatActivity {
 
     private MaterialToolbar tb_edit_task;
@@ -78,8 +80,8 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private void saveTask() {
         // Extracts the text from the name and notes field
-        String newTaskName = tiet_edit_task_name.getText().toString();
-        String newTaskNotes = tiet_edit_task_notes.getText().toString();
+        String newTaskName = Objects.requireNonNull(tiet_edit_task_name.getText()).toString();
+        String newTaskNotes = Objects.requireNonNull(tiet_edit_task_notes.getText()).toString();
 
         /* If the data from the extras and the current activity are the same,
         there will be no updates in the database and will just proceed to exiting the activity */

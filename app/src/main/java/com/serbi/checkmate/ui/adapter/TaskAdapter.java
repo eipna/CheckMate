@@ -1,5 +1,6 @@
 package com.serbi.checkmate.ui.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Spannable;
 import android.text.Spanned;
@@ -7,7 +8,6 @@ import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +39,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_task, null);
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(context).inflate(R.layout.item_task, null);
         return new ViewHolder(view, taskListener);
     }
 

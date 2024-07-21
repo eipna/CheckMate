@@ -9,8 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private AppDatabase appDatabase;
     private TaskAdapter adapter;
+    private ActivityResultLauncher<Intent> createTaskIntentLauncher, editTaskIntentLauncher;
 
     private ConstraintLayout emptyTaskContainer;
     private RecyclerView rv_main;
@@ -67,7 +69,19 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
         btn_add_task.setOnClickListener(v -> {
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
-            startActivityForResult(createTaskIntent, Constants.CREATE_TASK_REQUEST_CODE);
+            createTaskIntentLauncher.launch(createTaskIntent);
+        });
+
+        createTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                updateTaskItems();
+            }
+        });
+
+        editTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                updateTaskItems();
+            }
         });
     }
 
@@ -85,21 +99,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private void initializeToolbar() {
         setSupportActionBar(toolbar);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // New task creation operation which updates the task list by adding the new task
-        if (requestCode == Constants.CREATE_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
-            updateTaskItems();
-        }
-
-        // Edit task operation which updates the task list by updating the edited task
-        if (requestCode == Constants.EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
-            updateTaskItems();
-        }
     }
 
     private void initializeDatasets() {
@@ -221,11 +220,11 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         // Passes through the name and notes of the task to the edit task activity
         Intent editTaskIntent = new Intent(MainActivity.this, EditTaskActivity.class);
         editTaskIntent.putExtra("TASK_ID", taskModels.get(position).getId());
-        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getNotes());
+        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getName());
         editTaskIntent.putExtra("TASK_NOTES", taskModels.get(position).getNotes());
 
         // Starts and listens for a result code from a parent activity
-        startActivityForResult(editTaskIntent, Constants.EDIT_TASK_REQUEST_CODE);
+        editTaskIntentLauncher.launch(editTaskIntent);
     }
 
     @Override

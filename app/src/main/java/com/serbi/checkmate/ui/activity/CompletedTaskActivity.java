@@ -1,5 +1,6 @@
 package com.serbi.checkmate.ui.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,8 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -34,6 +36,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private TaskAdapter adapter;
     private AppDatabase appDatabase;
+    private ActivityResultLauncher<Intent> editTaskIntentLauncher;
 
     private MaterialToolbar toolbar;
     private RecyclerView rv_completed_task;
@@ -54,16 +57,12 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         initializeToolbar();
         initializeDatasets();
         displayTaskItems();
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Edit task operation which updates the task list by updating the edited task
-        if (requestCode == Constants.EDIT_TASK_REQUEST_CODE && resultCode == RESULT_OK) {
-            updateTaskItems();
-        }
+        editTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == RESULT_OK) {
+                updateTaskItems();
+            }
+        });
     }
 
     // Updates task list on new task creation or task update
@@ -157,6 +156,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         builder.show();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void clearCompletedTask() {
         appDatabase.clearCompletedTasks(); // Clears all completed tasks in database
         taskModels.clear(); // Clears all items in completed tasks list
@@ -170,11 +170,11 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         // Passes through the name and notes of the task to the edit task activity
         Intent editTaskIntent = new Intent(CompletedTaskActivity.this, EditTaskActivity.class);
         editTaskIntent.putExtra("TASK_ID", taskModels.get(position).getId());
-        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getNotes());
+        editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getName());
         editTaskIntent.putExtra("TASK_NOTES", taskModels.get(position).getNotes());
 
         // Starts and listens for a result code from a parent activity
-        startActivityForResult(editTaskIntent, Constants.EDIT_TASK_REQUEST_CODE);
+        editTaskIntentLauncher.launch(editTaskIntent);
     }
 
     @Override
