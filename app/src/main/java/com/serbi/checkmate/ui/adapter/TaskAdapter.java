@@ -31,10 +31,10 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
-    private TaskListener taskListener;
+    private final TaskListener taskListener;
 
-    private Activity activity;
-    private List<TaskModel> taskModels;
+    private final Activity activity;
+    private final List<TaskModel> taskModels;
 
     public TaskAdapter(Activity activity, TaskListener taskListener, List<TaskModel> taskModels) {
         this.taskModels = taskModels;
