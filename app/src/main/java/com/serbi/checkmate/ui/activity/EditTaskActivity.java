@@ -63,9 +63,9 @@ public class EditTaskActivity extends AppCompatActivity {
 
     // Retrieves extras from main activity
     private void initializeExtras() {
-        taskIdExtra = getIntent().getIntExtra("task_id", -1);
-        taskNameExtra = getIntent().getStringExtra("task_name");
-        taskNotesExtra = getIntent().getStringExtra("task_notes");
+        taskIdExtra = getIntent().getIntExtra("TASK_ID", -1);
+        taskNameExtra = getIntent().getStringExtra("TASK_NAME");
+        taskNotesExtra = getIntent().getStringExtra("TASK_NOTES");
     }
 
     private void initializeToolbar() {
