@@ -5,7 +5,7 @@
     <item
         android:id="@+id/item_clear_completed_task"
         android:title="@string/menu_clear_all"
-        android:icon="@drawable/baseline_delete_24"
+        android:icon="@drawable/delete"
         app:showAsAction="ifRoom"/>
 
 </menu>
