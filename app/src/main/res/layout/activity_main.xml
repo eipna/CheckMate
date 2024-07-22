@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_main"
-        app:title="All Tasks"
+        app:title="@string/toolbar_main"
         android:paddingEnd="10dp"
         app:titleTextAppearance="@style/ToolbarText"
         app:titleMarginStart="30dp"
@@ -43,7 +43,7 @@
             app:layout_constraintStart_toStartOf="@id/iv_empty_photo"
             app:layout_constraintEnd_toEndOf="@id/iv_empty_photo"
             style="@style/IllustrationEmptyText"
-            android:text="@string/empty_task"
+            android:text="@string/illustration_empty_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

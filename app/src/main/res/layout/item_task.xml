@@ -26,7 +26,7 @@
             android:id="@+id/item_task_name"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Lorem Ipsum"
+            android:text="@string/placeholder_item_task_name"
             style="@style/TaskItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -46,7 +46,7 @@
             android:id="@+id/item_task_notes"
             app:layout_constraintTop_toBottomOf="@id/item_task_divider"
             app:layout_constraintStart_toStartOf="@id/item_task_divider"
-            android:text="@string/item_task_notes"
+            android:text="@string/placeholder_item_task_notes"
             android:justificationMode="inter_word"
             style="@style/TaskItemNotes"
             android:layout_width="match_parent"

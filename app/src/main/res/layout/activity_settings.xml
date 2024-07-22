@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tb_settings"
-        app:title="Settings"
+        app:title="@string/toolbar_settings"
         app:titleTextAppearance="@style/ToolbarText"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

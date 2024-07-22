@@ -12,9 +12,16 @@
     <string name="tile_new_task">New Task</string>
 
     <!-- Place Holder Strings -->
-    <string name="item_task_notes">
+    <string name="placeholder_item_task_name">Lorem Ipsum</string>
+    <string name="placeholder_item_task_notes">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </string>
+
+    <!-- Toolbar Texts -->
+    <string name="toolbar_main">All Tasks</string>
+    <string name="toolbar_create">New Task</string>
+    <string name="toolbar_edit">Edit Task</string>
+    <string name="toolbar_settings">Settings</string>
 
     <!-- List Theme Settings -->
     <string-array name="list_theme">
@@ -29,9 +36,31 @@
     </string-array>
 
     <!-- Illustration Empty Texts -->
-    <string name="empty_task">You currently have no task.</string>
-    <string name="empty_completed_tasks">You currently have no completed task.</string>
+    <string name="illustration_empty_task">You currently have no task.</string>
+    <string name="illustration_empty_completed_tasks">You currently have no completed task.</string>
 
     <!-- External Links-->
     <string name="website_github">https://github.com/eipna/CheckMate</string>
+
+    <!-- Clear Completed Task Dialog -->
+    <string name="dialog_name">Clear all completed tasks</string>
+    <string name="dialog_message">This operation will delete all completed tasks.</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_clear">Clear</string>
+
+    <!-- Option Menu String -->
+    <string name="menu_clear_all">Clear All</string>
+    <string name="menu_sort">Sort by</string>
+    <string name="menu_sortAZ">Name (A to Z)</string>
+    <string name="menu_sortZA">Name (Z to A)</string>
+    <string name="menu_completed_tasks">Completed Tasks</string>
+
+    <!-- Text Input Layout Fields -->
+    <string name="input_task_name">Name</string>
+    <string name="input_task_notes">Notes</string>
+
+    <!-- Button Texts -->
+    <string name="button_create_task">Create task</string>
+    <string name="button_save">Save</string>
+    <string name="button_delete">Delete</string>
 </resources>

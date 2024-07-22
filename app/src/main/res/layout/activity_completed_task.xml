@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/tv_empty_completed_tasks_text"
-            android:text="@string/empty_completed_tasks"
+            android:text="@string/illustration_empty_completed_tasks"
             style="@style/IllustrationEmptyText"
             app:layout_constraintTop_toBottomOf="@id/iv_empty_completed_tasks_photo"
             app:layout_constraintEnd_toEndOf="@id/iv_empty_completed_tasks_photo"
