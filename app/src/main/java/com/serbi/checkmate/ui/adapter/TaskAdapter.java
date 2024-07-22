@@ -8,6 +8,7 @@ import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -96,6 +97,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         MaterialCheckBox item_task_check_box;
         MaterialCardView item_task;
         MaterialDivider item_task_divider;
+        ImageView item_task_date_created_image;
 
         public ViewHolder(@NonNull View itemView, TaskListener taskListener) {
             super(itemView);
@@ -105,6 +107,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             item_task_check_box = itemView.findViewById(R.id.item_task_check_box);
             item_task_divider = itemView.findViewById(R.id.item_task_divider);
             item_task_date_created = itemView.findViewById(R.id.item_task_date_created_text);
+            item_task_date_created_image = itemView.findViewById(R.id.item_task_date_created_image);
 
             itemView.setOnClickListener(v -> {
                 if (taskListener != null) {
