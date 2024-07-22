@@ -39,7 +39,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 TABLE_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
-                TABLE_TASK_IS_COMPLETED + " INTEGER DEFAULT 0)";
+                TABLE_TASK_IS_COMPLETED + " INTEGER DEFAULT 0)"; // 0 means not completed task
 
         // Executes the queries for creating tables
         db.execSQL(createTaskTable);
@@ -83,9 +83,9 @@ public class AppDatabase extends SQLiteOpenHelper {
     public void toggleTask(int id, boolean status) {
         ContentValues values = new ContentValues();
         if (status) {
-            values.put(TABLE_TASK_IS_COMPLETED, 1);
+            values.put(TABLE_TASK_IS_COMPLETED, ConstantsHolder.TASK_COMPLETED);
         } else {
-            values.put(TABLE_TASK_IS_COMPLETED, 0);
+            values.put(TABLE_TASK_IS_COMPLETED, ConstantsHolder.TASK_NOT_COMPLETED);
         }
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
         close();
