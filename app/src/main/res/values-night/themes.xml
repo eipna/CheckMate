@@ -53,6 +53,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:layout_marginStart">50dp</item>
+        <item name="android:layout_marginTop">40dp</item>
     </style>
     <style name="TaskItemDivider">
         <item name="dividerColor">@color/mint_cream</item>

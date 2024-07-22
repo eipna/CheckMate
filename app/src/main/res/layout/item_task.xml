@@ -22,10 +22,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/item_task_name"
+        <ImageView
+            android:id="@+id/item_task_date_created_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/date"
+            style="@style/TaskItemDateCreatedImage"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_task_date_created_text"
+            app:layout_constraintTop_toTopOf="@id/item_task_date_created_image"
+            app:layout_constraintStart_toEndOf="@id/item_task_date_created_image"
+            app:layout_constraintBottom_toBottomOf="@id/item_task_date_created_image"
+            android:text="@string/placeholder_item_task_date_created"
+            style="@style/TaskItemDateCreatedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/item_task_name"
+            app:layout_constraintTop_toTopOf="@id/item_task_date_created_image"
+            app:layout_constraintStart_toStartOf="@id/item_task_date_created_image"
             android:text="@string/placeholder_item_task_name"
             style="@style/TaskItemName"
             android:layout_width="match_parent"
