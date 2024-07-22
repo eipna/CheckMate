@@ -50,12 +50,13 @@
     </style>
     <style name="TaskItemDateCreatedImage">
         <item name="tint">@color/mint_cream</item>
-        <item name="android:layout_height">20dp</item>
-        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_width">18dp</item>
         <item name="android:layout_marginStart">48dp</item>
     </style>
     <style name="TaskItemDateCreatedText">
         <item name="android:textColor">@color/mint_cream</item>
+        <item name="android:textSize">10sp</item>
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:layout_marginStart">5dp</item>
     </style>
@@ -64,7 +65,7 @@
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:layout_marginStart">50dp</item>
-        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginTop">30dp</item>
     </style>
     <style name="TaskItemDivider">
         <item name="dividerColor">@color/mint_cream</item>
