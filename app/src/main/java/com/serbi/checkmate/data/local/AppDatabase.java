@@ -62,6 +62,7 @@ public class AppDatabase extends SQLiteOpenHelper {
         values.put(TABLE_TASK_NAME, newTask.getName());
         values.put(TABLE_TASK_NOTES, newTask.getNotes());
         values.put(TABLE_TASK_DATE_CREATED, newTask.getDateCreated());
+        values.put(TABLE_TASK_LAST_EDITED, newTask.getLastEdited());
         values.put(TABLE_TASK_IS_COMPLETED, newTask.getIsCompleted());
 
         getWritableDatabase().insert(TABLE_TASK, null, values);
