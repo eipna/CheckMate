@@ -1,26 +1,17 @@
 package com.serbi.checkmate.ui.fragment;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import com.serbi.checkmate.R;
-
-import java.util.Objects;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
@@ -71,29 +62,17 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
     // Shows the dialog of list of libraries
     private void showLibrariesListDialog() {
-        String[] librariesItems = getResources().getStringArray(R.array.list_libraries);
-        View listViewContainer = getLayoutInflater().inflate(R.layout.dialog_libraries_list, null);
-        ListView librariesListView = listViewContainer.findViewById(R.id.listview_libraries);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, librariesItems);
-        librariesListView.setAdapter(adapter);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
-        builder.setTitle("Libraries").
-                setView(listViewContainer)
-                .setPositiveButton("Cancel", null);
-
-        librariesListView.setOnItemClickListener((parent, view, position, id) -> {
-            String selectedLibrary = librariesItems[position];
-            Intent browserIntent = null;
-
-            switch (selectedLibrary) {
-                case "PrettyTime":
-                    browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.webite_pretty_time)));
-            }
-            startActivity(browserIntent);
-        });
-
-        builder.create().show();
+        AlertDialog.Builder dialog = new AlertDialog.Builder(requireActivity());
+        dialog.setTitle("Libraries")
+                .setItems(R.array.list_libraries, (dialog1, which) -> {
+                    Intent browserIntent = null;
+                    if (which == 0) {
+                        browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse
+                                (getResources().getString(R.string.webite_pretty_time)));
+                    }
+                    startActivity(browserIntent);
+                }).setPositiveButton("Go Back", null);
+        dialog.create().show();
     }
 
     private void initializePreferences() {

@@ -47,9 +47,6 @@
     <string-array name="list_libraries">
         <item>PrettyTime</item>
     </string-array>
-    <string-array name="list_libraries_values">
-        <item>PrettyTime</item>
-    </string-array>
 
     <!-- Illustration Empty Texts -->
     <string name="illustration_empty_task">You currently have no task.</string>
