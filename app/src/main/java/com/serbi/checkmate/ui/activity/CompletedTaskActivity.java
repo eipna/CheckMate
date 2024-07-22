@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.serbi.checkmate.Constants;
+import com.serbi.checkmate.ConstantsHolder;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
@@ -96,7 +96,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
-        taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
+        taskModels = appDatabase.getTaskItems(ConstantsHolder.TASK_COMPLETED);
         handleEmptyIndicator();
         invalidateOptionsMenu(); // Updates toolbar menu options
     }

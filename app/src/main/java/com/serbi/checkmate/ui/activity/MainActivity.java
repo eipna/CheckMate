@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.serbi.checkmate.Constants;
+import com.serbi.checkmate.ConstantsHolder;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;
@@ -32,7 +32,6 @@ import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
-        taskModels = appDatabase.getTaskItems(Constants.TASK_NOT_COMPLETED);
+        taskModels = appDatabase.getTaskItems(ConstantsHolder.TASK_NOT_COMPLETED);
         handleEmptyIndicator();
     }
 
