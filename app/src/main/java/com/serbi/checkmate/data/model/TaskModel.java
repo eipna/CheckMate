@@ -20,39 +20,19 @@ public class TaskModel {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getNotes() {
         return notes;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public long getDateCreated() {
+        return dateCreated;
     }
 
     public int getIsCompleted() {
         return isCompleted;
-    }
-
-    public void setIsCompleted(int isCompleted) {
-        this.isCompleted = isCompleted;
-    }
-
-    public void setDateCreated(long dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public long getDateCreated() {
-        return dateCreated;
     }
 }
