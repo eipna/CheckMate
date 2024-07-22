@@ -40,12 +40,21 @@
         <item>Dark</item>
     </string-array>
 
+    <!-- List Libraries Settings -->
+    <string-array name="list_libraries">
+        <item>PrettyTime</item>
+    </string-array>
+    <string-array name="list_libraries_values">
+        <item>PrettyTime</item>
+    </string-array>
+
     <!-- Illustration Empty Texts -->
     <string name="illustration_empty_task">You currently have no task.</string>
     <string name="illustration_empty_completed_tasks">You currently have no completed task.</string>
 
     <!-- External Links-->
     <string name="website_github">https://github.com/eipna/CheckMate</string>
+    <string name="webite_pretty_time">https://www.ocpsoft.org/prettytime/</string>
 
     <!-- Clear Completed Task Dialog -->
     <string name="dialog_name">Clear all completed tasks</string>
