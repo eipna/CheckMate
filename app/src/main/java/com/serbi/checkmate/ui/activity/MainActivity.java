@@ -32,6 +32,7 @@ import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
@@ -120,13 +121,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(MainActivity.this, MainActivity.this, taskModels);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this);
-
-        // Makes the newly created task to generate at the top of the list instead at the bottom
-        linearLayoutManager.setStackFromEnd(true);
-        linearLayoutManager.setReverseLayout(true);
-
-        rv_main.setLayoutManager(linearLayoutManager);
+        rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         rv_main.setAdapter(adapter);
     }
 
@@ -153,13 +148,14 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflates the options menu for the toolbar
         getMenuInflater().inflate(R.menu.main_options, menu);
 
         // Sorts the items by default on application load
         MenuItem defaultSortingOption = menu.findItem(R.id.item_sort_AZ); // Sort by Ascending (Name A to Z)
         defaultSortingOption.setChecked(true);
 
-        // Do not do sort operation if there are no items in tasks list
+        // Sorts the items in ascending beforehand, does not proceed if list is empty
         if (!taskModels.isEmpty()) {
             sortNameAZ();
         }
@@ -172,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         // Gets the toolbar's current menu
         Menu mainOptionsMenu = toolbar.getMenu();
 
-        // Refers to the sorting items menu items
+        // Refers to the sorting menu items
         MenuItem sortAZItem = mainOptionsMenu.findItem(R.id.item_sort_AZ);
         MenuItem sortZAItem = mainOptionsMenu.findItem(R.id.item_sort_ZA);
 
