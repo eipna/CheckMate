@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -19,9 +20,12 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     private SharedPreferences.Editor sharedPreferencesEditor;
 
     private ListPreference listTheme;
-    private Preference listLibraries;
+    private Preference listLibraries, staticAppVersion;
 
     private String prefsTheme;
+
+    // For Easter Egg :D
+    private int easterEggCounter;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -58,6 +62,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             showLibrariesListDialog();
             return true;
         });
+
+        staticAppVersion.setOnPreferenceClickListener(preference -> {
+            easterEggCounter++;
+            if (easterEggCounter == 5) {
+                Toast.makeText(requireContext(), getResources().getString(R.string.app_easter_egg), Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        });
     }
 
     // Shows the dialog of list of libraries
@@ -81,6 +93,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
 
         listTheme = findPreference("list_theme");
         listLibraries = findPreference("list_libraries");
+        staticAppVersion = findPreference("static_app_version");
     }
 
     private void initializePreferencesValues() {

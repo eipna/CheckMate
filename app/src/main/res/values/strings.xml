@@ -5,6 +5,9 @@
     <!-- Application Version -->
     <string name="app_version">1.1.0</string>
 
+    <!-- Application Easter Egg Message -->
+    <string name="app_easter_egg">You are now a developer :D</string>
+
     <!-- Application Shortcuts -->
     <string name="shortcut_new_task">New Task</string>
 
