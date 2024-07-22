@@ -2,6 +2,7 @@ package com.serbi.checkmate.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
@@ -135,6 +136,23 @@ public class EditTaskActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
+
+        // Show share task notes intent
+        if (item.getItemId() == R.id.item_share) {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, Objects.requireNonNull(tiet_edit_task_notes.getText()).toString());
+            sendIntent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
+        }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_task_options, menu);
         return true;
     }
 }
