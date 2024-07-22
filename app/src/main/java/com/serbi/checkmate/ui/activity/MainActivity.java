@@ -150,12 +150,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         // Sorts the items by default on application load
         MenuItem defaultSortingOption = menu.findItem(R.id.item_sort_AZ); // Sort by Ascending (Name A to Z)
         defaultSortingOption.setChecked(true);
-
-        // Sorts the items in ascending beforehand, does not proceed if list is empty
-        if (!taskModels.isEmpty()) {
-            sortNameAZ();
-        }
-
         return true;
     }
 
