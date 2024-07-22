@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private AppDatabase appDatabase;
     private TaskAdapter adapter;
-    private ActivityResultLauncher<Intent> createTaskIntentLauncher, editTaskIntentLauncher;
 
     private ConstraintLayout emptyTaskContainer;
     private RecyclerView rv_main;
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        setSupportActionBar(findViewById(R.id.tb_main));
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
         initializeComponents();
         initializeSharedPreferences();
-        initializeToolbar();
         initializeDatasets();
         displayTaskItems();
 
@@ -71,19 +70,21 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
             createTaskIntentLauncher.launch(createTaskIntent);
         });
-
-        createTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                updateTaskItems();
-            }
-        });
-
-        editTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                updateTaskItems();
-            }
-        });
     }
+
+    private final ActivityResultLauncher<Intent> createTaskIntentLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if (result.getResultCode() == RESULT_OK) {
+            updateTaskItems();
+        }
+    });
+
+    private final ActivityResultLauncher<Intent> editTaskIntentLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if (result.getResultCode() == RESULT_OK) {
+            updateTaskItems();
+        }
+    });
 
     private void initializeComponents() {
         sharedPreferences = getSharedPreferences("MINDCHECK", MODE_PRIVATE);
@@ -95,10 +96,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         rv_main = findViewById(R.id.rv_main);
         toolbar = findViewById(R.id.tb_main);
         btn_add_task = findViewById(R.id.fba_add_task);
-    }
-
-    private void initializeToolbar() {
-        setSupportActionBar(toolbar);
     }
 
     private void initializeDatasets() {
