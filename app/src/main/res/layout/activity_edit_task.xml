@@ -56,6 +56,7 @@
                     android:id="@+id/tiet_edit_task_date_created"
                     android:inputType="none"
                     android:focusable="false"
+                    android:alpha="0.5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
