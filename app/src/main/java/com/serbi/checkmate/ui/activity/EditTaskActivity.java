@@ -50,7 +50,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Sets data from extras in main activity
         tiet_edit_task_name.setText(taskNameExtra);
-        if (taskNotesExtra.equals("Empty Notes.")) {
+        if (taskNotesExtra.equals(getResources().getString(R.string.empty_notes))) {
             tiet_edit_task_notes.setText("");
         } else {
             tiet_edit_task_notes.setText(taskNotesExtra);
