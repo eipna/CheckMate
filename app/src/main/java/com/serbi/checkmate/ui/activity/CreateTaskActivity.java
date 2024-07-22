@@ -1,7 +1,9 @@
 package com.serbi.checkmate.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
+
+import java.util.Objects;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
@@ -35,6 +39,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         });
 
         initializeComponents();
+        setFocusOnNameField();
         initializeToolbar();
 
         btn_create_task.setOnClickListener(v -> createNewTask());
@@ -57,15 +62,22 @@ public class CreateTaskActivity extends AppCompatActivity {
         }
     }
 
+    // Set focus on task name on load
+    private void setFocusOnNameField() {
+        tiet_task_name.requestFocus();
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.showSoftInput(tiet_task_name, InputMethodManager.SHOW_IMPLICIT);
+    }
+
     private void createNewTask() {
         // Checks if the task name field is empty
-        if (tiet_task_name.getText().toString().isEmpty()) {
+        if (Objects.requireNonNull(tiet_task_name.getText()).toString().isEmpty()) {
             tiet_task_name.setError("Name field is required");
             return;
         }
 
         String taskName = tiet_task_name.getText().toString();
-        String taskNotes = tiet_task_notes.getText().toString();
+        String taskNotes = Objects.requireNonNull(tiet_task_notes.getText()).toString();
 
         appDatabase.createTask(taskName, taskNotes);
         appDatabase.close();
