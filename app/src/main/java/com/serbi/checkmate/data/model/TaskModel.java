@@ -6,13 +6,15 @@ public class TaskModel {
     private final String name;
     private final String notes;
     private final long dateCreated;
+    private final long lastEdited;
     private final int isCompleted;
 
-    public TaskModel(int id, String name, String notes, long dateCreated, int isCompleted) {
+    public TaskModel(int id, String name, String notes, long dateCreated, long lastEdited, int isCompleted) {
         this.id = id;
         this.name = name;
         this.notes = notes;
         this.dateCreated = dateCreated;
+        this.lastEdited = lastEdited;
         this.isCompleted = isCompleted;
     }
 
@@ -34,5 +36,9 @@ public class TaskModel {
 
     public int getIsCompleted() {
         return isCompleted;
+    }
+
+    public long getLastEdited() {
+        return lastEdited;
     }
 }
