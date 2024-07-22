@@ -16,6 +16,7 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
@@ -93,7 +94,15 @@ public class EditTaskActivity extends AppCompatActivity {
         if (sameData(newTaskName, newTaskNotes)) {
             finish();
         } else {
-            appDatabase.editTask(taskIdExtra, newTaskName, newTaskNotes, DateHandler.getCurrentTimeStamp());
+            TaskModel editedTask = new TaskModel(
+                    taskIdExtra,
+                    newTaskName,
+                    newTaskNotes,
+                    -1, // Does not need to be updated
+                    DateHandler.getCurrentTimeStamp(),
+                    -1 // Does not need to be updated
+            );
+            appDatabase.editTask(editedTask);
             closeCurrentActivity();
         }
     }
