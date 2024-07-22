@@ -104,7 +104,10 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
         taskModels = appDatabase.getTaskItems(Constants.TASK_NOT_COMPLETED);
+        handleEmptyIndicator();
+    }
 
+    private void handleEmptyIndicator() {
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
             emptyTaskContainer.setVisibility(View.VISIBLE);
@@ -229,8 +232,10 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-        appDatabase.toggleTask(taskModels.get(position).getId(), status);
-        taskModels.remove(position);
-        adapter.notifyItemRemoved(position);
+        appDatabase.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
+        taskModels.remove(position); // Removes the task in the array
+        adapter.notifyItemRemoved(position); // Removes the task in the adapter
+
+        handleEmptyIndicator(); // Updates empty task indicator
     }
 }

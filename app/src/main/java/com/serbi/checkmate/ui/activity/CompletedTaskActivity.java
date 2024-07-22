@@ -103,15 +103,8 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
         taskModels = appDatabase.getTaskItems(Constants.TASK_COMPLETED);
+        handleEmptyIndicator();
         invalidateOptionsMenu(); // Updates toolbar menu options
-
-        if (taskModels.isEmpty()) {
-            // Enables empty task list indicator if there are no completed task items
-            emptyCompletedTaskContainer.setVisibility(View.VISIBLE);
-        } else {
-            // Disables empty task list indicator if completed task items is not empty
-            emptyCompletedTaskContainer.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -122,11 +115,21 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // Toggles visibility of clear task menu item
+        // Toggles visibility of clear task menu item and empty completed task indicator
         MenuItem clearCompletedTaskItem = menu.findItem(R.id.item_clear_completed_task);
         clearCompletedTaskItem.setVisible(!taskModels.isEmpty());
 
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void handleEmptyIndicator() {
+        if (taskModels.isEmpty()) {
+            // Enables empty task list indicator if there are no task items
+            emptyCompletedTaskContainer.setVisibility(View.VISIBLE);
+        } else {
+            // Disables empty task list indicator if task items is not empty
+            emptyCompletedTaskContainer.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -163,6 +166,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         adapter.notifyDataSetChanged(); // Updates adapter
 
         emptyCompletedTaskContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
+        invalidateOptionsMenu(); // Updates toolbar menu
     }
 
     @Override
@@ -179,8 +183,11 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-        appDatabase.toggleTask(taskModels.get(position).getId(), status);
-        taskModels.remove(position);
-        adapter.notifyItemRemoved(position);
+        appDatabase.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
+        taskModels.remove(position); // Removes the task in the array
+        adapter.notifyItemRemoved(position); // Removes the task in the adapter
+
+        invalidateOptionsMenu(); // Updates toolbar menu
+        handleEmptyIndicator(); // Updates completed task indicator
     }
 }
