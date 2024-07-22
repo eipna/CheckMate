@@ -23,12 +23,15 @@ import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.util.DateHandler;
 
+import org.ocpsoft.prettytime.PrettyTime;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     private final TaskListener taskListener;
-
+    private final PrettyTime prettyTime;
     private final Context context;
     private final ArrayList<TaskModel> taskModels;
 
@@ -36,6 +39,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         this.taskModels = taskModels;
         this.context = context;
         this.taskListener = taskListener;
+        this.prettyTime = new PrettyTime();
     }
 
     @NonNull
@@ -52,6 +56,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
         holder.item_task_date_created.setText(DateHandler.getDetailedDate(taskModels.get(position).getDateCreated()));
+        holder.item_task_last_edited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
 
         holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (taskListener != null) {
@@ -95,7 +100,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialTextView item_task_name, item_task_notes, item_task_date_created;
+        MaterialTextView item_task_name, item_task_notes, item_task_date_created, item_task_last_edited;
         MaterialCheckBox item_task_check_box;
         MaterialCardView item_task;
         MaterialDivider item_task_divider;
@@ -110,6 +115,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             item_task_divider = itemView.findViewById(R.id.item_task_divider);
             item_task_date_created = itemView.findViewById(R.id.item_task_date_created_text);
             item_task_date_created_image = itemView.findViewById(R.id.item_task_date_created_image);
+            item_task_last_edited = itemView.findViewById(R.id.item_task_last_edited);
 
             itemView.setOnClickListener(v -> {
                 if (taskListener != null) {
