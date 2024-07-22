@@ -50,7 +50,11 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Sets data from extras in main activity
         tiet_edit_task_name.setText(taskNameExtra);
-        tiet_edit_task_notes.setText(taskNotesExtra);
+        if (taskNotesExtra.equals("Empty Notes.")) {
+            tiet_edit_task_notes.setText("");
+        } else {
+            tiet_edit_task_notes.setText(taskNotesExtra);
+        }
         tiet_edit_task_date_created.setText(DateHandler.getDetailedDate(taskDateCreated));
 
         btn_delete_task.setOnClickListener(v -> deleteTask());

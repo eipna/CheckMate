@@ -11,6 +11,9 @@
     <!-- Application Quick Tiles -->
     <string name="tile_new_task">New Task</string>
 
+    <!-- Empty notes -->
+    <string name="empty_notes">Empty notes.</string>
+
     <!-- Place Holder Strings -->
     <string name="placeholder_item_task_date_created">Monday, 22 July 2024</string>
     <string name="placeholder_item_task_name">Lorem Ipsum</string>
