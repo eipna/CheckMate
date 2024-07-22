@@ -20,6 +20,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.util.DateHandler;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_name.setText(taskModels.get(position).getName());
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
+        holder.item_task_date_created.setText(DateHandler.getDetailedDate(taskModels.get(position).getDateCreated()));
 
         holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (taskListener != null) {
@@ -90,7 +92,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialTextView item_task_name, item_task_notes;
+        MaterialTextView item_task_name, item_task_notes, item_task_date_created;
         MaterialCheckBox item_task_check_box;
         MaterialCardView item_task;
         MaterialDivider item_task_divider;
@@ -102,6 +104,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             item_task_notes = itemView.findViewById(R.id.item_task_notes);
             item_task_check_box = itemView.findViewById(R.id.item_task_check_box);
             item_task_divider = itemView.findViewById(R.id.item_task_divider);
+            item_task_date_created = itemView.findViewById(R.id.item_task_date_created_text);
 
             itemView.setOnClickListener(v -> {
                 if (taskListener != null) {
