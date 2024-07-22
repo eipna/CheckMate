@@ -76,11 +76,12 @@ public class AppDatabase extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()) {
             taskItems.add(new TaskModel(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getLong(3),
-                    cursor.getInt(4)
+                    cursor.getInt(0), // task id
+                    cursor.getString(1), // task name
+                    cursor.getString(2), // task notes
+                    cursor.getLong(3), // task date created
+                    cursor.getLong(4), // task last edited
+                    cursor.getInt(5) // task is completed
             ));
         }
         cursor.close();
