@@ -93,7 +93,7 @@ public class EditTaskActivity extends AppCompatActivity {
         if (sameData(newTaskName, newTaskNotes)) {
             finish();
         } else {
-            appDatabase.editTask(taskIdExtra, newTaskName, newTaskNotes);
+            appDatabase.editTask(taskIdExtra, newTaskName, newTaskNotes, DateHandler.getCurrentTimeStamp());
             closeCurrentActivity();
         }
     }

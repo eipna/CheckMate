@@ -101,10 +101,11 @@ public class AppDatabase extends SQLiteOpenHelper {
     }
 
     // Updates a task
-    public void editTask(int id, String name, String notes) {
+    public void editTask(int id, String name, String notes, long editedTime) {
         ContentValues values = new ContentValues();
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
+        values.put(TABLE_TASK_LAST_EDITED, editedTime);
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
         close();
     }
