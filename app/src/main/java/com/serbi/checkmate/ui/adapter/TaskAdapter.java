@@ -89,6 +89,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_notes.setAlpha(0.3f);
         holder.item_task_divider.setAlpha(0.3f);
         holder.item_task.setAlpha(0.8f);
+        holder.item_task_date_created.setAlpha(0.3f);
+        holder.item_task_date_created_image.setAlpha(0.3f);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
