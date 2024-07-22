@@ -40,7 +40,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 TABLE_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
-                TABLE_TASK_DATE_CREATED + " INTEGER, " +
+                TABLE_TASK_DATE_CREATED + " LONG, " +
                 TABLE_TASK_IS_COMPLETED + " INTEGER)"; // 0 means not completed task
 
         // Executes the queries for creating tables
@@ -77,7 +77,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
-                    cursor.getInt(3),
+                    cursor.getLong(3),
                     cursor.getInt(4)
             ));
         }
