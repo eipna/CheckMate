@@ -92,6 +92,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 taskName,
                 taskNotes,
                 DateHandler.getCurrentTimeStamp(),
+                DateHandler.getCurrentTimeStamp(),
                 ConstantsHolder.TASK_NOT_COMPLETED
         );
         appDatabase.createTask(newTask); // Creates new task in database
