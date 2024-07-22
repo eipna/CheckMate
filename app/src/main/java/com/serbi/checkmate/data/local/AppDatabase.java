@@ -77,7 +77,8 @@ public class AppDatabase extends SQLiteOpenHelper {
                     cursor.getInt(0),
                     cursor.getString(1),
                     cursor.getString(2),
-                    cursor.getInt(3)
+                    cursor.getInt(3),
+                    cursor.getInt(4)
             ));
         }
         cursor.close();
