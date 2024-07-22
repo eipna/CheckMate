@@ -36,7 +36,6 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private TaskAdapter adapter;
     private AppDatabase appDatabase;
-    private ActivityResultLauncher<Intent> editTaskIntentLauncher;
 
     private MaterialToolbar toolbar;
     private RecyclerView rv_completed_task;
@@ -57,13 +56,14 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         initializeToolbar();
         initializeDatasets();
         displayTaskItems();
-
-        editTaskIntentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                updateTaskItems();
-            }
-        });
     }
+
+    private final ActivityResultLauncher<Intent> editTaskIntentLauncher =
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        if (result.getResultCode() == RESULT_OK) {
+            updateTaskItems();
+        }
+    });
 
     // Updates task list on new task creation or task update
     private void updateTaskItems() {
