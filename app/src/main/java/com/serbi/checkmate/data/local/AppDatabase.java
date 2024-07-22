@@ -58,7 +58,7 @@ public class AppDatabase extends SQLiteOpenHelper {
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
         getWritableDatabase().insert(TABLE_TASK, null, values);
-        this.close();
+        close();
     }
 
     // Retrieves all task items based if completed or not
@@ -88,7 +88,7 @@ public class AppDatabase extends SQLiteOpenHelper {
             values.put(TABLE_TASK_IS_COMPLETED, 0);
         }
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
-        this.close();
+        close();
     }
 
     // Updates a task
@@ -97,18 +97,18 @@ public class AppDatabase extends SQLiteOpenHelper {
         values.put(TABLE_TASK_NAME, name);
         values.put(TABLE_TASK_NOTES, notes);
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
-        this.close();
+        close();
     }
 
     // Deletes a task
     public void deleteTask(int id) {
         getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
-        this.close();
+        close();
     }
 
     // Clears all completed tasks
     public void clearCompletedTasks() {
         getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_IS_COMPLETED + " = ?", new String[]{String.valueOf(Constants.TASK_COMPLETED)});
-        this.close();
+        close();
     }
 }
