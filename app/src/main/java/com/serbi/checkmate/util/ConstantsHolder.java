@@ -1,4 +1,4 @@
-package com.serbi.checkmate;
+package com.serbi.checkmate.util;
 
 public final class ConstantsHolder {
     // Task status

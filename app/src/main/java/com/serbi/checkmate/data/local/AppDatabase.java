@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.serbi.checkmate.ConstantsHolder;
+import com.serbi.checkmate.util.ConstantsHolder;
 import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;

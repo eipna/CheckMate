@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.serbi.checkmate.ConstantsHolder;
+import com.serbi.checkmate.util.ConstantsHolder;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;

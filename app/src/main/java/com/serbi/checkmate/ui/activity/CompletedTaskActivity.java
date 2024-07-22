@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.serbi.checkmate.ConstantsHolder;
+import com.serbi.checkmate.util.ConstantsHolder;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
