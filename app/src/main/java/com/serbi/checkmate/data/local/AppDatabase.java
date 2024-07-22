@@ -43,7 +43,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 TABLE_TASK_NOTES + " TEXT," +
                 TABLE_TASK_DATE_CREATED + " LONG, " +
                 TABLE_TASK_LAST_EDITED + " LONG, " +
-                TABLE_TASK_IS_COMPLETED + " INTEGER)"; // 0 means not completed task
+                TABLE_TASK_IS_COMPLETED + " INTEGER)";
 
         // Executes the queries for creating tables
         db.execSQL(createTaskTable);
