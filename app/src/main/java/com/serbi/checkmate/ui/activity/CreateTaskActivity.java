@@ -28,7 +28,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     private MaterialToolbar toolbar;
     private MaterialButton btn_create_task;
-    private TextInputEditText tiet_task_name, tiet_task_notes;
+    private TextInputEditText tiet_task_name, tiet_task_notes, tiet_task_date_created;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,9 @@ public class CreateTaskActivity extends AppCompatActivity {
         setFocusOnNameField();
         initializeToolbar();
 
+        // Sets date created input field text to current date
+        tiet_task_date_created.setText(DateHandler.getDetailedDate());
+
         btn_create_task.setOnClickListener(v -> createNewTask());
     }
 
@@ -55,6 +58,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         btn_create_task = findViewById(R.id.btn_create_task);
         tiet_task_name = findViewById(R.id.tiet_task_name);
         tiet_task_notes = findViewById(R.id.tiet_task_notes);
+        tiet_task_date_created = findViewById(R.id.tiet_task_date_created);
     }
 
     private void initializeToolbar() {

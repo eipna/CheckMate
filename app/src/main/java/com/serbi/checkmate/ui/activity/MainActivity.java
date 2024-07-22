@@ -217,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         editTaskIntent.putExtra("TASK_ID", taskModels.get(position).getId());
         editTaskIntent.putExtra("TASK_NAME", taskModels.get(position).getName());
         editTaskIntent.putExtra("TASK_NOTES", taskModels.get(position).getNotes());
+        editTaskIntent.putExtra("TASK_DATE_CREATED", taskModels.get(position).getDateCreated());
 
         // Starts and listens for a result code from a parent activity
         editTaskIntentLauncher.launch(editTaskIntent);

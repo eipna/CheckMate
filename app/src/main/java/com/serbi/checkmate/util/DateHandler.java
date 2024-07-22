@@ -19,4 +19,12 @@ public class DateHandler {
                 new SimpleDateFormat("EEEE, dd MMMM yyyy");
         return simpleDateFormat.format(currentDate);
     }
+
+    // Returns a detailed format from time stamp
+    public static String getDetailedDate(long timeStamp) {
+        Date currentDate = new Date(timeStamp);
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat =
+                new SimpleDateFormat("EEEE, dd MMMM yyyy");
+        return simpleDateFormat.format(currentDate);
+    }
 }

@@ -16,18 +16,20 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
 
 public class EditTaskActivity extends AppCompatActivity {
 
     private MaterialToolbar tb_edit_task;
-    private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes;
+    private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes, tiet_edit_task_date_created;
     private MaterialButton btn_delete_task, btn_save_task;
 
     private AppDatabase appDatabase;
 
     private int taskIdExtra;
+    private long taskDateCreated;
     private String taskNameExtra, taskNotesExtra;
 
     @Override
@@ -48,6 +50,7 @@ public class EditTaskActivity extends AppCompatActivity {
         // Sets data from extras in main activity
         tiet_edit_task_name.setText(taskNameExtra);
         tiet_edit_task_notes.setText(taskNotesExtra);
+        tiet_edit_task_date_created.setText(DateHandler.getDetailedDate(taskDateCreated));
 
         btn_delete_task.setOnClickListener(v -> deleteTask());
         btn_save_task.setOnClickListener(v -> saveTask());
@@ -59,6 +62,7 @@ public class EditTaskActivity extends AppCompatActivity {
         tb_edit_task = findViewById(R.id.tb_edit_task);
         tiet_edit_task_name = findViewById(R.id.tiet_edit_task_name);
         tiet_edit_task_notes = findViewById(R.id.tiet_edit_task_notes);
+        tiet_edit_task_date_created = findViewById(R.id.tiet_edit_task_date_created);
         btn_delete_task = findViewById(R.id.btn_delete_task);
         btn_save_task = findViewById(R.id.btn_save_task);
     }
@@ -68,6 +72,7 @@ public class EditTaskActivity extends AppCompatActivity {
         taskIdExtra = getIntent().getIntExtra("TASK_ID", -1);
         taskNameExtra = getIntent().getStringExtra("TASK_NAME");
         taskNotesExtra = getIntent().getStringExtra("TASK_NOTES");
+        taskDateCreated = getIntent().getLongExtra("TASK_DATE_CREATED", -1);
     }
 
     private void initializeToolbar() {
