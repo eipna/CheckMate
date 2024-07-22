@@ -16,6 +16,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.util.ConstantsHolder;
+import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
 
@@ -79,7 +82,15 @@ public class CreateTaskActivity extends AppCompatActivity {
         String taskName = tiet_task_name.getText().toString();
         String taskNotes = Objects.requireNonNull(tiet_task_notes.getText()).toString();
 
-        appDatabase.createTask(taskName, taskNotes);
+        // Container for the new created task
+        TaskModel newTask = new TaskModel(
+                -1, // Will not be used anyway
+                taskName,
+                taskNotes,
+                DateHandler.getCurrentTimeStamp(),
+                ConstantsHolder.TASK_NOT_COMPLETED
+        );
+        appDatabase.createTask(newTask);
         appDatabase.close();
 
         Intent createNewTaskIntent = new Intent();

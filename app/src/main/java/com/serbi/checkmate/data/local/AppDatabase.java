@@ -41,7 +41,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
                 TABLE_TASK_DATE_CREATED + " INTEGER, " +
-                TABLE_TASK_IS_COMPLETED + " INTEGER DEFAULT 0)"; // 0 means not completed task
+                TABLE_TASK_IS_COMPLETED + " INTEGER)"; // 0 means not completed task
 
         // Executes the queries for creating tables
         db.execSQL(createTaskTable);
@@ -55,10 +55,13 @@ public class AppDatabase extends SQLiteOpenHelper {
     }
 
     // Creates a new task
-    public void createTask(String name, String notes) {
+    public void createTask(TaskModel newTask) {
         ContentValues values = new ContentValues();
-        values.put(TABLE_TASK_NAME, name);
-        values.put(TABLE_TASK_NOTES, notes);
+        values.put(TABLE_TASK_NAME, newTask.getName());
+        values.put(TABLE_TASK_NOTES, newTask.getNotes());
+        values.put(TABLE_TASK_DATE_CREATED, newTask.getDateCreated());
+        values.put(TABLE_TASK_IS_COMPLETED, newTask.getIsCompleted());
+
         getWritableDatabase().insert(TABLE_TASK, null, values);
         close();
     }
