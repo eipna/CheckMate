@@ -71,6 +71,7 @@
     <string name="menu_sortAZ">Name (A to Z)</string>
     <string name="menu_sortZA">Name (Z to A)</string>
     <string name="menu_completed_tasks">Completed Tasks</string>
+    <string name="menu_share">Share Notes</string>
 
     <!-- Text Input Layout Fields -->
     <string name="input_task_name">Name</string>
