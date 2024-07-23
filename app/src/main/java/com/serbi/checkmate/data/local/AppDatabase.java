@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.serbi.checkmate.util.ConstantsHolder;
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;
@@ -93,9 +93,9 @@ public class AppDatabase extends SQLiteOpenHelper {
     public void toggleTask(int id, boolean status) {
         ContentValues values = new ContentValues();
         if (status) {
-            values.put(TABLE_TASK_IS_COMPLETED, ConstantsHolder.TASK_COMPLETED);
+            values.put(TABLE_TASK_IS_COMPLETED, CheckMateApplication.TASK_COMPLETED);
         } else {
-            values.put(TABLE_TASK_IS_COMPLETED, ConstantsHolder.TASK_NOT_COMPLETED);
+            values.put(TABLE_TASK_IS_COMPLETED, CheckMateApplication.TASK_NOT_COMPLETED);
         }
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
         close();
@@ -119,7 +119,7 @@ public class AppDatabase extends SQLiteOpenHelper {
 
     // Clears all completed tasks
     public void clearCompletedTasks() {
-        getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_IS_COMPLETED + " = ?", new String[]{String.valueOf(ConstantsHolder.TASK_COMPLETED)});
+        getWritableDatabase().delete(TABLE_TASK, TABLE_TASK_IS_COMPLETED + " = ?", new String[]{String.valueOf(CheckMateApplication.TASK_COMPLETED)});
         close();
     }
 }

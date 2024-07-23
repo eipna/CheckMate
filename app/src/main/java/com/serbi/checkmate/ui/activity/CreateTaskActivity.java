@@ -14,10 +14,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
-import com.serbi.checkmate.util.ConstantsHolder;
 import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
@@ -98,7 +98,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 taskNotes,
                 DateHandler.getCurrentTimeStamp(),
                 DateHandler.getCurrentTimeStamp(),
-                ConstantsHolder.TASK_NOT_COMPLETED
+                CheckMateApplication.TASK_NOT_COMPLETED
         );
         appDatabase.createTask(newTask); // Creates new task in database
 

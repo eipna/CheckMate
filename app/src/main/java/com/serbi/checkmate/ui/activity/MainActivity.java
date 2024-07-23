@@ -2,7 +2,6 @@ package com.serbi.checkmate.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +12,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -23,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.serbi.checkmate.util.ConstantsHolder;
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;
@@ -93,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
-        taskModels = appDatabase.getTaskItems(ConstantsHolder.TASK_NOT_COMPLETED);
+        taskModels = appDatabase.getTaskItems(CheckMateApplication.TASK_NOT_COMPLETED);
         handleEmptyIndicator();
     }
 

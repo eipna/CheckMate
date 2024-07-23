@@ -7,8 +7,13 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 public class CheckMateApplication extends Application {
 
+    // Shared Preferences
     public static SharedPreferences preferences;
     public static String prefsApplicationTheme;
+
+    // Task status
+    public static final int TASK_COMPLETED = 1;
+    public static final int TASK_NOT_COMPLETED = 0;
 
     @Override
     public void onCreate() {
