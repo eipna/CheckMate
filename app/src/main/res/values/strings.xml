@@ -67,11 +67,16 @@
 
     <!-- Option Menu String -->
     <string name="menu_clear_all">Clear All</string>
+    <string name="menu_completed_tasks">Completed Tasks</string>
+    <string name="menu_share">Share Notes</string>
+
     <string name="menu_sort">Sort by</string>
     <string name="menu_sortAZ">Name (A to Z)</string>
     <string name="menu_sortZA">Name (Z to A)</string>
-    <string name="menu_completed_tasks">Completed Tasks</string>
-    <string name="menu_share">Share Notes</string>
+    <string name="menu_sort_date_created_asc">Date Created (Latest)</string>
+    <string name="menu_sort_date_created_desc">Date Created (Oldest)</string>
+    <string name="menu_sort_edit_asc">Last Edited (Latest)</string>
+    <string name="menu_sort_edit_desc">Last Edited (Oldest)</string>
 
     <!-- Text Input Layout Fields -->
     <string name="input_task_name">Name</string>

@@ -20,6 +20,22 @@
                 <item
                     android:id="@+id/item_sort_ZA"
                     android:title="@string/menu_sortZA"/>
+
+                <item
+                    android:id="@+id/item_sort_date_created_asc"
+                    android:title="@string/menu_sort_date_created_asc"/>
+
+                <item
+                    android:id="@+id/item_sort_date_created_desc"
+                    android:title="@string/menu_sort_date_created_desc"/>
+
+                <item
+                    android:id="@+id/item_sort_edit_asc"
+                    android:title="@string/menu_sort_edit_asc"/>
+
+                <item
+                    android:id="@+id/item_sort_edit_desc"
+                    android:title="@string/menu_sort_edit_desc"/>
             </group>
         </menu>
     </item>
