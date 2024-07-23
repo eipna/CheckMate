@@ -36,9 +36,6 @@ import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
 
-    private SharedPreferences sharedPreferences;
-    private String prefsTheme;
-
     private ArrayList<TaskModel> taskModels;
 
     private AppDatabase appDatabase;
@@ -62,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         });
 
         initializeComponents();
-        initializeSharedPreferences();
         initializeDatasets();
         displayTaskItems();
 
@@ -87,9 +83,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     });
 
     private void initializeComponents() {
-        sharedPreferences = getSharedPreferences("MINDCHECK", MODE_PRIVATE);
-        prefsTheme = sharedPreferences.getString("THEME", "System");
-
         appDatabase = new AppDatabase(this);
 
         emptyTaskContainer = findViewById(R.id.cl_empty_container);
@@ -125,21 +118,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     private void updateTaskItems() {
         initializeDatasets();
         displayTaskItems();
-    }
-
-    private void initializeSharedPreferences() {
-        // Handles the application theme
-        switch (prefsTheme) {
-            case "System":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-            case "Light":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            case "Dark":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-        }
     }
 
     @Override
