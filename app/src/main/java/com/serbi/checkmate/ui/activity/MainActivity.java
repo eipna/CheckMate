@@ -134,9 +134,13 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         // Gets the toolbar's current menu
         Menu mainOptionsMenu = toolbar.getMenu();
 
-        // Refers to the sorting menu items
-        MenuItem sortAZItem = mainOptionsMenu.findItem(R.id.item_sort_AZ);
-        MenuItem sortZAItem = mainOptionsMenu.findItem(R.id.item_sort_ZA);
+        // Gets all sorting menu items
+        MenuItem sortNameAZ = mainOptionsMenu.findItem(R.id.item_sort_AZ);
+        MenuItem sortNameZA = mainOptionsMenu.findItem(R.id.item_sort_ZA);
+        MenuItem sortDateCreatedASC = mainOptionsMenu.findItem(R.id.item_sort_date_created_asc);
+        MenuItem sortDateCreatedDESC = mainOptionsMenu.findItem(R.id.item_sort_date_created_desc);
+        MenuItem sortLastEditedASC = mainOptionsMenu.findItem(R.id.item_sort_edit_asc);
+        MenuItem sortLastEditedDESC = mainOptionsMenu.findItem(R.id.item_sort_edit_desc);
 
         // Go to settings activity
         if (item.getItemId() == R.id.options_settings) {
@@ -151,17 +155,41 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         }
 
         // Handles sorting of task items
-        if (item.getItemId() == R.id.item_sort_AZ) {
+        if (item.getItemId() == R.id.item_sort_AZ) { // Sort by Name (Ascending)
             if (!taskModels.isEmpty()) {
                 sortNameAZ();
             }
-            sortAZItem.setChecked(true);
+            sortNameAZ.setChecked(true);
         }
-        if (item.getItemId() == R.id.item_sort_ZA) {
+        if (item.getItemId() == R.id.item_sort_ZA) { // Sort by Name (Descending)
             if (!taskModels.isEmpty()) {
                 sortNameZA();
             }
-            sortZAItem.setChecked(true);
+            sortNameZA.setChecked(true);
+        }
+        if (item.getItemId() == R.id.item_sort_date_created_asc) { // Sort by Date Created (Ascending)
+            if (!taskModels.isEmpty()) {
+                sortDateCreatedAcs();
+            }
+            sortDateCreatedASC.setChecked(true);
+        }
+        if (item.getItemId() == R.id.item_sort_date_created_desc) { // Sort by Date Created (Descending)
+            if (!taskModels.isEmpty()) {
+                sortDateCreatedDesc();
+            }
+            sortDateCreatedDESC.setChecked(true);
+        }
+        if (item.getItemId() == R.id.item_sort_edit_asc) { // Sort by Last Edited (Ascending)
+            if (!taskModels.isEmpty()) {
+                sortLastEditedAsc();
+            }
+            sortLastEditedASC.setChecked(true);
+        }
+        if (item.getItemId() == R.id.item_sort_edit_desc) { // Sort by Last Edited (Descending)
+            if (!taskModels.isEmpty()) {
+                sortLastEditedDesc();
+            }
+            sortLastEditedDESC.setChecked(true);
         }
         return true;
     }
@@ -177,6 +205,34 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     @Override
     public void sortNameZA() {
         taskModels.sort((task01, task02) -> task02.getName().compareTo(task01.getName()));
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void sortDateCreatedAcs() {
+        taskModels.sort(Comparator.comparingLong(TaskModel::getDateCreated));
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void sortDateCreatedDesc() {
+        taskModels.sort((task1, task2) -> Long.compare(task2.getDateCreated(), task1.getDateCreated()));
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void sortLastEditedAsc() {
+        taskModels.sort(Comparator.comparingLong(TaskModel::getLastEdited));
+        adapter.notifyDataSetChanged();
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    public void sortLastEditedDesc() {
+        taskModels.sort((task1, task2) -> Long.compare(task2.getLastEdited(), task1.getLastEdited()));
         adapter.notifyDataSetChanged();
     }
 
