@@ -1,9 +1,14 @@
 package com.serbi.checkmate;
 
 import android.app.Application;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.SharedPreferences;
+import android.os.Build;
 
 import androidx.appcompat.app.AppCompatDelegate;
+
+import com.serbi.checkmate.util.NotificationHandler;
 
 public class CheckMateApplication extends Application {
 
@@ -18,6 +23,17 @@ public class CheckMateApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel reminderChannel = new NotificationChannel(
+                    NotificationHandler.CHANNEL_REMINDER_ID,
+                    NotificationHandler.CHANNEL_REMINDER_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(reminderChannel);
+        }
 
         preferences = getSharedPreferences("MINDCHECK", MODE_PRIVATE);
         prefsApplicationTheme = preferences.getString("THEME", "System");
