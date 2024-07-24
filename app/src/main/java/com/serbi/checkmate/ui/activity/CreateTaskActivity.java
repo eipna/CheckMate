@@ -37,7 +37,7 @@ public class CreateTaskActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Initialize database
+        // Initialize new database
         appDatabase = new AppDatabase(this);
 
         setFocusOnNameField();

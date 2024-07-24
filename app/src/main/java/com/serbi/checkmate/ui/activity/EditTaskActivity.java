@@ -41,8 +41,10 @@ public class EditTaskActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Initialize new database instance
+        appDatabase = new AppDatabase(this);
+
         initializeExtras();
-        initializeComponents();
         initializeToolbar();
 
         // Sets data from extras in main activity
@@ -56,10 +58,6 @@ public class EditTaskActivity extends AppCompatActivity {
 
         binding.btnDeleteTask.setOnClickListener(v -> deleteTask());
         binding.btnSaveTask.setOnClickListener(v -> saveTask());
-    }
-
-    private void initializeComponents() {
-        appDatabase = new AppDatabase(EditTaskActivity.this);
     }
 
     // Retrieves extras from main activity

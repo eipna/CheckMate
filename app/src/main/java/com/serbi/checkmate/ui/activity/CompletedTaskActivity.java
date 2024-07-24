@@ -13,19 +13,17 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.MaterialToolbar;
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.databinding.ActivityCompletedTaskBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
@@ -36,23 +34,23 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private TaskAdapter adapter;
     private AppDatabase appDatabase;
-
-    private MaterialToolbar toolbar;
-    private RecyclerView rv_completed_task;
-    private ConstraintLayout emptyCompletedTaskContainer;
+    private ActivityCompletedTaskBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityCompletedTaskBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_completed_task);
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        initializeComponents();
+        // Initialize new database instance
+        appDatabase = new AppDatabase(this);
+
         initializeToolbar();
         initializeDatasets();
         displayTaskItems();
@@ -74,20 +72,12 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(CompletedTaskActivity.this, CompletedTaskActivity.this, taskModels);
-        rv_completed_task.setLayoutManager(new LinearLayoutManager(CompletedTaskActivity.this));
-        rv_completed_task.setAdapter(adapter);
-    }
-
-    private void initializeComponents() {
-        appDatabase = new AppDatabase(CompletedTaskActivity.this);
-
-        toolbar = findViewById(R.id.tb_completed_task);
-        rv_completed_task = findViewById(R.id.rv_completed_task);
-        emptyCompletedTaskContainer = findViewById(R.id.cl_empty_completed_tasks_container);
+        binding.rvCompletedTask.setLayoutManager(new LinearLayoutManager(CompletedTaskActivity.this));
+        binding.rvCompletedTask.setAdapter(adapter);
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.tbCompletedTask);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -119,10 +109,10 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private void handleEmptyIndicator() {
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
-            emptyCompletedTaskContainer.setVisibility(View.VISIBLE);
+            binding.clEmptyCompletedTasksContainer.setVisibility(View.VISIBLE);
         } else {
             // Disables empty task list indicator if task items is not empty
-            emptyCompletedTaskContainer.setVisibility(View.GONE);
+            binding.clEmptyCompletedTasksContainer.setVisibility(View.GONE);
         }
     }
 
@@ -159,7 +149,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         taskModels.clear(); // Clears all items in completed tasks list
         adapter.notifyDataSetChanged(); // Updates adapter
 
-        emptyCompletedTaskContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
+        binding.clEmptyCompletedTasksContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
         invalidateOptionsMenu(); // Updates toolbar menu
     }
 
