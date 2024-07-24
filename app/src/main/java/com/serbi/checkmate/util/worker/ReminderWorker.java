@@ -3,6 +3,7 @@ package com.serbi.checkmate.util.worker;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -16,7 +17,11 @@ public class ReminderWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        NotificationHandler.showNotification(getApplicationContext());
+        Data retrievedDate = getInputData();
+        int taskId = retrievedDate.getInt("TASK_ID", -1);
+        String taskName = retrievedDate.getString("TASK_NAME");
+
+        NotificationHandler.showNotification(getApplicationContext(), taskId, taskName);
         return Result.success();
     }
 }

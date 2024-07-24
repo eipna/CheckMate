@@ -13,7 +13,7 @@ public class NotificationHandler {
     public static final String CHANNEL_REMINDER_NAME = "Reminders";
     public static final String CHANNEL_REMINDER_DESCRIPTION = "Handles reminders";
 
-    public static void showNotification(Context context) {
+    public static void showNotification(Context context, int taskId, String taskName) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_REMINDER_ID)
