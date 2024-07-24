@@ -12,23 +12,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.databinding.ActivityEditTaskBinding;
 import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
 
 public class EditTaskActivity extends AppCompatActivity {
 
-    private MaterialToolbar tb_edit_task;
-    private TextInputEditText tiet_edit_task_name, tiet_edit_task_notes, tiet_edit_task_date_created;
-    private MaterialButton btn_delete_task, btn_save_task;
-
     private AppDatabase appDatabase;
+    private ActivityEditTaskBinding binding;
 
     private int taskIdExtra;
     private long taskDateCreated;
@@ -37,8 +32,9 @@ public class EditTaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityEditTaskBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_edit_task);
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -50,27 +46,20 @@ public class EditTaskActivity extends AppCompatActivity {
         initializeToolbar();
 
         // Sets data from extras in main activity
-        tiet_edit_task_name.setText(taskNameExtra);
+        binding.tietEditTaskName.setText(taskNameExtra);
         if (taskNotesExtra.equals(getResources().getString(R.string.empty_notes))) {
-            tiet_edit_task_notes.setText("");
+            binding.tietEditTaskNotes.setText("");
         } else {
-            tiet_edit_task_notes.setText(taskNotesExtra);
+            binding.tietEditTaskNotes.setText(taskNotesExtra);
         }
-        tiet_edit_task_date_created.setText(DateHandler.getDetailedDate(taskDateCreated));
+        binding.tietEditTaskDateCreated.setText(DateHandler.getDetailedDate(taskDateCreated));
 
-        btn_delete_task.setOnClickListener(v -> deleteTask());
-        btn_save_task.setOnClickListener(v -> saveTask());
+        binding.btnDeleteTask.setOnClickListener(v -> deleteTask());
+        binding.btnSaveTask.setOnClickListener(v -> saveTask());
     }
 
     private void initializeComponents() {
         appDatabase = new AppDatabase(EditTaskActivity.this);
-
-        tb_edit_task = findViewById(R.id.tb_edit_task);
-        tiet_edit_task_name = findViewById(R.id.tiet_edit_task_name);
-        tiet_edit_task_notes = findViewById(R.id.tiet_edit_task_notes);
-        tiet_edit_task_date_created = findViewById(R.id.tiet_edit_task_date_created);
-        btn_delete_task = findViewById(R.id.btn_delete_task);
-        btn_save_task = findViewById(R.id.btn_save_task);
     }
 
     // Retrieves extras from main activity
@@ -82,7 +71,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(tb_edit_task);
+        setSupportActionBar(binding.tbEditTask);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -91,8 +80,8 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private void saveTask() {
         // Extracts the text from the name and notes field
-        String newTaskName = Objects.requireNonNull(tiet_edit_task_name.getText()).toString();
-        String newTaskNotes = Objects.requireNonNull(tiet_edit_task_notes.getText()).toString();
+        String newTaskName = Objects.requireNonNull(binding.tietEditTaskName.getText()).toString();
+        String newTaskNotes = Objects.requireNonNull(binding.tietEditTaskNotes.getText()).toString();
 
         /* If the data from the extras and the current activity are the same,
         there will be no updates in the database and will just proceed to exiting the activity */
@@ -141,7 +130,7 @@ public class EditTaskActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, Objects.requireNonNull(tiet_edit_task_notes.getText()).toString());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, Objects.requireNonNull(binding.tietEditTaskNotes.getText()).toString());
             sendIntent.setType("text/plain");
 
             Intent shareIntent = Intent.createChooser(sendIntent, null);
