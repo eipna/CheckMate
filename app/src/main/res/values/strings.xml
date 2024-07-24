@@ -81,7 +81,8 @@
     <!-- Text Input Layout Fields -->
     <string name="input_task_name">Name</string>
     <string name="input_task_notes">Notes</string>
-    <string name="input_date_created">Date Created</string>
+    <string name="input_task_date_created">Date Created</string>
+    <string name="input_task_reminder">Due Date And Time</string>
 
     <!-- Button Texts -->
     <string name="button_create_task">Create task</string>
