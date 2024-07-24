@@ -12,21 +12,18 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.databinding.ActivityMainBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
 
 import java.util.ArrayList;
@@ -35,32 +32,29 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
 
     private ArrayList<TaskModel> taskModels;
-
     private AppDatabase appDatabase;
     private TaskAdapter adapter;
-
-    private ConstraintLayout emptyTaskContainer;
-    private RecyclerView rv_main;
-    private FloatingActionButton btn_add_task;
-    private MaterialToolbar toolbar;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-        setSupportActionBar(findViewById(R.id.tb_main));
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        initializeComponents();
+        setSupportActionBar(binding.tbMain); // Sets up the toolbar
+        appDatabase = new AppDatabase(this);
+
         initializeDatasets();
         displayTaskItems();
 
-        btn_add_task.setOnClickListener(v -> {
+        binding.fbaAddTask.setOnClickListener(v -> {
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
             createTaskIntentLauncher.launch(createTaskIntent);
         });
@@ -80,15 +74,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         }
     });
 
-    private void initializeComponents() {
-        appDatabase = new AppDatabase(this);
-
-        emptyTaskContainer = findViewById(R.id.cl_empty_container);
-        rv_main = findViewById(R.id.rv_main);
-        toolbar = findViewById(R.id.tb_main);
-        btn_add_task = findViewById(R.id.fba_add_task);
-    }
-
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
         taskModels = appDatabase.getTaskItems(CheckMateApplication.TASK_NOT_COMPLETED);
@@ -98,18 +83,18 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     private void handleEmptyIndicator() {
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
-            emptyTaskContainer.setVisibility(View.VISIBLE);
+            binding.clEmptyContainer.setVisibility(View.VISIBLE);
         } else {
             // Disables empty task list indicator if task items is not empty
-            emptyTaskContainer.setVisibility(View.GONE);
+            binding.clEmptyContainer.setVisibility(View.GONE);
         }
     }
 
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(MainActivity.this, MainActivity.this, taskModels);
-        rv_main.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        rv_main.setAdapter(adapter);
+        binding.rvMain.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        binding.rvMain.setAdapter(adapter);
     }
 
     // Updates task list on new task creation or task update
@@ -132,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // Gets the toolbar's current menu
-        Menu mainOptionsMenu = toolbar.getMenu();
+        Menu mainOptionsMenu = binding.tbMain.getMenu();
 
         // Gets all sorting menu items
         MenuItem sortNameAZ = mainOptionsMenu.findItem(R.id.item_sort_AZ);
