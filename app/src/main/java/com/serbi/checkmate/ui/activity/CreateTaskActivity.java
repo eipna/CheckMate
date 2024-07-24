@@ -11,13 +11,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
+import com.serbi.checkmate.databinding.ActivityCreateTaskBinding;
 import com.serbi.checkmate.util.DateHandler;
 
 import java.util.Objects;
@@ -25,44 +23,34 @@ import java.util.Objects;
 public class CreateTaskActivity extends AppCompatActivity {
 
     private AppDatabase appDatabase;
-
-    private MaterialToolbar toolbar;
-    private MaterialButton btn_create_task;
-    private TextInputEditText tiet_task_name, tiet_task_notes, tiet_task_date_created;
+    private ActivityCreateTaskBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = ActivityCreateTaskBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_create_task);
+        setContentView(binding.getRoot());
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        initializeComponents();
+        // Initialize database
+        appDatabase = new AppDatabase(this);
+
         setFocusOnNameField();
         initializeToolbar();
 
         // Sets date created input field text to current date
-        tiet_task_date_created.setText(DateHandler.getDetailedDate());
+        binding.tietTaskDateCreated.setText(DateHandler.getDetailedDate());
 
-        btn_create_task.setOnClickListener(v -> createNewTask());
-    }
-
-    private void initializeComponents() {
-        toolbar = findViewById(R.id.tb_create_task);
-        appDatabase = new AppDatabase(this);
-
-        btn_create_task = findViewById(R.id.btn_create_task);
-        tiet_task_name = findViewById(R.id.tiet_task_name);
-        tiet_task_notes = findViewById(R.id.tiet_task_notes);
-        tiet_task_date_created = findViewById(R.id.tiet_task_date_created);
+        binding.btnCreateTask.setOnClickListener(v -> createNewTask());
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.tbCreateTask);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -71,18 +59,18 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     // Set focus on task name on load
     private void setFocusOnNameField() {
-        tiet_task_name.requestFocus();
+        binding.tietTaskName.requestFocus();
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.showSoftInput(tiet_task_name, InputMethodManager.SHOW_IMPLICIT);
+        inputMethodManager.showSoftInput(binding.tietTaskName, InputMethodManager.SHOW_IMPLICIT);
     }
 
     private void createNewTask() {
-        String taskName = Objects.requireNonNull(tiet_task_name.getText()).toString();
-        String taskNotes = Objects.requireNonNull(tiet_task_notes.getText()).toString();
+        String taskName = Objects.requireNonNull(binding.tietTaskName.getText()).toString();
+        String taskNotes = Objects.requireNonNull(binding.tietTaskNotes.getText()).toString();
 
         // Checks if the task name field is empty
         if (taskName.isEmpty()) {
-            tiet_task_name.setError(getResources().getString(R.string.empty_name));
+            binding.tietTaskName.setError(getResources().getString(R.string.empty_name));
             return;
         }
 
