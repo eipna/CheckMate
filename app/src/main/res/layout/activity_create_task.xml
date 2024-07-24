@@ -22,16 +22,14 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_task_name"
                 style="@style/TextInputLayout"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_task_name">
@@ -45,9 +43,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_task_date_created"
                 style="@style/TextInputLayout"
-                app:layout_constraintTop_toBottomOf="@id/til_task_name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_date_created">
@@ -64,9 +59,6 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_task_notes"
                 style="@style/TextInputLayout"
-                app:layout_constraintTop_toBottomOf="@id/til_task_date_created"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_task_notes">
@@ -76,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
