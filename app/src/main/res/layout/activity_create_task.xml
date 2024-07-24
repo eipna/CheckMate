@@ -85,11 +85,14 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/tiet_task_reminder"
+                        android:focusable="false"
+                        android:inputType="none"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switch_task_reminder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -58,6 +59,15 @@ public class EditTaskActivity extends AppCompatActivity {
 
         binding.btnDeleteTask.setOnClickListener(v -> deleteTask());
         binding.btnSaveTask.setOnClickListener(v -> saveTask());
+
+        // Shows date and time picker dialogs
+        binding.tietEditTaskReminder.setOnClickListener(v -> {
+            if (binding.switchTaskEditReminder.isChecked()) {
+                Toast.makeText(EditTaskActivity.this, "Due reminder field is active", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(EditTaskActivity.this, "Due reminder field is not active", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // Retrieves extras from main activity
