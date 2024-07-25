@@ -8,8 +8,6 @@ import android.os.Build;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.serbi.checkmate.util.NotificationHandler;
-
 public class CheckMateApplication extends Application {
 
     // Shared Preferences
@@ -20,14 +18,21 @@ public class CheckMateApplication extends Application {
     public static final int TASK_COMPLETED = 1;
     public static final int TASK_NOT_COMPLETED = 0;
 
+    // Vibration handler durations
+    public static final int VIRATION_DEFAULT_DURATION = 80;
+
+    // Notification channels
+    public static final String CHANNEL_REMINDER_ID = "reminder_channel";
+    public static final String CHANNEL_REMINDER_NAME = "Reminders";
+
     @Override
     public void onCreate() {
         super.onCreate();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel reminderChannel = new NotificationChannel(
-                    NotificationHandler.CHANNEL_REMINDER_ID,
-                    NotificationHandler.CHANNEL_REMINDER_NAME,
+                    CheckMateApplication.CHANNEL_REMINDER_ID,
+                    CheckMateApplication.CHANNEL_REMINDER_NAME,
                     NotificationManager.IMPORTANCE_DEFAULT
             );
 

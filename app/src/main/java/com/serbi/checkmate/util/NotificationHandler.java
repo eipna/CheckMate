@@ -5,18 +5,15 @@ import android.content.Context;
 
 import androidx.core.app.NotificationCompat;
 
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 
 public class NotificationHandler {
 
-    public static final String CHANNEL_REMINDER_ID = "reminder_channel";
-    public static final String CHANNEL_REMINDER_NAME = "Reminders";
-    public static final String CHANNEL_REMINDER_DESCRIPTION = "Handles reminders";
-
     public static void showNotification(Context context, int taskId, String taskName) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_REMINDER_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CheckMateApplication.CHANNEL_REMINDER_ID)
                 .setContentTitle("Sample Notification Title")
                 .setContentText("Sample Notification Description")
                 .setSmallIcon(R.drawable.date)
