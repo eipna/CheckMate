@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -51,15 +50,6 @@ public class CreateTaskActivity extends AppCompatActivity {
         binding.tietTaskDateCreated.setText(DateHandler.getDetailedDate());
 
         binding.btnCreateTask.setOnClickListener(v -> createNewTask());
-
-        // Shows date and time picker dialog
-        binding.tietTaskReminder.setOnClickListener(v -> {
-            if (binding.switchTaskReminder.isChecked()) {
-                Toast.makeText(CreateTaskActivity.this, "Due reminder field is active", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(CreateTaskActivity.this, "Due reminder field is not active", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void initializeToolbar() {
