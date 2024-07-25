@@ -73,10 +73,10 @@
     <string name="menu_sort">Sort by</string>
     <string name="menu_sortAZ">Name (A to Z)</string>
     <string name="menu_sortZA">Name (Z to A)</string>
-    <string name="menu_sort_date_created_asc">Date Created (Latest)</string>
-    <string name="menu_sort_date_created_desc">Date Created (Oldest)</string>
-    <string name="menu_sort_edit_asc">Last Edited (Latest)</string>
-    <string name="menu_sort_edit_desc">Last Edited (Oldest)</string>
+    <string name="menu_sort_date_created_asc">Created (Latest)</string>
+    <string name="menu_sort_date_created_desc">Created (Oldest)</string>
+    <string name="menu_sort_edit_asc">Edited (Latest)</string>
+    <string name="menu_sort_edit_desc">Edited (Oldest)</string>
 
     <!-- Text Input Layout Fields -->
     <string name="input_task_name">Name</string>
