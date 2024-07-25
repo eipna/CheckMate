@@ -80,7 +80,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                     Intent browserIntent = null;
                     if (which == 0) {
                         browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse
-                                (getResources().getString(R.string.webite_pretty_time)));
+                                (getResources().getString(R.string.website_pretty_time)));
+                    }
+                    if (which == 1) {
+                        browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse
+                                (getResources().getString(R.string.website_work_manager)));
                     }
                     startActivity(browserIntent);
                 }).setPositiveButton("Go Back", null);

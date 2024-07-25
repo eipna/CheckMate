@@ -49,6 +49,7 @@
     <!-- List Libraries Settings -->
     <string-array name="list_libraries">
         <item>PrettyTime</item>
+        <item>Work Manager</item>
     </string-array>
 
     <!-- Illustration Empty Texts -->
@@ -57,7 +58,8 @@
 
     <!-- External Links-->
     <string name="website_github">https://github.com/eipna/CheckMate</string>
-    <string name="webite_pretty_time">https://www.ocpsoft.org/prettytime/</string>
+    <string name="website_pretty_time">https://www.ocpsoft.org/prettytime/</string>
+    <string name="website_work_manager">https://developer.android.com/develop/background-work/background-tasks/persistent/getting-started</string>
 
     <!-- Clear Completed Task Dialog -->
     <string name="dialog_name">Clear all completed tasks</string>
