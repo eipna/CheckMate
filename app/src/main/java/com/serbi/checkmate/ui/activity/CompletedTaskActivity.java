@@ -25,6 +25,7 @@ import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityCompletedTaskBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
+import com.serbi.checkmate.util.VibrationHandler;
 
 import java.util.ArrayList;
 
@@ -120,6 +121,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // Goes back to parent activity
         if (item.getItemId() == android.R.id.home) {
+            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
 

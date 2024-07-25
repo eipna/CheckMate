@@ -1,16 +1,20 @@
 package com.serbi.checkmate.ui.activity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.databinding.ActivitySettingsBinding;
 import com.serbi.checkmate.ui.fragment.SettingsFragment;
+import com.serbi.checkmate.util.VibrationHandler;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -41,5 +45,14 @@ public class SettingsActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.container_settings, new SettingsFragment())
                 .commit();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
+            return super.onOptionsItemSelected(item);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

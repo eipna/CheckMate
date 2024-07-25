@@ -13,11 +13,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityEditTaskBinding;
 import com.serbi.checkmate.util.DateHandler;
+import com.serbi.checkmate.util.VibrationHandler;
 
 import java.util.Objects;
 
@@ -131,6 +133,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Close current activity rather than going back to parent activity
         if (item.getItemId() == android.R.id.home) {
+            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
             finish();
         }
 
