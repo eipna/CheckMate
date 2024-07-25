@@ -19,7 +19,7 @@ public class CheckMateApplication extends Application {
     public static final int TASK_NOT_COMPLETED = 0;
 
     // Vibration handler durations
-    public static final int VIRATION_DEFAULT_DURATION = 80;
+    public static final int VIBRATION_DEFAULT_DURATION = 80;
 
     // Notification channels
     public static final String CHANNEL_REMINDER_ID = "reminder_channel";

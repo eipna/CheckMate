@@ -111,7 +111,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
+            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);

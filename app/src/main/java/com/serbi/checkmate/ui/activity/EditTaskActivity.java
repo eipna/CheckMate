@@ -133,7 +133,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Close current activity rather than going back to parent activity
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
+            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             finish();
         }
 

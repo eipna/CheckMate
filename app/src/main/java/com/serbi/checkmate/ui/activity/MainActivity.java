@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
         // Go to completed task activity
         if (item.getItemId() == R.id.item_completed_tasks) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
+            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             Intent completedTaskIntent = new Intent(MainActivity.this, CompletedTaskActivity.class);
             startActivity(completedTaskIntent);
         }

@@ -121,7 +121,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // Goes back to parent activity
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIRATION_DEFAULT_DURATION);
+            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
 
