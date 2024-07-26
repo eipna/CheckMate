@@ -89,4 +89,10 @@
     <string name="button_create_task">Create task</string>
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
+
+    <!-- Chips and Chip Groups -->
+    <string name="chip_header_text">Choose Priority Level</string>
+    <string name="chip_priority_high">High Priority</string>
+    <string name="chip_priority_medium">Medium Priority</string>
+    <string name="chip_priority_low">Low Priority</string>
 </resources>
