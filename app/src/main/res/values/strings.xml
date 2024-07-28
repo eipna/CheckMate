@@ -92,7 +92,7 @@
 
     <!-- Chips and Chip Groups -->
     <string name="chip_header_text">Choose Priority Level</string>
-    <string name="chip_priority_high">High Priority</string>
-    <string name="chip_priority_medium">Medium Priority</string>
-    <string name="chip_priority_low">Low Priority</string>
+    <string name="chip_priority_high">High</string>
+    <string name="chip_priority_medium">Medium</string>
+    <string name="chip_priority_low">Low</string>
 </resources>
