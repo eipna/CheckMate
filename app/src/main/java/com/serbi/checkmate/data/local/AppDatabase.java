@@ -90,6 +90,29 @@ public class AppDatabase extends SQLiteOpenHelper {
             ));
         }
         cursor.close();
+        close();
+        return taskItems;
+    }
+
+    // Retrieves all task items based on priority level
+    public ArrayList<TaskModel> getTasksByPriority(int priorityLevel) {
+        ArrayList<TaskModel> taskItems = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_TASK + " WHERE " + TABLE_TAKE_PRIORITY + " = " + priorityLevel;
+        Cursor cursor = getReadableDatabase().rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            taskItems.add(new TaskModel(
+                    cursor.getInt(0),       // task id
+                    cursor.getString(1),    // task name
+                    cursor.getString(2),    // task notes
+                    cursor.getInt(3),       // task priority level
+                    cursor.getLong(4),      // task date created
+                    cursor.getLong(5),      // task last edited
+                    cursor.getInt(6)        // task is completed
+            ));
+        }
+        cursor.close();
+        close();
         return taskItems;
     }
 
