@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class AppDatabase extends SQLiteOpenHelper {
 
     // Database Credentials
-    private static final String DATABASE_NAME = "mindcheck.db";
+    private static final String DATABASE_NAME = "database.db";
     private static final int DATABASE_VERSION = 1;
 
     // Database Tables
