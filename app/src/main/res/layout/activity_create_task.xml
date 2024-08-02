@@ -109,6 +109,13 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipDefault"
+                        android:text="@string/chip_priority_default"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                 </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
         </LinearLayout>

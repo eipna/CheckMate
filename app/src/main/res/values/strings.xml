@@ -95,4 +95,5 @@
     <string name="chip_priority_high">High</string>
     <string name="chip_priority_medium">Medium</string>
     <string name="chip_priority_low">Low</string>
+    <string name="chip_priority_default">No Priority</string>
 </resources>

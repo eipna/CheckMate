@@ -19,6 +19,7 @@ public class CheckMateApplication extends Application {
     public static final int TASK_NOT_COMPLETED = 0;
 
     // Task Priority Levels
+    public static final int TASK_PRIORITY_DEFAULT = 0;
     public static final int TASK_PRIORITY_LOW = 1;
     public static final int TASK_PRIORITY_MEDIUM = 2;
     public static final int TASK_PRIORITY_HIGH = 3;
