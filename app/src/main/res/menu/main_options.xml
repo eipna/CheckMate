@@ -47,6 +47,33 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/options_filter"
+        android:title="@string/menu_filter_text">
+
+        <menu>
+            <group
+                android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/item_filter_high"
+                    android:title="@string/menu_filter_high"/>
+
+                <item
+                    android:id="@+id/item_filter_medium"
+                    android:title="@string/menu_filter_medium"/>
+
+                <item
+                    android:id="@+id/item_filter_low"
+                    android:title="@string/menu_filter_low"/>
+
+                <item
+                    android:id="@+id/item_filter_default"
+                    android:title="@string/menu_filter_default"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
         android:id="@+id/options_settings"
-        android:title="Settings" />
+        android:title="@string/menu_settings" />
 </menu>
