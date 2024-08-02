@@ -8,7 +8,7 @@
     tools:context=".ui.activity.CreateTaskActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tb_create_task"
+        android:id="@+id/toolbar"
         app:title="@string/toolbar_create"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,27 +28,25 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_task_name"
                 style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_task_name">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiet_task_name"
+                    android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_task_date_created"
                 style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_task_date_created">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiet_task_date_created"
+                    android:id="@+id/inputDateCreated"
                     android:focusable="false"
                     android:inputType="none"
                     android:alpha="0.5"
@@ -57,14 +55,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_task_notes"
                 style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_task_notes">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tiet_task_notes"
+                    android:id="@+id/inputNotes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,7 +69,7 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_create_task"
+        android:id="@+id/createTask"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

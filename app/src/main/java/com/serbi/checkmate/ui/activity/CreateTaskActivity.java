@@ -47,13 +47,13 @@ public class CreateTaskActivity extends AppCompatActivity {
         initializeToolbar();
 
         // Sets date created input field text to current date
-        binding.tietTaskDateCreated.setText(DateHandler.getDetailedDate());
+        binding.inputDateCreated.setText(DateHandler.getDetailedDate());
 
-        binding.btnCreateTask.setOnClickListener(v -> createNewTask());
+        binding.createTask.setOnClickListener(v -> createNewTask());
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(binding.tbCreateTask);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -62,18 +62,18 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     // Set focus on task name on load
     private void setFocusOnNameField() {
-        binding.tietTaskName.requestFocus();
+        binding.inputName.requestFocus();
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.showSoftInput(binding.tietTaskName, InputMethodManager.SHOW_IMPLICIT);
+        inputMethodManager.showSoftInput(binding.inputName, InputMethodManager.SHOW_IMPLICIT);
     }
 
     private void createNewTask() {
-        String taskName = Objects.requireNonNull(binding.tietTaskName.getText()).toString();
-        String taskNotes = Objects.requireNonNull(binding.tietTaskNotes.getText()).toString();
+        String taskName = Objects.requireNonNull(binding.inputName.getText()).toString();
+        String taskNotes = Objects.requireNonNull(binding.inputName.getText()).toString();
 
         // Checks if the task name field is empty
         if (taskName.isEmpty()) {
-            binding.tietTaskName.setError(getResources().getString(R.string.empty_name));
+            binding.inputName.setError(getResources().getString(R.string.empty_name));
             return;
         }
 
