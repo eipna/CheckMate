@@ -89,6 +89,7 @@
                 <com.google.android.material.chip.ChipGroup
                     app:singleSelection="true"
                     app:singleLine="true"
+                    app:checkedChip="@id/chipDefault"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
