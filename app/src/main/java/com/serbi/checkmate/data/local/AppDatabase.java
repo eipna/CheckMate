@@ -63,6 +63,7 @@ public class AppDatabase extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(TABLE_TASK_NAME, newTask.getName());
         values.put(TABLE_TASK_NOTES, newTask.getNotes());
+        values.put(TABLE_TAKE_PRIORITY, newTask.getPriority());
         values.put(TABLE_TASK_DATE_CREATED, newTask.getDateCreated());
         values.put(TABLE_TASK_LAST_EDITED, newTask.getLastEdited());
         values.put(TABLE_TASK_IS_COMPLETED, newTask.getIsCompleted());
@@ -79,12 +80,13 @@ public class AppDatabase extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()) {
             taskItems.add(new TaskModel(
-                    cursor.getInt(0), // task id
-                    cursor.getString(1), // task name
-                    cursor.getString(2), // task notes
-                    cursor.getLong(3), // task date created
-                    cursor.getLong(4), // task last edited
-                    cursor.getInt(5) // task is completed
+                    cursor.getInt(0),       // task id
+                    cursor.getString(1),    // task name
+                    cursor.getString(2),    // task notes
+                    cursor.getInt(3),       // task priority level
+                    cursor.getLong(4),      // task date created
+                    cursor.getLong(5),      // task last edited
+                    cursor.getInt(6)        // task is completed
             ));
         }
         cursor.close();
