@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
             return insets;
         });
 
-        setSupportActionBar(binding.tbMain); // Sets up the toolbar
+        setSupportActionBar(binding.toolbar); // Sets up the toolbar
         appDatabase = new AppDatabase(this);
 
         initializeDatasets();
         displayTaskItems();
 
-        binding.fbaAddTask.setOnClickListener(v -> {
+        binding.addTask.setOnClickListener(v -> {
             Intent createTaskIntent = new Intent(MainActivity.this, CreateTaskActivity.class);
             createTaskIntentLauncher.launch(createTaskIntent);
         });
@@ -84,18 +84,18 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     private void handleEmptyIndicator() {
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
-            binding.clEmptyContainer.setVisibility(View.VISIBLE);
+            binding.noTaskIndicator.setVisibility(View.VISIBLE);
         } else {
             // Disables empty task list indicator if task items is not empty
-            binding.clEmptyContainer.setVisibility(View.GONE);
+            binding.noTaskIndicator.setVisibility(View.GONE);
         }
     }
 
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(MainActivity.this, MainActivity.this, taskModels);
-        binding.rvMain.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        binding.rvMain.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        binding.recyclerView.setAdapter(adapter);
     }
 
     // Updates task list on new task creation or task update
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // Gets the toolbar's current menu
-        Menu mainOptionsMenu = binding.tbMain.getMenu();
+        Menu mainOptionsMenu = binding.toolbar.getMenu();
 
         // Gets all sorting menu items
         MenuItem sortNameAZ = mainOptionsMenu.findItem(R.id.item_sort_AZ);

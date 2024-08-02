@@ -8,7 +8,7 @@
     tools:context=".ui.activity.MainActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tb_main"
+        android:id="@+id/toolbar"
         app:title="@string/toolbar_main"
         app:titleTextAppearance="@style/ToolbarText"
         app:titleMarginStart="30dp"
@@ -18,43 +18,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_empty_container"
+    <LinearLayout
+        android:id="@+id/noTaskIndicator"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="70dp">
 
         <ImageView
-            android:id="@+id/iv_empty_photo"
             android:src="@drawable/illustration_empty"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_gravity="center"
             style="@style/IllustrationEmptyPhoto"/>
 
         <TextView
-            app:layout_constraintTop_toBottomOf="@id/iv_empty_photo"
-            app:layout_constraintStart_toStartOf="@id/iv_empty_photo"
-            app:layout_constraintEnd_toEndOf="@id/iv_empty_photo"
+            android:layout_gravity="center"
             style="@style/IllustrationEmptyText"
             android:text="@string/illustration_empty_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_main"
+        android:id="@+id/recyclerView"
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fba_add_task"
+        android:id="@+id/addTask"
         android:layout_marginBottom="32dp"
         android:layout_marginEnd="24dp"
         style="@style/FloatingActionButton"
