@@ -25,7 +25,6 @@ import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityMainBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
-import com.serbi.checkmate.util.VibrationHandler;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -136,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
         // Go to completed task activity
         if (item.getItemId() == R.id.item_completed_tasks) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             Intent completedTaskIntent = new Intent(MainActivity.this, CompletedTaskActivity.class);
             startActivity(completedTaskIntent);
         }
