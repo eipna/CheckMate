@@ -92,7 +92,7 @@ public class EditTaskActivity extends AppCompatActivity {
                     taskIdExtra,
                     newTaskName,
                     newTaskNotes,
-                    CheckMateApplication.TASK_PRIORITY_LOW, // placeholder for now
+                    getPriorityLevel(),
                     -1, // Does not need to be updated
                     DateHandler.getCurrentTimeStamp(),
                     -1 // Does not need to be updated
@@ -105,6 +105,19 @@ public class EditTaskActivity extends AppCompatActivity {
     private void deleteTask() {
         appDatabase.deleteTask(taskIdExtra);
         closeCurrentActivity();
+    }
+
+    // Get the selected priority level
+    private int getPriorityLevel() {
+        if (binding.chipHigh.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_HIGH;
+        } else if (binding.chipMedium.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_MEDIUM;
+        } else if (binding.chipLow.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_LOW;
+        } else {
+            return CheckMateApplication.TASK_PRIORITY_DEFAULT;
+        }
     }
 
     // Closes the current activity and sends a RESULT_OK result code to initiate task update

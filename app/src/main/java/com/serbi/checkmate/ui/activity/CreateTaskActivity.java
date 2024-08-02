@@ -87,7 +87,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 -1, // Will not be used anyway
                 taskName,
                 taskNotes,
-                CheckMateApplication.TASK_PRIORITY_LOW, // placeholder for now
+                getPriorityLevel(),
                 DateHandler.getCurrentTimeStamp(),
                 DateHandler.getCurrentTimeStamp(),
                 CheckMateApplication.TASK_NOT_COMPLETED
@@ -97,6 +97,19 @@ public class CreateTaskActivity extends AppCompatActivity {
         Intent createNewTaskIntent = new Intent();
         setResult(RESULT_OK, createNewTaskIntent);
         finish();
+    }
+
+    // Get the selected priority level
+    private int getPriorityLevel() {
+        if (binding.chipHigh.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_HIGH;
+        } else if (binding.chipMedium.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_MEDIUM;
+        } else if (binding.chipLow.isChecked()) {
+            return CheckMateApplication.TASK_PRIORITY_LOW;
+        } else {
+            return CheckMateApplication.TASK_PRIORITY_DEFAULT;
+        }
     }
 
     @Override
