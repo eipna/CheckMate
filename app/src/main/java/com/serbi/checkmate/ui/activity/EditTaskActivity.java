@@ -50,16 +50,16 @@ public class EditTaskActivity extends AppCompatActivity {
         initializeToolbar();
 
         // Sets data from extras in main activity
-        binding.tietEditTaskName.setText(taskNameExtra);
+        binding.inputName.setText(taskNameExtra);
         if (taskNotesExtra.equals(getResources().getString(R.string.empty_notes))) {
-            binding.tietEditTaskNotes.setText("");
+            binding.inputNotes.setText("");
         } else {
-            binding.tietEditTaskNotes.setText(taskNotesExtra);
+            binding.inputNotes.setText(taskNotesExtra);
         }
-        binding.tietEditTaskDateCreated.setText(DateHandler.getDetailedDate(taskDateCreated));
+        binding.inputDateCreated.setText(DateHandler.getDetailedDate(taskDateCreated));
 
-        binding.btnDeleteTask.setOnClickListener(v -> deleteTask());
-        binding.btnSaveTask.setOnClickListener(v -> saveTask());
+        binding.deleteTask.setOnClickListener(v -> deleteTask());
+        binding.saveTask.setOnClickListener(v -> saveTask());
     }
 
     // Retrieves extras from main activity
@@ -71,7 +71,7 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(binding.tbEditTask);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,8 +80,8 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private void saveTask() {
         // Extracts the text from the name and notes field
-        String newTaskName = Objects.requireNonNull(binding.tietEditTaskName.getText()).toString();
-        String newTaskNotes = Objects.requireNonNull(binding.tietEditTaskNotes.getText()).toString();
+        String newTaskName = Objects.requireNonNull(binding.inputName.getText()).toString();
+        String newTaskNotes = Objects.requireNonNull(binding.inputNotes.getText()).toString();
 
         /* If the data from the extras and the current activity are the same,
         there will be no updates in the database and will just proceed to exiting the activity */
@@ -131,7 +131,7 @@ public class EditTaskActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_share) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, Objects.requireNonNull(binding.tietEditTaskNotes.getText()).toString());
+            sendIntent.putExtra(Intent.EXTRA_TEXT, Objects.requireNonNull(binding.inputNotes.getText()).toString());
             sendIntent.setType("text/plain");
 
             Intent shareIntent = Intent.createChooser(sendIntent, null);
