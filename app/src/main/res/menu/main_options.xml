@@ -65,6 +65,10 @@
                     android:title="@string/menu_filter_low"/>
 
                 <item
+                    android:id="@+id/item_filter_no_priority"
+                    android:title="@string/menu_filter_no_priority"/>
+
+                <item
                     android:id="@+id/item_filter_default"
                     android:title="@string/menu_filter_default"/>
             </group>

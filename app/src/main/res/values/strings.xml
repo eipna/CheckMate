@@ -85,7 +85,8 @@
     <string name="menu_filter_high">High</string>
     <string name="menu_filter_medium">Medium</string>
     <string name="menu_filter_low">Low</string>
-    <string name="menu_filter_default">No Priority</string>
+    <string name="menu_filter_no_priority">No Priority</string>
+    <string name="menu_filter_default">No Filter</string>
 
     <!-- Text Input Layout Fields -->
     <string name="input_task_name">Name</string>

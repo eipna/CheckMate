@@ -108,7 +108,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         } else if (binding.chipLow.isChecked()) {
             return CheckMateApplication.TASK_PRIORITY_LOW;
         } else {
-            return CheckMateApplication.TASK_PRIORITY_DEFAULT;
+            return CheckMateApplication.TASK_PRIORITY_NO_PRIORITY;
         }
     }
 

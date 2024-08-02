@@ -110,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
         // Sorts the items by default on application load
         MenuItem defaultSortingOption = menu.findItem(R.id.item_sort_AZ); // Sort by Ascending (Name A to Z)
+        MenuItem defaultFiltering = menu.findItem(R.id.item_filter_default);
+
+        defaultFiltering.setChecked(true);
         defaultSortingOption.setChecked(true);
         return true;
     }
@@ -131,7 +134,8 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         MenuItem filterPriorityHigh = mainOptionsMenu.findItem(R.id.item_filter_high);
         MenuItem filterPriorityMedium = mainOptionsMenu.findItem(R.id.item_filter_medium);
         MenuItem filterPriorityLow = mainOptionsMenu.findItem(R.id.item_filter_low);
-        MenuItem filterPriorityDefault = mainOptionsMenu.findItem(R.id.item_filter_default);
+        MenuItem filterNoPriority = mainOptionsMenu.findItem(R.id.item_filter_no_priority);
+        MenuItem filterDefault = mainOptionsMenu.findItem(R.id.item_filter_default);
 
         // Go to settings activity
         if (item.getItemId() == R.id.options_settings) {
@@ -158,9 +162,13 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
             filterPriorityLow.setChecked(true);
             filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_LOW);
         }
+        if (item.getItemId() == R.id.item_filter_no_priority) {
+            filterNoPriority.setChecked(true);
+            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_NO_PRIORITY);
+        }
         if (item.getItemId() == R.id.item_filter_default) {
-            filterPriorityDefault.setChecked(true);
-            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_DEFAULT);
+            filterDefault.setChecked(true);
+            updateTaskItems();
         }
 
         // Handles sorting of task items
