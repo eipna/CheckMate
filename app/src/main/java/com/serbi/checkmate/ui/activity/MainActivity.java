@@ -127,6 +127,12 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         MenuItem sortLastEditedASC = mainOptionsMenu.findItem(R.id.item_sort_edit_asc);
         MenuItem sortLastEditedDESC = mainOptionsMenu.findItem(R.id.item_sort_edit_desc);
 
+        // Gets all filtering menu items;
+        MenuItem filterPriorityHigh = mainOptionsMenu.findItem(R.id.item_filter_high);
+        MenuItem filterPriorityMedium = mainOptionsMenu.findItem(R.id.item_filter_medium);
+        MenuItem filterPriorityLow = mainOptionsMenu.findItem(R.id.item_filter_low);
+        MenuItem filterPriorityDefault = mainOptionsMenu.findItem(R.id.item_filter_default);
+
         // Go to settings activity
         if (item.getItemId() == R.id.options_settings) {
             Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -137,6 +143,24 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         if (item.getItemId() == R.id.item_completed_tasks) {
             Intent completedTaskIntent = new Intent(MainActivity.this, CompletedTaskActivity.class);
             startActivity(completedTaskIntent);
+        }
+
+        // Handles filtering of task items by priority level
+        if (item.getItemId() == R.id.item_filter_high) {
+            filterPriorityHigh.setChecked(true);
+            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_HIGH);
+        }
+        if (item.getItemId() == R.id.item_filter_medium) {
+            filterPriorityMedium.setChecked(true);
+            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_MEDIUM);
+        }
+        if (item.getItemId() == R.id.item_filter_low) {
+            filterPriorityLow.setChecked(true);
+            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_LOW);
+        }
+        if (item.getItemId() == R.id.item_filter_default) {
+            filterPriorityDefault.setChecked(true);
+            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_DEFAULT);
         }
 
         // Handles sorting of task items
@@ -177,6 +201,12 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
             sortLastEditedDESC.setChecked(true);
         }
         return true;
+    }
+
+    // Filter tasks by priority level
+    private void filterTasksByPriority(int priorityLevel) {
+        taskModels = appDatabase.getTasksByPriority(priorityLevel);
+        displayTaskItems();
     }
 
     @SuppressLint("NotifyDataSetChanged")
