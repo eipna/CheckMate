@@ -26,6 +26,7 @@ public class AppDatabase extends SQLiteOpenHelper {
     private static final String TABLE_TASK_ID = "task_id";
     private static final String TABLE_TASK_NAME = "name";
     private static final String TABLE_TASK_NOTES = "notes";
+    private static final String TABLE_TAKE_PRIORITY = "priority";
     private static final String TABLE_TASK_DATE_CREATED = "date_created";
     private static final String TABLE_TASK_LAST_EDITED = "last_edited";
     private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
@@ -41,6 +42,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 TABLE_TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TABLE_TASK_NAME + " TEXT," +
                 TABLE_TASK_NOTES + " TEXT," +
+                TABLE_TAKE_PRIORITY + " INTEGER, " +
                 TABLE_TASK_DATE_CREATED + " LONG, " +
                 TABLE_TASK_LAST_EDITED + " LONG, " +
                 TABLE_TASK_IS_COMPLETED + " INTEGER)";
