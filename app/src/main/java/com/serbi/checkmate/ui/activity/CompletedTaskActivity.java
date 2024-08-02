@@ -73,12 +73,12 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     // Displays the task items in the recyclerview
     private void displayTaskItems() {
         adapter = new TaskAdapter(CompletedTaskActivity.this, CompletedTaskActivity.this, taskModels);
-        binding.rvCompletedTask.setLayoutManager(new LinearLayoutManager(CompletedTaskActivity.this));
-        binding.rvCompletedTask.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(CompletedTaskActivity.this));
+        binding.recyclerView.setAdapter(adapter);
     }
 
     private void initializeToolbar() {
-        setSupportActionBar(binding.tbCompletedTask);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -110,10 +110,10 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private void handleEmptyIndicator() {
         if (taskModels.isEmpty()) {
             // Enables empty task list indicator if there are no task items
-            binding.clEmptyCompletedTasksContainer.setVisibility(View.VISIBLE);
+            binding.noTaskIndicator.setVisibility(View.VISIBLE);
         } else {
             // Disables empty task list indicator if task items is not empty
-            binding.clEmptyCompletedTasksContainer.setVisibility(View.GONE);
+            binding.noTaskIndicator.setVisibility(View.GONE);
         }
     }
 
@@ -151,7 +151,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         taskModels.clear(); // Clears all items in completed tasks list
         adapter.notifyDataSetChanged(); // Updates adapter
 
-        binding.clEmptyCompletedTasksContainer.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
+        binding.noTaskIndicator.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
         invalidateOptionsMenu(); // Updates toolbar menu
     }
 
