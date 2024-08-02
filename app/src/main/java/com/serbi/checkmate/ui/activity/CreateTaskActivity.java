@@ -87,6 +87,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 -1, // Will not be used anyway
                 taskName,
                 taskNotes,
+                CheckMateApplication.TASK_PRIORITY_LOW, // placeholder for now
                 DateHandler.getCurrentTimeStamp(),
                 DateHandler.getCurrentTimeStamp(),
                 CheckMateApplication.TASK_NOT_COMPLETED

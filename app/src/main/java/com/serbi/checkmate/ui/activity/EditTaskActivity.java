@@ -92,6 +92,7 @@ public class EditTaskActivity extends AppCompatActivity {
                     taskIdExtra,
                     newTaskName,
                     newTaskNotes,
+                    CheckMateApplication.TASK_PRIORITY_LOW, // placeholder for now
                     -1, // Does not need to be updated
                     DateHandler.getCurrentTimeStamp(),
                     -1 // Does not need to be updated
