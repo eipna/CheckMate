@@ -26,7 +26,6 @@ public class SettingsActivity extends AppCompatActivity {
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
-        setSupportActionBar(binding.tbSettings); // Initialize toolbar
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -34,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // Setup toolbar
-        setSupportActionBar(binding.tbSettings);
+        setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -43,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Inflates preference settings
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_settings, new SettingsFragment())
+                .replace(R.id.settingsContainer, new SettingsFragment())
                 .commit();
     }
 
