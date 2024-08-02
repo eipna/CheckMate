@@ -18,6 +18,11 @@ public class CheckMateApplication extends Application {
     public static final int TASK_COMPLETED = 1;
     public static final int TASK_NOT_COMPLETED = 0;
 
+    // Task Priority Levels
+    public static final int TASK_PRIORITY_LOW = 1;
+    public static final int TASK_PRIORITY_MEDIUM = 2;
+    public static final int TASK_PRIORITY_HIGH = 3;
+
     // Vibration handler durations
     public static final int VIBRATION_DEFAULT_DURATION = 80;
 
