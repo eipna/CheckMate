@@ -14,7 +14,7 @@ import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.databinding.ActivitySettingsBinding;
 import com.serbi.checkmate.ui.fragment.SettingsFragment;
-import com.serbi.checkmate.util.VibrationHandler;
+import com.serbi.checkmate.util.VibrationUtil;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);

@@ -21,7 +21,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.model.TaskModel;
-import com.serbi.checkmate.util.DateHandler;
+import com.serbi.checkmate.util.DateUtil;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -55,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.item_task_name.setText(taskModels.get(position).getName());
         holder.item_task_notes.setText(taskModels.get(position).getNotes());
         holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
-        holder.item_task_date_created.setText(DateHandler.getDetailedDate(taskModels.get(position).getDateCreated()));
+        holder.item_task_date_created.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
         holder.item_task_last_edited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
 
         holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> {

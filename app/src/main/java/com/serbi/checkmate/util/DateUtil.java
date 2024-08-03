@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DateHandler {
+public class DateUtil {
 
     // Returns current time stamp
     public static long getCurrentTimeStamp() {

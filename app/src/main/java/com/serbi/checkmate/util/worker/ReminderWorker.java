@@ -7,7 +7,7 @@ import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
-import com.serbi.checkmate.util.NotificationHandler;
+import com.serbi.checkmate.util.NotificationUtil;
 
 public class ReminderWorker extends Worker {
     public ReminderWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -21,7 +21,7 @@ public class ReminderWorker extends Worker {
         int taskId = retrievedDate.getInt("TASK_ID", -1);
         String taskName = retrievedDate.getString("TASK_NAME");
 
-        NotificationHandler.showNotification(getApplicationContext(), taskId, taskName);
+        NotificationUtil.showNotification(getApplicationContext(), taskId, taskName);
         return Result.success();
     }
 }

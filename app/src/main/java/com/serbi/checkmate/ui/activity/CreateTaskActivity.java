@@ -18,8 +18,8 @@ import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityCreateTaskBinding;
-import com.serbi.checkmate.util.DateHandler;
-import com.serbi.checkmate.util.VibrationHandler;
+import com.serbi.checkmate.util.DateUtil;
+import com.serbi.checkmate.util.VibrationUtil;
 
 import java.util.Objects;
 
@@ -47,7 +47,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         initializeToolbar();
 
         // Sets date created input field text to current date
-        binding.inputDateCreated.setText(DateHandler.getDetailedDate());
+        binding.inputDateCreated.setText(DateUtil.getDetailedDate());
 
         binding.createTask.setOnClickListener(v -> createNewTask());
     }
@@ -88,8 +88,8 @@ public class CreateTaskActivity extends AppCompatActivity {
                 taskName,
                 taskNotes,
                 getPriorityLevel(),
-                DateHandler.getCurrentTimeStamp(),
-                DateHandler.getCurrentTimeStamp(),
+                DateUtil.getCurrentTimeStamp(),
+                DateUtil.getCurrentTimeStamp(),
                 CheckMateApplication.TASK_NOT_COMPLETED
         );
         appDatabase.createTask(newTask); // Creates new task in database
@@ -115,7 +115,7 @@ public class CreateTaskActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);

@@ -17,8 +17,8 @@ import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.AppDatabase;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityEditTaskBinding;
-import com.serbi.checkmate.util.DateHandler;
-import com.serbi.checkmate.util.VibrationHandler;
+import com.serbi.checkmate.util.DateUtil;
+import com.serbi.checkmate.util.VibrationUtil;
 
 import java.util.Objects;
 
@@ -56,7 +56,7 @@ public class EditTaskActivity extends AppCompatActivity {
         } else {
             binding.inputNotes.setText(taskNotesExtra);
         }
-        binding.inputDateCreated.setText(DateHandler.getDetailedDate(taskDateCreated));
+        binding.inputDateCreated.setText(DateUtil.getDetailedDate(taskDateCreated));
 
         binding.deleteTask.setOnClickListener(v -> deleteTask());
         binding.saveTask.setOnClickListener(v -> saveTask());
@@ -94,7 +94,7 @@ public class EditTaskActivity extends AppCompatActivity {
                     newTaskNotes,
                     getPriorityLevel(),
                     -1, // Does not need to be updated
-                    DateHandler.getCurrentTimeStamp(),
+                    DateUtil.getCurrentTimeStamp(),
                     -1 // Does not need to be updated
             );
             appDatabase.editTask(editedTask);
@@ -137,7 +137,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Close current activity rather than going back to parent activity
         if (item.getItemId() == android.R.id.home) {
-            VibrationHandler.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
             finish();
         }
 
