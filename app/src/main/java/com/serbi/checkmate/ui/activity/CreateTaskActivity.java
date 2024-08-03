@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityCreateTaskBinding;
 import com.serbi.checkmate.util.DateUtil;
@@ -25,7 +25,7 @@ import java.util.Objects;
 
 public class CreateTaskActivity extends AppCompatActivity {
 
-    private AppDatabase appDatabase;
+    private Database database;
     private ActivityCreateTaskBinding binding;
 
     @Override
@@ -41,7 +41,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         });
 
         // Initialize new database
-        appDatabase = new AppDatabase(this);
+        database = new Database(this);
 
         setFocusOnNameField();
         initializeToolbar();
@@ -92,7 +92,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 DateUtil.getCurrentTimeStamp(),
                 CheckMateApplication.TASK_NOT_COMPLETED
         );
-        appDatabase.createTask(newTask); // Creates new task in database
+        database.createTask(newTask); // Creates new task in database
 
         Intent createNewTaskIntent = new Intent();
         setResult(RESULT_OK, createNewTaskIntent);

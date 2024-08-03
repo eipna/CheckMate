@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
-import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityEditTaskBinding;
 import com.serbi.checkmate.util.DateUtil;
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class EditTaskActivity extends AppCompatActivity {
 
-    private AppDatabase appDatabase;
+    private Database appDatabase;
     private ActivityEditTaskBinding binding;
 
     private int taskIdExtra;
@@ -44,7 +44,7 @@ public class EditTaskActivity extends AppCompatActivity {
         });
 
         // Initialize new database instance
-        appDatabase = new AppDatabase(this);
+        appDatabase = new Database(this);
 
         initializeExtras();
         initializeToolbar();

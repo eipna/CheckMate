@@ -13,7 +13,7 @@ import com.serbi.checkmate.data.model.TaskModel;
 
 import java.util.ArrayList;
 
-public class AppDatabase extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper {
 
     // Database Credentials
     private static final String DATABASE_NAME = "database.db";
@@ -31,7 +31,7 @@ public class AppDatabase extends SQLiteOpenHelper {
     private static final String TABLE_TASK_LAST_EDITED = "last_edited";
     private static final String TABLE_TASK_IS_COMPLETED = "is_completed";
 
-    public AppDatabase(@Nullable Context context) {
+    public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

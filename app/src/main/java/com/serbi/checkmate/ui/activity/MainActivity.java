@@ -22,7 +22,7 @@ import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;
-import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityMainBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
@@ -33,7 +33,7 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity implements Sortable, TaskListener {
 
     private ArrayList<TaskModel> taskModels;
-    private AppDatabase appDatabase;
+    private Database database;
     private TaskAdapter adapter;
     private ActivityMainBinding binding;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         });
 
         setSupportActionBar(binding.toolbar); // Sets up the toolbar
-        appDatabase = new AppDatabase(this);
+        database = new Database(this);
 
         initializeDatasets();
         displayTaskItems();
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
-        taskModels = appDatabase.getTaskItems(CheckMateApplication.TASK_NOT_COMPLETED);
+        taskModels = database.getTaskItems(CheckMateApplication.TASK_NOT_COMPLETED);
         handleEmptyIndicator();
     }
 
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     // Filter tasks by priority level
     private void filterTasksByPriority(int priorityLevel) {
         // Retrieves tasks by priority level from database
-        taskModels = appDatabase.getTasksByPriority(priorityLevel);
+        taskModels = database.getTasksByPriority(priorityLevel);
 
         // Makes toast message if task list is empty
         if (taskModels.isEmpty()) {
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-        appDatabase.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
+        database.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
         taskModels.remove(position); // Removes the task in the array
         adapter.notifyItemRemoved(position); // Removes the task in the adapter
 

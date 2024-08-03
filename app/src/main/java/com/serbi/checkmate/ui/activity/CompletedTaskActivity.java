@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.serbi.checkmate.CheckMateApplication;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
-import com.serbi.checkmate.data.local.AppDatabase;
+import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.databinding.ActivityCompletedTaskBinding;
 import com.serbi.checkmate.ui.adapter.TaskAdapter;
@@ -34,7 +34,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     private ArrayList<TaskModel> taskModels;
 
     private TaskAdapter adapter;
-    private AppDatabase appDatabase;
+    private Database database;
     private ActivityCompletedTaskBinding binding;
 
     @Override
@@ -50,7 +50,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         });
 
         // Initialize new database instance
-        appDatabase = new AppDatabase(this);
+        database = new Database(this);
 
         initializeToolbar();
         initializeDatasets();
@@ -87,7 +87,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
-        taskModels = appDatabase.getTaskItems(CheckMateApplication.TASK_COMPLETED);
+        taskModels = database.getTaskItems(CheckMateApplication.TASK_COMPLETED);
         handleEmptyIndicator();
         invalidateOptionsMenu(); // Updates toolbar menu options
     }
@@ -147,7 +147,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @SuppressLint("NotifyDataSetChanged")
     private void clearCompletedTask() {
-        appDatabase.clearCompletedTasks(); // Clears all completed tasks in database
+        database.clearCompletedTasks(); // Clears all completed tasks in database
         taskModels.clear(); // Clears all items in completed tasks list
         adapter.notifyDataSetChanged(); // Updates adapter
 
@@ -169,7 +169,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskCheck(int position, boolean status) {
-        appDatabase.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
+        database.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
         taskModels.remove(position); // Removes the task in the array
         adapter.notifyItemRemoved(position); // Removes the task in the adapter
 
