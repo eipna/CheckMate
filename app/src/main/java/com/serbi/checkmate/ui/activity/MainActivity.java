@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -213,7 +214,13 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     // Filter tasks by priority level
     private void filterTasksByPriority(int priorityLevel) {
+        // Retrieves tasks by priority level from database
         taskModels = appDatabase.getTasksByPriority(priorityLevel);
+
+        // Makes toast message if task list is empty
+        if (taskModels.isEmpty()) {
+            Toast.makeText(this, "No tasks found", Toast.LENGTH_SHORT).show();
+        }
         displayTaskItems();
     }
 
