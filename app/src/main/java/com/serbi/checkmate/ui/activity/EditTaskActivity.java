@@ -27,7 +27,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private Database appDatabase;
     private ActivityEditTaskBinding binding;
 
-    private int taskIdExtra;
+    private int taskIdExtra, taskPriorityExtra;
     private long taskDateCreated;
     private String taskNameExtra, taskNotesExtra;
 
@@ -67,6 +67,7 @@ public class EditTaskActivity extends AppCompatActivity {
         taskIdExtra = getIntent().getIntExtra("TASK_ID", -1);
         taskNameExtra = getIntent().getStringExtra("TASK_NAME");
         taskNotesExtra = getIntent().getStringExtra("TASK_NOTES");
+        taskPriorityExtra = getIntent().getIntExtra("TASK_PRIORITY", -1);
         taskDateCreated = getIntent().getLongExtra("TASK_DATE_CREATED", -1);
     }
 
