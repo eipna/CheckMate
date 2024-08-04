@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
 import com.serbi.checkmate.R;
@@ -61,7 +60,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
-            setTaskAppearance(holder, taskModels.get(position));
+            completeTaskAppearance(holder, taskModels.get(position));
         }
     }
 
@@ -71,24 +70,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     }
 
     // Handles the appearance of the task item card
-    private void setTaskAppearance(ViewHolder holder, TaskModel task) {
+    private void completeTaskAppearance(ViewHolder holder, TaskModel task) {
         // Transforms both the task item name and notes text to strikethrough
-        holder.item_task_name.setText(task.getName(), TextView.BufferType.SPANNABLE);
-        Spannable taskNameSpannable = (Spannable) holder.item_task_name.getText();
-        taskNameSpannable.setSpan(new StrikethroughSpan(), 0, holder.item_task_name.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        holder.item_task_notes.setText(task.getNotes(), TextView.BufferType.SPANNABLE);
-        Spannable taskNotesSpannable = (Spannable) holder.item_task_notes.getText();
-        taskNotesSpannable.setSpan(new StrikethroughSpan(), 0, holder.item_task_notes.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        holder.itemTaskName.setText(task.getName(), TextView.BufferType.SPANNABLE);
+        Spannable taskNameSpannable = (Spannable) holder.itemTaskName.getText();
+        taskNameSpannable.setSpan(new StrikethroughSpan(), 0, holder.itemTaskName.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         // Sets the alpha for all components in the task item to a lower value
-        holder.item_task_name.setAlpha(0.3f);
-        holder.item_task_notes.setAlpha(0.3f);
-        holder.item_task_divider.setAlpha(0.3f);
-        holder.item_task.setAlpha(0.8f);
-        holder.item_task_date_created.setAlpha(0.3f);
-        holder.item_task_date_created_image.setAlpha(0.3f);
-        holder.item_task_last_edited.setAlpha(0.3f);
+        holder.itemTaskCard.setAlpha(0.8f);
+        holder.itemTaskName.setAlpha(0.3f);
+        holder.itemTaskPriority.setAlpha(0.3f);
+        holder.itemTaskDateCreated.setAlpha(0.3f);
+        holder.itemTaskLastEdited.setElevation(0.3f);
+        holder.itemTaskDateCreatedIMG.setAlpha(0.3f);
+        holder.itemTaskPriorityIMG.setAlpha(0.3f);
+        holder.itemTaskDivider.setAlpha(0.3f);
+        holder.itemTaskMoreOptions.setAlpha(0.3f);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
