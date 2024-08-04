@@ -8,7 +8,7 @@ import android.os.Build;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
-public class CheckMateApplication extends Application {
+public class App extends Application {
 
     // Shared Preferences
     public static SharedPreferences preferences;
@@ -37,8 +37,8 @@ public class CheckMateApplication extends Application {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel reminderChannel = new NotificationChannel(
-                    CheckMateApplication.CHANNEL_REMINDER_ID,
-                    CheckMateApplication.CHANNEL_REMINDER_NAME,
+                    App.CHANNEL_REMINDER_ID,
+                    App.CHANNEL_REMINDER_NAME,
                     NotificationManager.IMPORTANCE_DEFAULT
             );
 

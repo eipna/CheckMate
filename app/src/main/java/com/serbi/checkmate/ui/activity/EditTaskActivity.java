@@ -12,7 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.serbi.checkmate.CheckMateApplication;
+import com.serbi.checkmate.App;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.local.Database;
 import com.serbi.checkmate.data.model.TaskModel;
@@ -110,13 +110,13 @@ public class EditTaskActivity extends AppCompatActivity {
     // Get the selected priority level
     private int getPriorityLevel() {
         if (binding.chipHigh.isChecked()) {
-            return CheckMateApplication.TASK_PRIORITY_HIGH;
+            return App.TASK_PRIORITY_HIGH;
         } else if (binding.chipMedium.isChecked()) {
-            return CheckMateApplication.TASK_PRIORITY_MEDIUM;
+            return App.TASK_PRIORITY_MEDIUM;
         } else if (binding.chipLow.isChecked()) {
-            return CheckMateApplication.TASK_PRIORITY_LOW;
+            return App.TASK_PRIORITY_LOW;
         } else {
-            return CheckMateApplication.TASK_PRIORITY_NO_PRIORITY;
+            return App.TASK_PRIORITY_NO_PRIORITY;
         }
     }
 
@@ -137,7 +137,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         // Close current activity rather than going back to parent activity
         if (item.getItemId() == android.R.id.home) {
-            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, App.VIBRATION_DEFAULT_DURATION);
             finish();
         }
 

@@ -10,7 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.serbi.checkmate.CheckMateApplication;
+import com.serbi.checkmate.App;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.databinding.ActivitySettingsBinding;
 import com.serbi.checkmate.ui.fragment.SettingsFragment;
@@ -49,7 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, App.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);

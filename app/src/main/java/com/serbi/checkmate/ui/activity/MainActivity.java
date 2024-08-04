@@ -18,7 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.serbi.checkmate.CheckMateApplication;
+import com.serbi.checkmate.App;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.Sortable;
 import com.serbi.checkmate.data.interfaces.TaskListener;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
 
     private void initializeDatasets() {
         // Gets all task items from database ( 0 means false)
-        taskModels = database.getTaskItems(CheckMateApplication.TASK_NOT_COMPLETED);
+        taskModels = database.getTaskItems(App.TASK_NOT_COMPLETED);
         handleEmptyIndicator();
     }
 
@@ -153,19 +153,19 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         // Handles filtering of task items by priority level
         if (item.getItemId() == R.id.item_filter_high) {
             filterPriorityHigh.setChecked(true);
-            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_HIGH);
+            filterTasksByPriority(App.TASK_PRIORITY_HIGH);
         }
         if (item.getItemId() == R.id.item_filter_medium) {
             filterPriorityMedium.setChecked(true);
-            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_MEDIUM);
+            filterTasksByPriority(App.TASK_PRIORITY_MEDIUM);
         }
         if (item.getItemId() == R.id.item_filter_low) {
             filterPriorityLow.setChecked(true);
-            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_LOW);
+            filterTasksByPriority(App.TASK_PRIORITY_LOW);
         }
         if (item.getItemId() == R.id.item_filter_no_priority) {
             filterNoPriority.setChecked(true);
-            filterTasksByPriority(CheckMateApplication.TASK_PRIORITY_NO_PRIORITY);
+            filterTasksByPriority(App.TASK_PRIORITY_NO_PRIORITY);
         }
         if (item.getItemId() == R.id.item_filter_default) {
             filterDefault.setChecked(true);

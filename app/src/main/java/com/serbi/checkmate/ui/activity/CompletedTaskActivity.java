@@ -18,7 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.serbi.checkmate.CheckMateApplication;
+import com.serbi.checkmate.App;
 import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.local.Database;
@@ -87,7 +87,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     private void initializeDatasets() {
         // Gets all task items from database ( 1 means true)
-        taskModels = database.getTaskItems(CheckMateApplication.TASK_COMPLETED);
+        taskModels = database.getTaskItems(App.TASK_COMPLETED);
         handleEmptyIndicator();
         invalidateOptionsMenu(); // Updates toolbar menu options
     }
@@ -121,7 +121,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         // Goes back to parent activity
         if (item.getItemId() == android.R.id.home) {
-            VibrationUtil.vibrate(this, CheckMateApplication.VIBRATION_DEFAULT_DURATION);
+            VibrationUtil.vibrate(this, App.VIBRATION_DEFAULT_DURATION);
             return super.onOptionsItemSelected(item);
         }
 
