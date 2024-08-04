@@ -287,11 +287,15 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
         popupMenu.getMenuInflater().inflate(R.menu.task_more_options, popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.item_task_Complete) {
-                Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
+                database.setTaskComplete(taskModels.get(position).getId());
+                taskModels.remove(taskModels.get(position));
+                adapter.notifyItemRemoved(position);
             }
 
             if (item.getItemId() == R.id.item_task_delete) {
-                Toast.makeText(MainActivity.this, "delete", Toast.LENGTH_SHORT).show();
+                database.deleteTask(taskModels.get(position).getId());
+                taskModels.remove(taskModels.get(position));
+                adapter.notifyItemRemoved(position);
             }
             return true;
         });
