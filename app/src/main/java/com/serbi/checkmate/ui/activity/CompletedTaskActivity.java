@@ -168,12 +168,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
     }
 
     @Override
-    public void onTaskCheck(int position, boolean status) {
-        database.toggleTask(taskModels.get(position).getId(), status); // Toggle's task status within database
-        taskModels.remove(position); // Removes the task in the array
-        adapter.notifyItemRemoved(position); // Removes the task in the adapter
-
-        invalidateOptionsMenu(); // Updates toolbar menu
-        handleEmptyIndicator(); // Updates completed task indicator
+    public void onTaskMoreOptionsClick(int position, View view) {
+        
     }
 }

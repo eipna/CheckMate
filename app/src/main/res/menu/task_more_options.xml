@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_task_Complete"
+        android:title="@string/menu_more_options_complete"/>
+
+    <item
+        android:id="@+id/item_task_delete"
+        android:title="@string/menu_more_options_delete"/>
+
+</menu>
