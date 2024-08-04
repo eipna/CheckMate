@@ -116,14 +116,10 @@ public class Database extends SQLiteOpenHelper {
         return taskItems;
     }
 
-    // Toggle's a task's is_completed value to be completed(1) or not(0)
-    public void toggleTask(int id, boolean status) {
+    // Sets a task to complete status
+    public void setTaskComplete(int id) {
         ContentValues values = new ContentValues();
-        if (status) {
-            values.put(TABLE_TASK_IS_COMPLETED, App.TASK_COMPLETED);
-        } else {
-            values.put(TABLE_TASK_IS_COMPLETED, App.TASK_NOT_COMPLETED);
-        }
+        values.put(TABLE_TASK_IS_COMPLETED, App.TASK_COMPLETED);
         getWritableDatabase().update(TABLE_TASK, values, TABLE_TASK_ID + " = ?", new String[]{String.valueOf(id)});
         close();
     }
