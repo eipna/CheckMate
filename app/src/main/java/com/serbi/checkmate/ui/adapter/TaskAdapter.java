@@ -82,7 +82,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.itemTaskName.setAlpha(0.3f);
         holder.itemTaskPriority.setAlpha(0.3f);
         holder.itemTaskDateCreated.setAlpha(0.3f);
-        holder.itemTaskLastEdited.setElevation(0.3f);
+        holder.itemTaskLastEdited.setAlpha(0.3f);
         holder.itemTaskDateCreatedIMG.setAlpha(0.3f);
         holder.itemTaskPriorityIMG.setAlpha(0.3f);
         holder.itemTaskDivider.setAlpha(0.3f);
