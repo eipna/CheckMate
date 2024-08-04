@@ -53,20 +53,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Sets the data and state of each component of the task item card on load
-        holder.item_task_name.setText(taskModels.get(position).getName());
-        holder.item_task_notes.setText(taskModels.get(position).getNotes());
-        holder.item_task_check_box.setChecked(taskModels.get(position).getIsCompleted() == 1);
-        holder.item_task_date_created.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
-        holder.item_task_last_edited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
-
-        holder.item_task_check_box.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (taskListener != null) {
-                int taskItemPosition = holder.getAdapterPosition();
-                if (taskItemPosition != RecyclerView.NO_POSITION) {
-                    taskListener.onTaskCheck(taskItemPosition, isChecked);
-                }
-            }
-        });
+        holder.itemTaskCard.setOnClickListener(v -> holder.itemTaskCard.setSelected(true));
+        holder.itemTaskName.setText(taskModels.get(position).getName());
+        holder.itemTaskPriority.setText(taskModels.get(position).getPriority());
+        holder.itemTaskDateCreated.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
+        holder.itemTaskLastEdited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
