@@ -53,7 +53,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Sets the data and state of each component of the task item card on load
-        holder.itemTaskCard.setOnClickListener(v -> holder.itemTaskCard.setSelected(true));
+        holder.itemTaskMoreOptions.setOnClickListener(v -> taskListener.onTaskMoreOptionsClick(position, holder.itemTaskMoreOptions));
         holder.itemTaskName.setText(taskModels.get(position).getName());
         holder.itemTaskPriority.setText(ParserUtil.parsePriorityLevel(taskModels.get(position).getPriority()));
         holder.itemTaskDateCreated.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
@@ -111,6 +111,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             itemTaskPriorityIMG = itemView.findViewById(R.id.itemTaskPriorityIMG);
 
             itemView.setOnClickListener(v -> {
+                itemView.setSelected(true);
                 if (taskListener != null) {
                     int taskItemPosition = getAdapterPosition();
                     if (taskItemPosition != RecyclerView.NO_POSITION) {

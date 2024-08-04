@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
@@ -169,6 +171,18 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskMoreOptionsClick(int position, View view) {
-        
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.task_more_options, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.item_task_Complete) {
+                Toast.makeText(CompletedTaskActivity.this, "Complete", Toast.LENGTH_SHORT).show();
+            }
+
+            if (item.getItemId() == R.id.item_task_delete) {
+                Toast.makeText(CompletedTaskActivity.this, "delete", Toast.LENGTH_SHORT).show();
+            }
+            return true;
+        });
+        popupMenu.show();
     }
 }
