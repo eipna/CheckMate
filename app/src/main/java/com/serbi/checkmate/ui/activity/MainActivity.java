@@ -290,12 +290,14 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
                 database.setTaskComplete(taskModels.get(position).getId());
                 taskModels.remove(taskModels.get(position));
                 adapter.notifyItemRemoved(position);
+                handleEmptyIndicator();
             }
 
             if (item.getItemId() == R.id.item_task_delete) {
                 database.deleteTask(taskModels.get(position).getId());
                 taskModels.remove(taskModels.get(position));
                 adapter.notifyItemRemoved(position);
+                handleEmptyIndicator();
             }
             return true;
         });

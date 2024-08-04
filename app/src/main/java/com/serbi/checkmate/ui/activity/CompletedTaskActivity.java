@@ -175,16 +175,13 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         popupMenu.getMenu().findItem(R.id.item_task_Complete).setVisible(false);
 
         popupMenu.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.item_task_Complete) {
-                database.setTaskComplete(taskModels.get(position).getId());
-                taskModels.remove(taskModels.get(position));
-                adapter.notifyItemRemoved(position);
-            }
-
             if (item.getItemId() == R.id.item_task_delete) {
                 database.deleteTask(taskModels.get(position).getId());
                 taskModels.remove(taskModels.get(position));
                 adapter.notifyItemRemoved(position);
+
+                handleEmptyIndicator();
+                invalidateOptionsMenu();
             }
             return true;
         });
