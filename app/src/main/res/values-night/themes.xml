@@ -56,7 +56,8 @@
     <style name="TaskItemDateCreatedText">
         <item name="android:textColor">@color/mint_cream</item>
         <item name="android:textSize">13sp</item>
-        <item name="fontFamily">sans-serif-medium</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:layout_marginStart">5dp</item>
     </style>
     <style name="TaskItemName">
         <item name="android:textColor">@color/mint_cream</item>
