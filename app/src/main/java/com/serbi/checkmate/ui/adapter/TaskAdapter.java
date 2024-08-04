@@ -21,6 +21,7 @@ import com.serbi.checkmate.R;
 import com.serbi.checkmate.data.interfaces.TaskListener;
 import com.serbi.checkmate.data.model.TaskModel;
 import com.serbi.checkmate.util.DateUtil;
+import com.serbi.checkmate.util.ParserUtil;
 
 import org.ocpsoft.prettytime.PrettyTime;
 
@@ -54,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         // Sets the data and state of each component of the task item card on load
         holder.itemTaskCard.setOnClickListener(v -> holder.itemTaskCard.setSelected(true));
         holder.itemTaskName.setText(taskModels.get(position).getName());
-        holder.itemTaskPriority.setText(taskModels.get(position).getPriority());
+        holder.itemTaskPriority.setText(ParserUtil.parsePriorityLevel(taskModels.get(position).getPriority()));
         holder.itemTaskDateCreated.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
         holder.itemTaskLastEdited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
 
