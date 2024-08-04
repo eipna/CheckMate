@@ -3,7 +3,7 @@
     <string name="app_name">CheckMate</string>
 
     <!-- Application Version -->
-    <string name="app_version">1.3.0</string>
+    <string name="app_version">1.4.0</string>
 
     <!-- Application Easter Egg Message -->
     <string name="app_easter_egg">You are now a developer :D</string>
