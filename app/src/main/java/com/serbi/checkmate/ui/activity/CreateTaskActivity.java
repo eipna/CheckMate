@@ -69,7 +69,7 @@ public class CreateTaskActivity extends AppCompatActivity {
 
     private void createNewTask() {
         String taskName = Objects.requireNonNull(binding.inputName.getText()).toString();
-        String taskNotes = Objects.requireNonNull(binding.inputName.getText()).toString();
+        String taskNotes = Objects.requireNonNull(binding.inputNotes.getText()).toString();
 
         // Checks if the task name field is empty
         if (taskName.isEmpty()) {
