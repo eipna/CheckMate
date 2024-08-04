@@ -102,22 +102,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MaterialTextView item_task_name, item_task_notes, item_task_date_created, item_task_last_edited;
-        MaterialCheckBox item_task_check_box;
-        MaterialCardView item_task;
-        MaterialDivider item_task_divider;
-        ImageView item_task_date_created_image;
+        MaterialDivider itemTaskDivider;
+        MaterialCardView itemTaskCard;
+        MaterialTextView itemTaskName, itemTaskDateCreated, itemTaskLastEdited, itemTaskPriority;
+        ImageView itemTaskMoreOptions, itemTaskDateCreatedIMG, itemTaskPriorityIMG;
 
         public ViewHolder(@NonNull View itemView, TaskListener taskListener) {
             super(itemView);
-            item_task = itemView.findViewById(R.id.item_task);
-            item_task_name = itemView.findViewById(R.id.item_task_name);
-            item_task_notes = itemView.findViewById(R.id.item_task_notes);
-            item_task_check_box = itemView.findViewById(R.id.item_task_check_box);
-            item_task_divider = itemView.findViewById(R.id.item_task_divider);
-            item_task_date_created = itemView.findViewById(R.id.item_task_date_created_text);
-            item_task_date_created_image = itemView.findViewById(R.id.item_task_date_created_image);
-            item_task_last_edited = itemView.findViewById(R.id.item_task_last_edited);
+            itemTaskCard = itemView.findViewById(R.id.itemTaskCard);
+            itemTaskDivider = itemView.findViewById(R.id.itemTaskDivider);
+
+            itemTaskName = itemView.findViewById(R.id.itemTaskName);
+            itemTaskDateCreated = itemView.findViewById(R.id.itemTaskDateCreated);
+            itemTaskPriority = itemView.findViewById(R.id.itemTaskPriority);
+            itemTaskLastEdited = itemView.findViewById(R.id.itemTaskLastEdited);
+
+            itemTaskMoreOptions = itemView.findViewById(R.id.itemTaskMoreOptions);
+            itemTaskDateCreatedIMG = itemView.findViewById(R.id.itemTaskDateCreatedIMG);
+            itemTaskPriorityIMG = itemView.findViewById(R.id.itemTaskPriorityIMG);
 
             itemView.setOnClickListener(v -> {
                 if (taskListener != null) {
