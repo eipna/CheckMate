@@ -58,6 +58,22 @@ public class EditTaskActivity extends AppCompatActivity {
         }
         binding.inputDateCreated.setText(DateUtil.getDetailedDate(taskDateCreated));
 
+        // Sets the checked priority level chip base on task priority level
+        switch (taskPriorityExtra) {
+            case App.TASK_PRIORITY_HIGH:
+                binding.chipHigh.setChecked(true);
+                break;
+            case App.TASK_PRIORITY_MEDIUM:
+                binding.chipMedium.setChecked(true);
+                break;
+            case App.TASK_PRIORITY_LOW:
+                binding.chipLow.setChecked(true);
+                break;
+            case App.TASK_PRIORITY_NO_PRIORITY:
+                binding.chipDefault.setChecked(true);
+                break;
+        }
+
         binding.deleteTask.setOnClickListener(v -> deleteTask());
         binding.saveTask.setOnClickListener(v -> saveTask());
     }
