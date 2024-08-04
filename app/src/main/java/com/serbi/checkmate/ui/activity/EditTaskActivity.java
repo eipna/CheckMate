@@ -86,7 +86,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         /* If the data from the extras and the current activity are the same,
         there will be no updates in the database and will just proceed to exiting the activity */
-        if (sameData(newTaskName, newTaskNotes)) {
+        if (sameData(newTaskName, newTaskNotes, taskPriorityExtra)) {
             finish();
         } else {
             TaskModel editedTask = new TaskModel(
@@ -129,8 +129,8 @@ public class EditTaskActivity extends AppCompatActivity {
     }
 
     // Checks if the data from the extras and current activity are the same
-    private boolean sameData(String name, String notes) {
-        return name.equals(taskNameExtra) && notes.equals(taskNotesExtra);
+    private boolean sameData(String name, String notes, int priority) {
+        return name.equals(taskNameExtra) && notes.equals(taskNotesExtra) && priority == taskPriorityExtra;
     }
 
     @Override
