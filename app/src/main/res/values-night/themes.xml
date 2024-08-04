@@ -60,12 +60,18 @@
     </style>
     <style name="TaskItemName">
         <item name="android:textColor">@color/mint_cream</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    <style name="TaskItemDivider">
+        <item name="dividerColor">@color/mint_cream</item>
+        <item name="dividerThickness">2dp</item>
     </style>
     <style name="TaskItemLastEdited">
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mint_cream</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginEnd">15dp</item>
     </style>

@@ -43,8 +43,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:id="@+id/itemTaskDivider"
             android:layout_marginTop="5dp"
-            app:dividerThickness="2dp"
-            app:dividerColor="@color/onyx"
+            style="@style/TaskItemDivider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -57,10 +56,7 @@
             <ImageView
                 android:id="@+id/itemTaskDateCreatedIMG"
                 android:src="@drawable/date"
-                app:tint="@color/onyx"
-                style="@style/TaskItemDateCreatedImage"
-                android:layout_width="20dp"
-                android:layout_height="20dp"/>
+                style="@style/TaskItemDateCreatedImage" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/itemTaskDateCreated"
@@ -79,10 +75,7 @@
             <ImageView
                 android:id="@+id/itemTaskPriorityIMG"
                 android:src="@drawable/priority"
-                app:tint="@color/onyx"
-                style="@style/TaskItemDateCreatedImage"
-                android:layout_width="20dp"
-                android:layout_height="20dp"/>
+                style="@style/TaskItemDateCreatedImage" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/itemTaskPriority"
