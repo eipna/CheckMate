@@ -54,36 +54,17 @@
         <item name="tint">@color/onyx</item>
         <item name="android:layout_height">18dp</item>
         <item name="android:layout_width">18dp</item>
-        <item name="android:layout_marginStart">48dp</item>
     </style>
     <style name="TaskItemDateCreatedText">
         <item name="android:textColor">@color/onyx</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:layout_marginStart">5dp</item>
     </style>
     <style name="TaskItemName">
         <item name="android:textColor">@color/onyx</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:layout_marginStart">50dp</item>
-        <item name="android:layout_marginTop">30dp</item>
-    </style>
-    <style name="TaskItemDivider">
-        <item name="dividerColor">@color/onyx</item>
-        <item name="android:layout_marginTop">13dp</item>
-        <item name="android:layout_marginStart">50dp</item>
-        <item name="android:layout_marginEnd">15dp</item>
-        <item name="dividerThickness">2dp</item>
-    </style>
-    <style name="TaskItemNotes">
-        <item name="android:textColor">@color/onyx</item>
-        <item name="android:maxLines">3</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:layout_marginEnd">15dp</item>
-        <item name="android:layout_marginStart">50dp</item>
     </style>
     <style name="TaskItemLastEdited">
         <item name="fontFamily">sans-serif-medium</item>
