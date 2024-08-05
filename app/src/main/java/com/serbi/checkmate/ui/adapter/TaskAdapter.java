@@ -111,7 +111,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             itemTaskPriorityIMG = itemView.findViewById(R.id.itemTaskPriorityIMG);
 
             itemView.setOnClickListener(v -> {
-                itemView.setSelected(true);
                 if (taskListener != null) {
                     int taskItemPosition = getAdapterPosition();
                     if (taskItemPosition != RecyclerView.NO_POSITION) {
