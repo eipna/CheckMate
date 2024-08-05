@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.divider.MaterialDivider;
 import com.google.android.material.textview.MaterialTextView;
@@ -53,11 +54,20 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // Sets the data and state of each component of the task item card on load
-        holder.itemTaskMoreOptions.setOnClickListener(v -> taskListener.onTaskMoreOptionsClick(position, holder.itemTaskMoreOptions));
         holder.itemTaskName.setText(taskModels.get(position).getName());
         holder.itemTaskPriority.setText(ParserUtil.parsePriorityLevel(taskModels.get(position).getPriority()));
         holder.itemTaskDateCreated.setText(DateUtil.getDetailedDate(taskModels.get(position).getDateCreated()));
         holder.itemTaskLastEdited.setText(prettyTime.format(new Date(taskModels.get(position).getLastEdited())));
+
+        // Listener for complete button
+        holder.itemTaskCompleteBTN.setOnClickListener(v -> {
+            if (taskListener != null) {
+                int taskItemPosition = holder.getAdapterPosition();
+                if (taskItemPosition != RecyclerView.NO_POSITION) {
+                    taskListener.onTaskCompleteClick(taskItemPosition);
+                }
+            }
+        });
 
         // Sets the task item card appearance based on its is_completed value on load
         if (taskModels.get(position).getIsCompleted() == 1) {
@@ -77,6 +87,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         Spannable taskNameSpannable = (Spannable) holder.itemTaskName.getText();
         taskNameSpannable.setSpan(new StrikethroughSpan(), 0, holder.itemTaskName.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
+        // Removes the complete button
+        holder.itemTaskCompleteBTN.setVisibility(View.GONE);
+
         // Sets the alpha for all components in the task item to a lower value
         holder.itemTaskCard.setAlpha(0.8f);
         holder.itemTaskName.setAlpha(0.3f);
@@ -86,15 +99,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.itemTaskDateCreatedIMG.setAlpha(0.3f);
         holder.itemTaskPriorityIMG.setAlpha(0.3f);
         holder.itemTaskDivider.setAlpha(0.3f);
-        holder.itemTaskMoreOptions.setAlpha(0.3f);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        MaterialButton itemTaskCompleteBTN;
         MaterialDivider itemTaskDivider;
         MaterialCardView itemTaskCard;
         MaterialTextView itemTaskName, itemTaskDateCreated, itemTaskLastEdited, itemTaskPriority;
-        ImageView itemTaskMoreOptions, itemTaskDateCreatedIMG, itemTaskPriorityIMG;
+        ImageView itemTaskDateCreatedIMG, itemTaskPriorityIMG;
 
         public ViewHolder(@NonNull View itemView, TaskListener taskListener) {
             super(itemView);
@@ -106,9 +119,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             itemTaskPriority = itemView.findViewById(R.id.itemTaskPriority);
             itemTaskLastEdited = itemView.findViewById(R.id.itemTaskLastEdited);
 
-            itemTaskMoreOptions = itemView.findViewById(R.id.itemTaskMoreOptions);
             itemTaskDateCreatedIMG = itemView.findViewById(R.id.itemTaskDateCreatedIMG);
             itemTaskPriorityIMG = itemView.findViewById(R.id.itemTaskPriorityIMG);
+
+            itemTaskCompleteBTN = itemView.findViewById(R.id.itemTaskCompleteBTN);
 
             itemView.setOnClickListener(v -> {
                 if (taskListener != null) {

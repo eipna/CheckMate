@@ -32,14 +32,6 @@
                 style="@style/TaskItemName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"/>
-
-            <ImageView
-                android:id="@+id/itemTaskMoreOptions"
-                android:focusable="true"
-                android:clickable="true"
-                android:src="@drawable/more"
-                android:layout_width="28dp"
-                android:layout_height="28dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -87,13 +79,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/itemTaskLastEdited"
-            android:layout_gravity="right"
-            android:text="@string/placeholder_item_task_last_edited"
-            style="@style/TaskItemLastEdited"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="RtlHardcoded" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/itemTaskCompleteBTN"
+                android:text="Complete"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/itemTaskLastEdited"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@string/placeholder_item_task_last_edited"
+                style="@style/TaskItemLastEdited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlHardcoded" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

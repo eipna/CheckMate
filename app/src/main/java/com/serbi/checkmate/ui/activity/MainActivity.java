@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -282,25 +281,9 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     }
 
     @Override
-    public void onTaskMoreOptionsClick(int position, View view) {
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.getMenuInflater().inflate(R.menu.task_more_options, popupMenu.getMenu());
-        popupMenu.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.item_task_Complete) {
-                database.setTaskComplete(taskModels.get(position).getId());
-                taskModels.remove(taskModels.get(position));
-                adapter.notifyItemRemoved(position);
-                handleEmptyIndicator();
-            }
-
-            if (item.getItemId() == R.id.item_task_delete) {
-                database.deleteTask(taskModels.get(position).getId());
-                taskModels.remove(taskModels.get(position));
-                adapter.notifyItemRemoved(position);
-                handleEmptyIndicator();
-            }
-            return true;
-        });
-        popupMenu.show();
+    public void onTaskCompleteClick(int position) {
+        database.setTaskComplete(taskModels.get(position).getId());
+        taskModels.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }
