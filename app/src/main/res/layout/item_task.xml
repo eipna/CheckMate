@@ -85,7 +85,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/itemTaskCompleteBTN"
-                android:text="Complete"
+                android:text="@string/placeholder_item_task_complete_btn"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

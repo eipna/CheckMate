@@ -28,6 +28,7 @@
     </string>
     <string name="placeholder_item_task_last_edited">a few moments ago</string>
     <string name="placeholder_item_task_priority">No Priority</string>
+    <string name="placeholder_item_task_complete_btn">Complete</string>
 
     <!-- Toolbar Texts -->
     <string name="toolbar_main">All Tasks</string>
