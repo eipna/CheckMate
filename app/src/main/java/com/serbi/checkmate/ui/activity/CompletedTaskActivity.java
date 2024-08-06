@@ -137,10 +137,10 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         // Dialog configuration for clearing all completed tasks
-        builder.setTitle(R.string.dialog_name)
-                .setMessage(R.string.dialog_message)
-                .setNegativeButton(R.string.dialog_cancel, null)
-                .setPositiveButton(R.string.dialog_clear, (dialog, which) -> clearCompletedTask())
+        builder.setTitle(R.string.dialog_clear_completed_task_name)
+                .setMessage(R.string.dialog_clear_completed_task_message)
+                .setNegativeButton(R.string.dialog_clear_completed_task_cancel, null)
+                .setPositiveButton(R.string.dialog_clear_completed_task_clear, (dialog, which) -> clearCompletedTask())
                 .create();
         builder.show();
     }

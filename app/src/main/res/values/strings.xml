@@ -65,10 +65,10 @@
     <string name="website_work_manager">https://developer.android.com/develop/background-work/background-tasks/persistent/getting-started</string>
 
     <!-- Clear Completed Task Dialog -->
-    <string name="dialog_name">Clear all completed tasks</string>
-    <string name="dialog_message">This operation will delete all completed tasks.</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_clear">Clear</string>
+    <string name="dialog_clear_completed_task_name">Clear all completed tasks</string>
+    <string name="dialog_clear_completed_task_message">This operation will delete all completed tasks.</string>
+    <string name="dialog_clear_completed_task_cancel">Cancel</string>
+    <string name="dialog_clear_completed_task_clear">Clear</string>
 
     <!-- Option Menu String -->
     <string name="menu_clear_all">Clear All</string>
