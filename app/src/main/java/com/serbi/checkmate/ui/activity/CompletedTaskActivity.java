@@ -169,6 +169,6 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
 
     @Override
     public void onTaskCompleteClick(int position) {
-
+        // Do nothing since the task is already completed
     }
 }
