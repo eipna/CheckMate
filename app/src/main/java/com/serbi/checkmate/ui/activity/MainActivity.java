@@ -285,14 +285,14 @@ public class MainActivity extends AppCompatActivity implements Sortable, TaskLis
     public void onTaskCompleteClick(int position) {
         // Alert dialog when complete task button is clicked
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Set task as complete")
-                .setMessage("This will set the task as completed, this operation is irreversible.")
-                .setPositiveButton("Ok", (dialog, which) -> {
+                .setTitle(getResources().getString(R.string.dialog_complete_task_name))
+                .setMessage(getResources().getString(R.string.dialog_complete_task_message))
+                .setPositiveButton(getResources().getString(R.string.dialog_complete_task_cancel), (dialog, which) -> {
                     database.setTaskComplete(taskModels.get(position).getId()); // Sets the task to complete
                     taskModels.remove(position); // Removes the task in the array
                     adapter.notifyItemRemoved(position); // Updates the adapter of the removed task
                     handleEmptyIndicator(); // Updates the empty indicator
-                }).setNegativeButton("Cancel", null);
+                }).setNegativeButton(getResources().getString(R.string.dialog_complete_task_ok), null);
         builder.create().show();
     }
 }

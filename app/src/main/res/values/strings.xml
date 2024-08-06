@@ -70,6 +70,12 @@
     <string name="dialog_clear_completed_task_cancel">Cancel</string>
     <string name="dialog_clear_completed_task_clear">Clear</string>
 
+    <!-- Set Task As Complete Dialog -->
+    <string name="dialog_complete_task_name">Set task as complete</string>
+    <string name="dialog_complete_task_message">This will set the task as completed, this operation is irreversible.</string>
+    <string name="dialog_complete_task_cancel">Cancel</string>
+    <string name="dialog_complete_task_ok">Okay</string>
+
     <!-- Option Menu String -->
     <string name="menu_clear_all">Clear All</string>
     <string name="menu_completed_tasks">Completed Tasks</string>
