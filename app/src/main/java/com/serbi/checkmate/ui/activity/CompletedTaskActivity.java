@@ -151,7 +151,7 @@ public class CompletedTaskActivity extends AppCompatActivity implements TaskList
         taskModels.clear(); // Clears all items in completed tasks list
         adapter.notifyDataSetChanged(); // Updates adapter
 
-        binding.noTaskIndicator.setVisibility(View.VISIBLE); // Makes empty completed tasks indicator visible
+        handleEmptyIndicator(); // Updates empty indicator
         invalidateOptionsMenu(); // Updates toolbar menu
     }
 
